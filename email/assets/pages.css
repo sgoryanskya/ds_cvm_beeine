@@ -1,0 +1,138 @@
+/* Дизайн-система CVM B2B · раздел «Письма» · оболочка страниц «Компоненты» и «Макеты»
+   Вкладки раздела, панель фильтров, плитки с уменьшенными превью и окно просмотра. Стили самих писем в email.css */
+
+html{scroll-behavior:smooth;scroll-padding-top:150px}
+@media (max-width:899px){html{scroll-padding-top:76px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* вкладки раздела: Гайд, Компоненты, Макеты */
+.etabs{display:flex;gap:4px;margin-top:18px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.etabs::-webkit-scrollbar{display:none}
+.etabs a{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;color:var(--sub);font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1px}
+.etabs a i{font-style:normal;font-weight:500;font-size:12px;line-height:18px;color:var(--mut);background:var(--surface-2);border-radius:999px;padding:1px 8px;font-variant-numeric:tabular-nums}
+.etabs a:hover{color:var(--ink)}
+.etabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--y)}
+.etabs a[aria-current="page"] i{background:var(--y-soft);color:#8A6200}
+
+.intro{padding-block:40px 24px;max-width:860px}
+.intro .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.tally{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tally .pill{height:30px;font-size:13px;padding:0 12px}
+.tally .pill b{font-weight:700;color:var(--ink);margin-left:4px}
+
+/* панель фильтров */
+.ctl{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding:12px 0;background:rgba(246,245,250,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);z-index:40}
+@media (min-width:900px){.ctl{position:sticky;top:calc(61px + env(safe-area-inset-top,0px))}}
+.seg{display:inline-flex;flex-wrap:wrap;background:var(--surface-2);border-radius:20px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;font:inherit;font-size:13px;font-weight:700;color:var(--sub);height:32px;padding:0 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.seg button i{font-style:normal;font-weight:500;color:var(--mut);margin-left:4px;font-variant-numeric:tabular-nums}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.ctl .grow{flex:1 1 auto}
+.ctl input[type=search]{font:inherit;font-size:14px;height:38px;border:1px solid var(--line);border-radius:999px;padding:0 16px;background:var(--surface);color:var(--ink);width:min(280px,100%)}
+@media (max-width:640px){.ctl .grow{display:none}.ctl input[type=search]{width:100%}}
+
+/* навигация по группам */
+.cats{display:flex;flex-wrap:wrap;gap:6px;padding:18px 0 4px}
+.cats a{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:14px;font-weight:500}
+.cats a i{font-style:normal;color:var(--mut);font-size:12px;font-variant-numeric:tabular-nums}
+.cats a:hover{border-color:#CFCBDD}
+.cats a.off{opacity:.4}
+.cg{padding-top:40px}
+.cg[hidden]{display:none}
+.cg-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.cg-h h2{font-size:clamp(24px,3vw,32px)}
+.cg-h span{color:var(--mut);font-size:15px;font-variant-numeric:tabular-nums}
+.cg-d{color:var(--sub);font-size:15px;margin-top:6px;max-width:70ch}
+
+/* плитки с уменьшенным превью */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:16px;margin-top:16px}
+.tiles.lay{grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:20px}
+.tile{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:border-color .15s,box-shadow .15s,transform .15s}
+.tile[hidden]{display:none}
+.tile:hover{border-color:#CFCBDD;box-shadow:var(--shadow)}
+.tile:has(.tile-b:focus-visible){outline:3px solid var(--vi);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){.tile:hover{transform:translateY(-2px)}}
+.tile-st{position:relative;height:300px;overflow:hidden;padding:14px;background:#FFFFFF radial-gradient(#E5E2EE 1px,transparent 1.2px) 0 0/16px 16px;border-bottom:1px solid var(--line)}
+.tiles.lay .tile-st{height:520px}
+.tile-st:after{content:"";position:absolute;left:0;right:0;bottom:0;height:64px;background:linear-gradient(rgba(255,255,255,0),#FFFFFF);pointer-events:none}
+.zm{width:720px;zoom:var(--z,.5);margin:0 auto}
+.zm.w360{width:360px;zoom:var(--z3,1)}
+.zm>.ml,.zm>.ml.dk{border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.06),0 18px 40px -24px rgba(40,20,120,.35)}
+.tile-m{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:12px 16px 14px}
+.tile-b{appearance:none;border:0;background:none;padding:0;font:inherit;font-weight:700;font-size:15.5px;line-height:1.3;color:var(--ink);text-align:left;cursor:pointer}
+.tile-b:focus-visible{outline:none}
+.tile-b:after{content:"";position:absolute;inset:0;z-index:1}
+.tile-m code{font-size:11.5px;color:var(--sub)}
+.tile-m .nw{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:var(--y-soft);color:#8A6200;font-size:11.5px;font-weight:700}
+.tile-m .sp{flex:1 1 auto}
+.tile-n{flex-basis:100%;color:var(--sub);font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tile-c{font-size:13px;color:var(--mut)}
+.empty{padding:48px 0;color:var(--sub);font-size:17px}
+
+/* подсказка внизу страницы */
+.legend{margin-top:56px;padding:26px clamp(18px,3vw,32px);background:var(--surface);border:1px solid var(--line);border-radius:24px}
+.legend h2{font-size:24px}
+.legend dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:12px 18px;margin:18px 0 0;align-items:center}
+.legend dd{margin:0;color:var(--sub);font-size:15px}
+.legend p{margin-top:16px;color:var(--sub);font-size:15px;max-width:80ch}
+@media (max-width:540px){.legend dl{grid-template-columns:minmax(0,1fr)}.legend dd{margin-bottom:6px}}
+.pill.st-v2{background:#E6F6EC;color:var(--ok)}
+.pill.st-real{background:var(--y-soft);color:#8A6200}
+.pill.st-kit{background:var(--vi-soft);color:var(--vi)}
+.pill.st-new{background:#FFF1D6;color:var(--warn)}
+.pill.st-old{background:var(--surface-2);color:var(--mut)}
+.foot a{color:var(--sub)}
+
+/* окно просмотра */
+dialog.vw{width:min(1440px,calc(100vw - 32px));max-width:none;max-height:calc(100dvh - 32px);padding:0;border:0;border-radius:24px;background:var(--bg);color:var(--ink);box-shadow:0 30px 80px -20px rgba(20,10,60,.45);overflow:auto;overscroll-behavior:contain}
+dialog.vw::backdrop{background:rgba(22,16,44,.55);backdrop-filter:blur(3px)}
+.vw-top{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:14px 18px;background:rgba(246,245,250,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.vw-ti{flex:1 1 260px;min-width:0}
+.vw-k{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:var(--mut)}
+.vw-k code{font-size:12px}
+.vw-ti h2{font-size:22px;margin-top:4px;letter-spacing:-.01em}
+.vw-nav{display:flex;gap:6px}
+.vw-stage{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:24px;padding:24px 18px;background:#FFFFFF radial-gradient(#E5E2EE 1px,transparent 1.2px) 0 0/16px 16px;min-height:200px}
+.vw-f{margin:0;min-width:0;max-width:100%}
+.vw-f figcaption{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.vw-f .ml{border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.06),0 18px 40px -24px rgba(40,20,120,.35)}
+.vw-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px 32px;padding:22px 24px 28px;border-top:1px solid var(--line)}
+.vw-meta h3{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.vw-meta p,.vw-meta li{font-size:15px;line-height:1.5;color:var(--sub)}
+.vw-meta h3+*{margin-top:8px}
+.vw-meta ul{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.vw-meta ol{margin:8px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:4px}
+.vw-meta ol a{color:var(--ink);text-decoration:none}
+.vw-meta ol a:hover{color:var(--vi)}
+.vw-meta ol code{font-size:12px;margin-left:6px}
+@media (max-width:700px){
+  dialog.vw{width:100vw;max-height:100dvh;height:100dvh;border-radius:0}
+  .vw-top{padding:10px 12px}
+  .vw-ti h2{font-size:18px}
+  .vw-stage{padding:16px 8px}
+  .vw-meta{padding:18px 16px 24px}
+}
+html:has(dialog.vw[open]){overflow:hidden}
+.vw-nav .btn[disabled]{opacity:.35}
+.seg button[disabled]{opacity:.45;cursor:default}
+
+/* пометка о желтой заливке: в темной теме почты она станет бурой. Цвет пометки и есть этот бурый #733C00 */
+.tile-m .wn,.vw-k .wn{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 10px;border-radius:999px;background:#733C00;color:#FFFFFF;font-size:11.5px;font-weight:800;letter-spacing:.02em}
+.tile-m .wn:before,.vw-k .wn:before{content:'!';display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:#FFC800;color:#141414;font-size:10px;font-weight:900}
+.pill.wn-p{background:#733C00;color:#FFFFFF}
+.pill.wn-p b{color:#FFC800}
+.vw-warn{grid-column:1/-1;border:2px solid #733C00;border-radius:14px;padding:16px 20px;background:#FFF8E6}
+.vw-warn h3{color:#733C00!important;font-size:14px!important}
+.vw-warn p{color:#3D2A00!important;font-weight:600}
+.vw-f.inv figcaption{color:#733C00}
+.dmw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center;margin-top:24px;border:2px solid #733C00;border-radius:18px;padding:18px 22px;background:#FFF8E6;max-width:880px}
+.dmw .sw{display:flex;align-items:center;gap:8px}
+.dmw .sw i{display:block;width:44px;height:44px;border-radius:10px}
+.dmw .sw span{font-size:20px;color:#733C00;font-weight:800}
+.dmw h2{font-size:17px;font-weight:800;color:#733C00;margin:0}
+.dmw p{margin:6px 0 0;font-size:15px;line-height:1.5;color:#3D2A00}
+@media (max-width:640px){.dmw{grid-template-columns:minmax(0,1fr)}}
+
+/* приемы рынка: статус, метка плитки и вкладка «Рынок» */
+.pill.st-mkt{background:#E3F0FB;color:#1F5F99}
+.tile-m .nw.mk{background:#E3F0FB;color:#1F5F99}

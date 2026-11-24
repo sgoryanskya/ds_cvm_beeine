@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Письма рынка B2B</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="assets/email.css">
+<link rel="stylesheet" href="assets/pages.css">
+<style>
+  html{scroll-behavior:smooth;scroll-padding-top:76px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  .sec-k{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+  .sec-k i{font-style:normal;color:var(--vi)}
+  .sec .grid{margin-top:24px}
+  .panel ul{margin:10px 0 0;padding-left:18px;color:var(--sub);font-size:15px}
+  .panel li+li{margin-top:6px}
+  .panel .pill{margin-top:12px}
+  .panel h4{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-top:14px}
+  .co h3{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .co .src{margin-top:14px;font-size:14px}
+  .co.none{background:var(--surface-2)}
+  .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}
+  .facts div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-s);padding:16px}
+  .facts b{display:block;font-size:30px;line-height:1.1;letter-spacing:-.02em}
+  .facts span{display:block;margin-top:6px;color:var(--sub);font-size:14px;line-height:1.4}
+  @media (max-width:900px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  /* приемы с превью */
+  .mk-p{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:28px;align-items:start;padding:28px 0;border-top:1px solid var(--line)}
+  .mk-p:first-child{border-top:0;padding-top:8px}
+  .mk-t h3{font-size:26px}
+  .mk-t dl{margin:16px 0 0;display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
+  .mk-t dt{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-top:10px}
+  .mk-t dd{margin:0;color:var(--sub);font-size:15.5px;line-height:1.5}
+  .mk-t dd ul{margin:0;padding-left:18px}
+  .mk-codes{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .mk-codes code{font-size:11px;color:var(--mut)}
+  .mk-pv{min-width:0;border-radius:16px;overflow:hidden;background:#fff radial-gradient(#E5E2EE 1px,transparent 1px) 0 0/14px 14px;border:1px solid var(--line);padding:0}
+  .mk-z{width:720px;zoom:var(--mz,.6)}
+  .mk-z>.ml{border-radius:0}
+  @media (max-width:900px){.mk-p{grid-template-columns:minmax(0,1fr)}}
+  /* список писем во входящих */
+  .inbox{margin-top:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .inbox div{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:14px;align-items:baseline;padding:14px 18px;border-top:1px solid var(--line);font-size:15px}
+  .inbox div:first-child{border-top:0}
+  .inbox b{font-weight:700}
+  .inbox p{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .inbox p span{color:var(--mut)}
+  .inbox time{color:var(--mut);font-size:13px}
+  @media (max-width:640px){.inbox div{grid-template-columns:minmax(0,1fr) auto}.inbox p{grid-column:1/-1;white-space:normal}}
+  /* таблица темной темы */
+  .table-wrap{margin-top:20px}
+  .table-wrap table{width:100%;border-collapse:collapse;font-size:15px}
+  .table-wrap th,.table-wrap td{text-align:left;padding:12px 16px;border-top:1px solid var(--line);vertical-align:top}
+  .table-wrap thead th{border-top:0;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--mut)}
+  .table-wrap td:first-child{font-weight:700;white-space:nowrap}
+  .no-take .panel h3{font-size:17px}
+  .srcs{columns:2;column-gap:32px;margin-top:20px;padding-left:18px;font-size:14px;color:var(--sub)}
+  .srcs li{break-inside:avoid;margin-bottom:8px}
+  @media (max-width:700px){.srcs{columns:1}}
+  .lays{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:10px}
+  .lays li{display:flex;justify-content:space-between;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-s);padding:12px 16px;font-weight:700}
+  .lays li span{font-weight:500;font-size:13px;color:var(--mut)}
+  .note-b{margin-top:20px;padding:18px 20px;border-radius:var(--r-s);background:var(--vi-soft);color:var(--ink);font-size:15px;max-width:80ch}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="logo" href="../index.html"><i></i>Дизайн-система CVM</a>
+  <nav class="nav" aria-label="Разделы">
+    <a href="../buzz/index.html">Канал в Buzz</a>
+    <a href="index.html" aria-current="page">Письма</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap">
+  <nav class="etabs" aria-label="Раздел «Письма»">
+    <a href="index.html">Гайд</a>
+    <a href="catalog.html">Компоненты <i>169</i></a>
+    <a href="layouts.html">Макеты <i>20</i></a>
+    <a href="market.html" aria-current="page">Рынок</a>
+  </nav>
+
+  <section class="intro">
+    <div class="eyebrow">Раздел «Письма» · рынок · ноябрь 2026</div>
+    <h1 class="display" style="margin-top:14px">Что шлют B2B-компании</h1>
+    <p class="lede" style="margin-top:18px">Разбор писем конкурентов билайн бизнес в России и лидеров B2B в мире: какие письма отправляют, из каких блоков собирают и что из этого подходит нам. По итогам в каталог добавлена группа «По рынку», а в макеты шесть писем. Каждый прием проверен на правила раздела: верстка таблицами, без желтых заливок, таблиц с данными и текста на картинках</p>
+    <div class="tally" id="tally"></div>
+    <div class="acts"><a class="btn pri" href="#patterns">К приемам</a><a class="btn" href="catalog.html#g-mkt">Блоки «По рынку»</a><a class="btn" href="#clients">Почтовые клиенты 2026</a></div>
+  </section>
+
+  <section class="sec" id="method" aria-labelledby="h-method">
+    <div class="sec-k"><i>01</i>Как искали</div>
+    <h2 id="h-method">Откуда данные</h2>
+    <p class="intro">Публичных B2B-писем телекомов мало: их не выкладывают в галереи, а подписка на рассылки конкурента требует клиентского договора. Поэтому опирались на кейсы рассыльщиков с настоящими письмами, галереи и архивы писем SaaS-компаний, справочные страницы операторов и отчеты Litmus</p>
+    <div class="facts">
+      <div><b>4</b><span>российские компании с настоящими письмами: Selectel, МТС Линк, Т‑Бизнес, Солар</span></div>
+      <div><b>7</b><span>конкурентов без писем в открытых источниках: МегаФон, Т2, Ростелеком для бизнеса, СберБизнес, VK, Cloud.ru, Яндекс 360</span></div>
+      <div><b>15</b><span>мировых компаний: телеком, облака и SaaS с сильными сервисными письмами</span></div>
+      <div><b>14</b><span>приемов, которые повторяются у двух и больше компаний и собираются нашими блоками</span></div>
+    </div>
+    <p class="note-b">«Не нашли» значит, что писем нет в доступных источниках, а не что компания их не шлет. Самый надежный способ дополнить разбор: подписать рабочий ящик на рассылки МТС Бизнес, МегаФона, Т2, Ростелекома, СберБизнеса и Яндекс 360 и собирать письма в одну папку</p>
+  </section>
+
+  <section class="sec" id="ru" aria-labelledby="h-ru">
+    <div class="sec-k"><i>02</i>Россия</div>
+    <h2 id="h-ru">Конкуренты в России</h2>
+    <p class="intro">Что видно в настоящих письмах. Пометка «видели» значит скриншот или HTML письма, «описано» значит только текст статьи</p>
+    <div class="grid g2">
+      <article class="panel co">
+        <h3>Selectel <span class="pill ok">видели</span></h3>
+        <p>Приветственная цепочка из шести писем, четыре цепочки онбординга после покупки, опрос ушедших клиентов, дайджест Академии по выбранным темам, акции, бета-тесты и мероприятия</p>
+        <h4>Первый экран</h4>
+        <ul><li>логотип слева, справа ссылка «Панель управления →» или «Об акции»</li><li>обложка с иллюстрацией, темная плашка с заголовком или фото сервера</li></ul>
+        <h4>Блоки и кнопки</h4>
+        <ul><li>карточки в рамке: иконка, заголовок, текст и ссылка со стрелкой</li><li>шаги «Как получить скидку», карточки статей, «Позвать друга»</li><li>поддержка 24/7 и контакты прямо в письме</li><li>одна-две кнопки: «Подробнее», «Получить скидку», основная повторяется</li></ul>
+        <p class="src"><a href="https://mindbox.ru/journal/cases/selectel/" target="_blank" rel="noopener">Кейс Mindbox, 18.11.2024 ↗</a></p>
+      </article>
+      <article class="panel co">
+        <h3>МТС Линк <span class="pill ok">видели</span></h3>
+        <p>Напоминания об окончании тарифа за 10 дней, за день и в день окончания, «Закончилось действие тарифа», продление со скидкой, онбординг с кейсами из отрасли клиента, анонсы вебинаров. В теме название тарифа и дата</p>
+        <h4>Первый экран</h4>
+        <ul><li>логотип слева, справа кнопка в рамке «Личный кабинет»</li><li>иконка и заголовок «Ваш тариф истекает завтра», без картинки</li></ul>
+        <h4>Блоки и кнопки</h4>
+        <ul><li>обращение «Уважаемый клиент»</li><li>плашка «Если вы уже продлили тариф, не волнуйтесь»</li><li>«свяжитесь с менеджером или перейдите в кабинет», скриншот тарифов</li><li>одна кнопка на всю ширину с градиентом, капсом</li></ul>
+        <p class="src"><a href="https://sendsay.ru/blog/pr/kejs-mts-link/" target="_blank" rel="noopener">Кейс Sendsay, 30.09.2026 ↗</a></p>
+      </article>
+      <article class="panel co">
+        <h3>Т‑Бизнес секреты <span class="pill ok">видели</span></h3>
+        <p>Контентный дайджест для предпринимателей, победитель премии Unisender 2026 в номинации «Финансы года»</p>
+        <h4>Первый экран</h4>
+        <ul><li>шрифтовой логотип, справа метка «Дайджест», линия и крупный заголовок</li><li>картинки в начале нет, письмо начинается с текста</li></ul>
+        <h4>Блоки и подвал</h4>
+        <ul><li>разделы: иллюстрация, заголовок и список с тире, каждый ведет на статью</li><li>кнопок нет, только ссылки</li><li>в конце «Было ли письмо интересно? Да / Нет»</li><li>подвал: почему пришло письмо, получать один дайджест в месяц, отписка от темы и от всех</li><li>темная тема прописана в коде письма</li></ul>
+        <p class="src"><a href="https://www.unisender.com/ru/blog/pisma-pobediteli-premii-unisender-2026/" target="_blank" rel="noopener">Победители премии Unisender 2026 ↗</a></p>
+      </article>
+      <article class="panel co">
+        <h3>Солар, группа Ростелеком <span class="pill ok">видели</span></h3>
+        <p>Интерактивный сериал о реальных киберинцидентах, август 2026, номинация «Коммуникация года»</p>
+        <h4>Первый экран</h4>
+        <ul><li>темное письмо целиком, фотообложка с интерфейсами, заголовок капсом</li><li>обращение «Привет, коллега!»</li></ul>
+        <h4>Блоки и подвал</h4>
+        <ul><li>черные карточки на темно-сером фоне</li><li>три кнопки с вариантами ответа, письмо работает как квиз</li><li>подвал: меню, соцсети, адрес, телефон, ссылка «открыть в браузере»</li></ul>
+        <p class="src"><a href="https://www.unisender.com/ru/blog/pisma-pobediteli-premii-unisender-2026/" target="_blank" rel="noopener">Победители премии Unisender 2026 ↗</a></p>
+      </article>
+      <article class="panel co none">
+        <h3>Не нашли в открытых источниках</h3>
+        <p>МТС Бизнес и Exolve, МегаФон для бизнеса (есть только B2C-кейсы), Т2 для бизнеса, Ростелеком для бизнеса, СберБизнес, VK WorkSpace и VK Cloud, Cloud.ru, Яндекс 360. Yandex Cloud предупредил клиентов о новых ценах за три месяца, 6 февраля 2025, но само письмо не опубликовано</p>
+        <p class="src"><a href="https://yandex.cloud/ru/blog/posts/2025/02/pricing-update" target="_blank" rel="noopener">Yandex Cloud об изменении цен ↗</a></p>
+      </article>
+      <article class="panel co">
+        <h3>Что общего</h3>
+        <ul><li>письма по жизненному циклу: онбординг, продление, подталкивание к покупке</li><li>одна основная кнопка с коротким глаголом</li><li>контентный дайджест по темам клиента</li><li>обратная связь прямо в письме: «Да / Нет», варианты ответа</li><li>контакты и помощь в теле письма</li><li>ни «Реклама», ни erid в проверенных HTML-письмах нет</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="world" aria-labelledby="h-world">
+    <div class="sec-k"><i>03</i>Мир</div>
+    <h2 id="h-world">Лидеры B2B в мире</h2>
+    <p class="intro">Публичных писем зарубежных телекомов в галереях почти нет, поэтому по Vodafone, BT и AWS смотрели справки об уведомлениях, а по SaaS сами письма. В B2B главные письма про вовлечение и удержание: их называют 65% компаний в отчете Litmus за 2025 год</p>
+    <div class="grid g3">
+      <article class="panel"><h3>Онбординг по одному шагу</h3><p>У Notion 11 писем онбординга, у Linear 6 писем за 9 дней. Одна кнопка в 93% писем Notion и 88% писем Linear: каждое письмо ведет к одному действию</p></article>
+      <article class="panel"><h3>Данные клиента</h3><p>Vercel присылает недельную сводку использования, Loom считает, сколько встреч сэкономили видео, AWS пишет при 85% лимита. Письмо с цифрами клиента напоминает о пользе лучше акции</p></article>
+      <article class="panel"><h3>Сервис без верстки</h3><p>Счета, продление, вход с нового устройства: простое письмо, детали строками, одно действие. В таких письмах нет иллюстраций и рекламы, главное видно в прехедере</p></article>
+      <article class="panel"><h3>Что нового раз в месяц</h3><p>Обновления группируют под метками «Новое», «Улучшили», «Исправили», главное ставят первым. Шаблон темы: «Новое в X: A, B и другое»</p></article>
+      <article class="panel"><h3>Письмо от человека</h3><p>Intercom дает три шаблона: от компании, от сотрудника с фото и простой, как обычное письмо. Ключевым клиентам пишут от имени менеджера</p></article>
+      <article class="panel"><h3>Открытия больше не мерило</h3><p>Apple Mail открывает письма сам, поэтому открытия как главную метрику используют 15% маркетологов. Смотрят на клики, ответы и заявки, а значит важна одна ясная кнопка</p></article>
+    </div>
+  </section>
+
+  <section class="sec" id="patterns" aria-labelledby="h-pat">
+    <div class="sec-k"><i>04</i>Что берем</div>
+    <h2 id="h-pat">14 приемов и наши блоки</h2>
+    <p class="intro">Каждый прием встречается у двух и больше компаний. Справа наш блок из группы «По рынку» в светлой теме, кнопка под описанием открывает его в каталоге, где можно проверить темную тему, инверсию почты и ширину 360. В Figma этих блоков пока нет, перед первой рассылкой их стоит согласовать</p>
+    <div id="pat" style="margin-top:20px"></div>
+    <h3 class="sub-h" style="font-size:22px;margin-top:40px">Макеты по приемам рынка</h3>
+    <ul class="lays" id="lays"></ul>
+  </section>
+
+  <section class="sec no-take" id="skip" aria-labelledby="h-skip">
+    <div class="sec-k"><i>05</i>Что не берем</div>
+    <h2 id="h-skip">Видим у конкурентов, но не берем</h2>
+    <p class="intro">Эти приемы встречаются в письмах, но ломают наши правила верстки или решения, которые уже приняты в разделе</p>
+    <div class="grid g3">
+      <article class="panel"><h3>Ссылка на кабинет в шапке</h3><p>Selectel, МТС Линк и Т‑Бизнес ставят справа от логотипа вход в кабинет или метку. В наших письмах шапка только с логотипом, как в утвержденных макетах Figma. Если команда решит добавить, сначала в Figma</p></article>
+      <article class="panel"><h3>Мероприятия и вебинары</h3><p>Selectel и МТС Линк приглашают на митапы с датой в обложке и цепочкой напоминаний. Группу мероприятий из каталога убрали, в наших письмах их нет</p></article>
+      <article class="panel"><h3>Текст на обложке</h3><p>Солар и Selectel ставят заголовок и дату прямо на картинку. Outlook и часть почт не загружают картинки, текст пропадет вместе с ней</p></article>
+      <article class="panel"><h3>Кнопка капсом с градиентом</h3><p>У МТС Линк кнопка на всю ширину с фиолетовым градиентом и капсом. Classic Outlook не рисует градиент, а капс читается медленнее. У нас кнопка 240×50 обычным регистром</p></article>
+      <article class="panel"><h3>Скриншот кабинета</h3><p>МТС Линк показывает страницу тарифов скриншотом. На 360 мелкий текст не читается, а блоки скриншотов из каталога убраны</p></article>
+      <article class="panel"><h3>Квиз и AMP</h3><p>Солар делает письмо-квиз с тремя ответами, Mail.ru поддерживает AMP. Outlook.com отказался от AMP еще в 2020 году, а для квиза нужен отдельный лендинг. Оставляем идеей для контентных писем</p></article>
+      <article class="panel"><h3>Полоса расхода</h3><p>Прогресс-бар потребления ближе к графику, и в Outlook его надо собирать картинкой. Процент числом с желтой чертой читается так же быстро</p></article>
+      <article class="panel"><h3>Цветные плашки</h3><p>Сиреневая плашка МТС Линк и желтые заливки в темной теме почты становятся грязными. Вместо них серая рамка 1 px или рамка 2 px #FFC800 без заливки</p></article>
+      <article class="panel"><h3>Темное письмо-обложка</h3><p>Солар и Selectel делают темные промо-письма. Темное письмо у нас есть, но целиком, а не черный блок внутри светлого</p></article>
+    </div>
+  </section>
+
+  <section class="sec" id="subject" aria-labelledby="h-subj">
+    <div class="sec-k"><i>06</i>До открытия</div>
+    <h2 id="h-subj">Тема и прехедер</h2>
+    <p class="intro">Gmail и Apple Mail уже показывают пересказ письма, собранный AI из темы, прехедера и первых строк. Поэтому главное должно стоять там, а не в середине письма. Ниже письма из новых макетов так, как их увидят в списке входящих</p>
+    <div class="inbox" role="list" aria-label="Пример списка входящих">
+      <div role="listitem"><b>билайн бизнес</b><p>Итоги октября: 1 240 звонков <span>· Пропущенных 38, половина в обед. Как это исправить</span></p><time>9:00</time></div>
+      <div role="listitem"><b>билайн бизнес</b><p>Требуется действие: подтвердите данные до 1 декабря <span>· Проверьте контактное лицо по договору, это займет пару минут</span></p><time>10:15</time></div>
+      <div role="listitem"><b>билайн бизнес</b><p>Новый вход в бизнес-кабинет <span>· 11 ноября, 14:32, Chrome, Windows, Новосибирск</span></p><time>14:33</time></div>
+      <div role="listitem"><b>билайн бизнес</b><p>Тариф Облачной АТС заканчивается завтра <span>· Продлите за минуту в бизнес-кабинете</span></p><time>вчера</time></div>
+      <div role="listitem"><b>Анна Смирнова, билайн бизнес</b><p>Тарифы для ваших 14 номеров <span>· Здравствуйте, Ирина! Я ваш новый менеджер</span></p><time>вчера</time></div>
+    </div>
+    <div class="grid g3">
+      <article class="panel"><h3>Тема</h3><ul><li>до 35–40 знаков: у Notion медиана 34, у Linear 29</li><li>срок и цифры клиента прямо в теме</li><li>без капса, «RE:» и «FWD:» для вида переписки</li><li>в сервисных письмах без эмодзи</li></ul></article>
+      <article class="panel"><h3>Прехедер</h3><ul><li>продолжает тему, а не повторяет ее</li><li>главное в первых 30–40 знаках, всего до 90</li><li>в письме безопасности детали входа</li><li>скрытый блок сразу после body, заполнитель после текста</li></ul></article>
+      <article class="panel"><h3>Отправитель</h3><ul><li>«билайн бизнес» для массовых писем</li><li>имя менеджера и «билайн бизнес» для личных</li><li>один адрес на тип писем, чтобы клиент узнавал</li></ul></article>
+    </div>
+    <p class="small muted" style="margin-top:14px">Источники: <a href="https://www.litmus.com/blog/ai-generated-summaries" target="_blank" rel="noopener">Litmus об AI-пересказах</a>, <a href="https://www.sequenzy.com/email-examples/brands/notion" target="_blank" rel="noopener">письма Notion</a>, <a href="https://www.sequenzy.com/email-examples/brands/linear" target="_blank" rel="noopener">письма Linear</a>, <a href="https://www.goodemailcode.com/email-code/preheader" target="_blank" rel="noopener">Good Email Code о прехедере</a></p>
+  </section>
+
+  <section class="sec" id="clients" aria-labelledby="h-cl">
+    <div class="sec-k"><i>07</i>Верстка</div>
+    <h2 id="h-cl">Почтовые клиенты в 2026</h2>
+    <p class="intro">Что изменилось и что осталось прежним для верстки. Именно это стоит за правилами в описании каждого блока</p>
+    <div class="grid g2">
+      <article class="panel"><h3>Classic Outlook никуда не делся</h3><p>Microsoft поддерживает classic Outlook минимум до 2029 года, а корпоративный Exchange и бессрочные лицензии не переводят на новый Outlook автоматически. Значит, верстаем под движок Word: скругления только через VML, отступы только у ячеек таблицы, ширина фиксированными таблицами</p><p class="small"><a href="https://techcommunity.microsoft.com/blog/outlook/new-outlook-for-windows-a-guide-to-product-availability/4078895" target="_blank" rel="noopener">Microsoft ↗</a> · <a href="https://github.com/hteumeuleu/caniemail/tree/main/_features" target="_blank" rel="noopener">caniemail ↗</a></p></article>
+      <article class="panel"><h3>SVG больше не вариант</h3><p>С сентября 2025 веб-Outlook и новый Outlook не показывают встроенный SVG, Gmail превращает его в картинку, Mail.ru не поддерживает вовсе. Все иконки в верстку идут PNG ×2, размер задается атрибутом width</p><p class="small"><a href="https://mc.merill.net/message/MC1130385" target="_blank" rel="noopener">Microsoft MC1130385 ↗</a></p></article>
+      <article class="panel"><h3>Mail.ru и Gmail главные</h3><p>По данным Т‑Банка на май 2026: Mail 40,7%, Gmail 39,2%, Яндекс 14,1%. Корпоративный Outlook в этих данных не виден, долю почтовых программ лучше смотреть в статистике нашего сервиса рассылок</p><p class="small"><a href="https://mobile-review.com/all/news/43-rossiyan-sidyat-na-inostrannoj-pochte-molodyozh-v-liderah/" target="_blank" rel="noopener">Т‑Data ↗</a></p></article>
+      <article class="panel"><h3>Яндекс чистит стили</h3><p>По отчетам разработчиков Яндекс Почта оставляет только инлайн-стили, а стили в head и классы может удалить. Все стили инлайн, медиазапросы только как улучшение. Официальной документации для отправителей нет ни у Яндекса, ни у Mail.ru, поэтому проверяем тестовыми письмами</p><p class="small"><a href="http://mosaico.io/email-client-tricks/" target="_blank" rel="noopener">Mosaico ↗</a> · <a href="https://habr.com/ru/companies/yandex/articles/446780/" target="_blank" rel="noopener">Яндекс на Хабре ↗</a></p></article>
+      <article class="panel"><h3>Gmail обрезает длинные письма</h3><p>При HTML больше 102 КБ Gmail прячет конец письма вместе с отпиской. Держим письмо до 80–90 КБ, кириллицу не кодируем сущностями: так она занимает в три раза больше места</p><p class="small"><a href="https://www.emailonacid.com/blog/article/email-development/gmail-email-clipping/" target="_blank" rel="noopener">Email on Acid ↗</a></p></article>
+      <article class="panel"><h3>Доступность</h3><p>lang на письме, role="presentation" у каждой таблицы раскладки, alt у картинок, текст от 14 px, контраст 4,5:1. В 99,88% из 376 тысяч писем, проверенных в 2026 году, нашлись серьезные ошибки, чаще всего нет lang</p><p class="small"><a href="https://emailmarkup.org/en/reports/accessibility/2026/" target="_blank" rel="noopener">Email Markup Consortium ↗</a> · <a href="https://www.litmus.com/blog/the-ultimate-guide-to-email-accessibility-making-emails-for-everyone/" target="_blank" rel="noopener">Litmus ↗</a></p></article>
+    </div>
+
+    <h3 class="sub-h" style="font-size:22px;margin-top:40px">Как почта красит письмо в темной теме</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Почта</th><th scope="col">Что делает со светлым письмом</th><th scope="col">Можно ли управлять</th></tr></thead>
+      <tbody>
+        <tr><td>Apple Mail</td><td>по Litmus не меняет, по Email on Acid может перекрасить чисто белый фон</td><td>да, медиазапрос prefers-color-scheme</td></tr>
+        <tr><td>Gmail в браузере</td><td>не меняет</td><td>нет</td></tr>
+        <tr><td>Gmail iOS</td><td>полная инверсия</td><td>медиазапросы вырезает, по caniemail работает только meta color-scheme со значением light only, независимо не подтверждено</td></tr>
+        <tr><td>Gmail Android</td><td>частичная инверсия</td><td>как в Gmail iOS</td></tr>
+        <tr><td>Classic Outlook Windows</td><td>полная инверсия</td><td>нет</td></tr>
+        <tr><td>Outlook.com, iOS, Android</td><td>частичная: светлые фоны темнеют</td><td>частично, атрибуты data-ogsc и data-ogsb</td></tr>
+        <tr><td>Почта Mail.ru</td><td>частичная, но заметная: меняются фон и текст, рамки кнопок остаются</td><td>источники расходятся</td></tr>
+        <tr><td>Яндекс Почта</td><td>в вебе не меняет, в мобильном приложении описана перекраска с сохранением тона</td><td>источники расходятся</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small muted" style="margin-top:12px">Таблица по <a href="https://www.litmus.com/blog/the-ultimate-guide-to-dark-mode-for-email-marketers" target="_blank" rel="noopener">Litmus, 27.02.2025</a>, <a href="https://github.com/hteumeuleu/caniemail/blob/main/_features/html-meta-color-scheme.md" target="_blank" rel="noopener">caniemail, 16.09.2026</a> и <a href="https://www.unisender.com/ru/blog/temnaya-tema-v-email-rassylkah/" target="_blank" rel="noopener">Unisender</a>. Отсюда два правила раздела: без больших желтых заливок и иконки PNG со светлой обводкой или на подложке, иначе темный контур пропадет на черном фоне</p>
+  </section>
+
+  <section class="sec" id="law" aria-labelledby="h-law">
+    <div class="sec-k"><i>08</i>Право</div>
+    <h2 id="h-law">Маркировка рекламы и отписка</h2>
+    <p class="intro">Короткая сводка по открытым источникам на ноябрь 2026. Это не юридическая консультация: финальное решение по пометкам в письмах за юристами</p>
+    <div class="grid g3">
+      <article class="panel"><h3>erid и ЕРИР не нужны</h3><p>Роскомнадзор в письме от 24.10.2023 № 03‑97847 указал, что ст. 18.1 закона о рекламе не распространяется на рекламу по электронной почте. С 18.09.2025 постановление № 1427 исключило рассылки на email из учета в ЕРИР</p><p class="small"><a href="https://www.garant.ru/products/ipo/prime/doc/407772345/" target="_blank" rel="noopener">Гарант ↗</a> · <a href="http://government.ru/docs/all/141233/" target="_blank" rel="noopener">Правительство ↗</a></p></article>
+      <article class="panel"><h3>Согласие и отписка обязательны</h3><p>Ст. 18 38‑ФЗ: реклама по сетям электросвязи только с согласия адресата, рассылку прекращают по его требованию. Отсюда ссылка «Отписаться» в каждом рекламном письме. Gmail и Microsoft дополнительно требуют отписку в один клик</p><p class="small"><a href="https://legalacts.ru/doc/federalnyi-zakon-ot-13032006-n-38-fz-o/glava-2/statja-18/" target="_blank" rel="noopener">38‑ФЗ, ст. 18 ↗</a> · <a href="https://support.google.com/a/answer/81126" target="_blank" rel="noopener">Gmail ↗</a></p></article>
+      <article class="panel"><h3>Пометка «Реклама»</h3><p>Официально прямо не сказано, нужна ли она в письме своим клиентам. Осторожные блоги советуют ставить, в проверенных письмах Т‑Бизнеса и Солара ее нет. Сервисные письма (счета, продление, безопасность) рекламой не считаются</p><p class="small"><a href="https://www.unisender.com/ru/blog/kak-markirovat-reklamu-v-chat-botah-i-email/" target="_blank" rel="noopener">Unisender ↗</a> · <a href="https://dashamail.ru/blog/legal_adv_letters/" target="_blank" rel="noopener">DashaMail ↗</a></p></article>
+    </div>
+  </section>
+
+  <section class="sec" id="next" aria-labelledby="h-next">
+    <div class="sec-k"><i>09</i>Дальше</div>
+    <h2 id="h-next">Что сделать команде</h2>
+    <div class="grid g2">
+      <article class="panel"><h3>Согласовать</h3><ul><li>16 блоков группы «По рынку» и 6 макетов: какие брать в Figma</li><li>нужна ли в рекламных письмах пометка «Реклама», с юристами</li><li>отдельный ли отправитель для личных писем менеджера</li></ul></article>
+      <article class="panel"><h3>Проверить</h3><ul><li>долю Outlook, Mail.ru и Яндекса в статистике нашего сервиса рассылок</li><li>новые блоки тестовыми письмами в classic Outlook, Mail.ru и Gmail iOS</li><li>подписать рабочий ящик на рассылки конкурентов и дополнить разбор через три месяца</li></ul></article>
+    </div>
+  </section>
+
+  <section class="legend" aria-labelledby="lg-h">
+    <h2 id="lg-h">Источники</h2>
+    <p>Кейсы с настоящими письмами, галереи и архивы писем, справки компаний, отчеты Litmus и caniemail. Ссылки на источники каждого блока есть и в окне просмотра каталога</p>
+    <ol class="srcs" id="srcs">
+      <li><a href="https://mindbox.ru/journal/cases/selectel/" target="_blank" rel="noopener">Mindbox · кейс Selectel</a></li>
+      <li><a href="https://sendsay.ru/blog/pr/kejs-mts-link/" target="_blank" rel="noopener">Sendsay · кейс МТС Линк</a></li>
+      <li><a href="https://www.unisender.com/ru/blog/pisma-pobediteli-premii-unisender-2026/" target="_blank" rel="noopener">Unisender · победители премии 2026</a></li>
+      <li><a href="https://www.unisender.com/ru/blog/kak-prodavat-v-b2b/" target="_blank" rel="noopener">Unisender · как продавать в B2B</a></li>
+      <li><a href="https://yandex.cloud/ru/blog/posts/2025/02/pricing-update" target="_blank" rel="noopener">Yandex Cloud · изменение цен</a></li>
+      <li><a href="https://www.litmus.com/blog/b2b-email-marketing" target="_blank" rel="noopener">Litmus · B2B email marketing</a></li>
+      <li><a href="https://www.litmus.com/blog/trends-in-email-marketing" target="_blank" rel="noopener">Litmus · тренды email-маркетинга</a></li>
+      <li><a href="https://www.litmus.com/blog/where-is-email-marketing-headed-in-2026-takeaways-from-litmus-live" target="_blank" rel="noopener">Litmus Live 2026</a></li>
+      <li><a href="https://www.sequenzy.com/email-examples/security-alert" target="_blank" rel="noopener">Sequenzy · письма безопасности</a></li>
+      <li><a href="https://www.sequenzy.com/email-examples/changelog" target="_blank" rel="noopener">Sequenzy · письма «что нового»</a></li>
+      <li><a href="https://www.sequenzy.com/email-examples/saas-lifecycle" target="_blank" rel="noopener">Sequenzy · жизненный цикл SaaS</a></li>
+      <li><a href="https://reallygoodemails.com/emails/weekly-usage-summary-for-rge" target="_blank" rel="noopener">Really Good Emails · Vercel</a></li>
+      <li><a href="https://docs.stripe.com/billing/revenue-recovery/customer-emails" target="_blank" rel="noopener">Stripe · письма клиентам</a></li>
+      <li><a href="https://docs.aws.amazon.com/health/latest/ug/aws-health-planned-lifecycle-events.html" target="_blank" rel="noopener">AWS Health · плановые события</a></li>
+      <li><a href="https://www.intercom.com/help/en/articles/244-4-email-templates-to-choose-from" target="_blank" rel="noopener">Intercom · шаблоны писем</a></li>
+      <li><a href="https://support.google.com/a/answer/81126" target="_blank" rel="noopener">Google · требования к отправителям</a></li>
+      <li><a href="https://techcommunity.microsoft.com/blog/microsoftdefenderforoffice365blog/strengthening-email-ecosystem-outlook%E2%80%99s-new-requirements-for-high%E2%80%90volume-senders/4399730" target="_blank" rel="noopener">Microsoft · требования Outlook.com</a></li>
+      <li><a href="https://www.litmus.com/blog/the-ultimate-guide-to-dark-mode-for-email-marketers" target="_blank" rel="noopener">Litmus · темная тема</a></li>
+      <li><a href="https://www.emailonacid.com/blog/article/email-development/dark-mode-for-email/" target="_blank" rel="noopener">Email on Acid · темная тема</a></li>
+      <li><a href="https://parcel.io/guides/dark-mode" target="_blank" rel="noopener">Parcel · темная тема</a></li>
+      <li><a href="https://www.goodemailcode.com/email-code/link-button" target="_blank" rel="noopener">Good Email Code · кнопка</a></li>
+      <li><a href="https://www.litmus.com/blog/a-guide-to-bulletproof-buttons-in-email-design" target="_blank" rel="noopener">Litmus · надежные кнопки</a></li>
+      <li><a href="https://reallygoodemails.com/school/blog/classic-vs-new-outlook-rendering-changes" target="_blank" rel="noopener">Really Good Emails · classic и new Outlook</a></li>
+      <li><a href="https://www.consultant.ru/document/cons_doc_LAW_58968/2c4537e4796f6ff8b2736ed1b0d4fef08e14458e/" target="_blank" rel="noopener">38‑ФЗ, ст. 18.1</a></li>
+      <li><a href="https://adindex.ru/news/tendencies/2026/08/18/348094.phtml" target="_blank" rel="noopener">AdIndex · почтовые сервисы по трафику Yota</a></li>
+    </ol>
+  </section>
+</div>
+</main>
+
+<footer class="foot"><div class="wrap">Дизайн-система CVM B2B · раздел «Письма» · рынок · Автор: Софья Горянская, <a href="mailto:sgoryanskaya@beeline.ru">sgoryanskaya@beeline.ru</a><br>Шрифт Beeline Sans принадлежит билайну, для внутреннего использования</div></footer>
+
+<script src="../buzz/assets/illustrations.js"></script>
+<script src="assets/blocks.js"></script>
+<script src="assets/blocks-ext.js"></script>
+<script src="assets/blocks-more.js"></script>
+<script src="assets/blocks-market.js"></script>
+<script src="assets/registry.js"></script>
+<script src="assets/layouts.js"></script>
+<script src="assets/market.js"></script>
+</body>
+</html>

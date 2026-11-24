@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Рендер поста</title>
+<link rel="stylesheet" href="assets/buzz.css">
+<style>body{margin:0;background:#fff}.slot{position:relative;margin-bottom:40px}</style>
+</head>
+<body>
+<div id="out"></div>
+<script src="assets/illustrations.js"></script>
+<script src="assets/templates.js"></script>
+<script>
+/* Служебная страница для tools/render.py: рисует все карточки поста в натуральную величину. */
+window.renderPost = function (post) {
+  const n = post.cards.length;
+  document.getElementById('out').innerHTML = post.cards.map((c, i) => `<div class="slot" id="c${i}">${CVMTpl.renderCard(c, post, i, n)}</div>`).join('');
+  document.fonts.ready.then(() => requestAnimationFrame(() => { window.__done = true; }));
+};
+</script>
+</body>
+</html>

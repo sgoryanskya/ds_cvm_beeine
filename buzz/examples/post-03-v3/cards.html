@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Пост 3 · версия 3</title>
+<!-- Пост 3, кейс допродажи Облачной АТС. Текст как во второй итерации, доработан только визуал.
+     ?c=1..6 показывает одну карточку 1080×1350 для выгрузки PNG, без параметра все шесть сеткой -->
+<link rel="stylesheet" href="../../assets/buzz.css">
+<style>
+  html,body{margin:0;background:#ECEAF2}
+  body.one{background:#fff}
+  .grid{display:grid;grid-template-columns:repeat(3,360px);gap:14px;padding:24px;justify-content:center}
+  .cell{width:360px;height:450px;overflow:hidden;border-radius:10px;box-shadow:0 10px 30px -18px rgba(40,20,120,.5)}
+  .cell>.cv{transform:scale(.33334);transform-origin:0 0}
+
+  /* кто говорит */
+  .cv .turn{display:flex;flex-direction:column;align-items:flex-start;position:relative}
+  .cv .turn.a{align-items:flex-end}
+  .cv .who{display:flex;align-items:center;gap:12px;height:42px;font-size:25px;font-weight:700;color:var(--ink);margin-bottom:14px}
+  .cv .who b{font-weight:700}
+  .cv .who span{font-weight:500;color:var(--mut)}
+  .cv.bg-yellow .who span{color:rgba(20,20,20,.7)}
+  .cv .who .av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;
+    background:linear-gradient(150deg,#FFFFFF,#E4DCFF);box-shadow:inset 0 1px 0 #fff,0 6px 12px -6px rgba(80,50,220,.5)}
+  .cv .who .st{width:42px;height:42px}
+
+  /* прогресс серии диалога */
+  .cv .prog{display:flex;gap:8px;margin-left:10px}
+  .cv .prog i{width:46px;height:8px;border-radius:4px;background:#E7E3F5}
+  .cv .prog i.done{background:#B9ABFF}
+  .cv .prog i.on{background:linear-gradient(90deg,#7457FF,#5B3FF0);box-shadow:0 3px 8px -2px rgba(91,63,240,.6)}
+
+  /* линза в заголовке обложки */
+  .cv .hk{padding:0 14px 6px;margin:0 -6px;border-radius:22px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+    background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.78) 100%);box-shadow:inset 0 -1px 0 rgba(255,255,255,.6),0 10px 22px -10px rgba(170,100,0,.6)}
+
+  /* нить между репликами: фиолетовый это разметка команды */
+  .cv .rail{position:absolute;width:4px;border-radius:2px;background:linear-gradient(180deg,#7457FF,#B9ABFF);z-index:4}
+  .cv .rail:before,.cv .rail:after{content:'';position:absolute;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#fff 0%,#B3A2FF 30%,#6B4EFF 70%);box-shadow:0 3px 8px -2px rgba(91,63,240,.7)}
+  .cv .rail:before{top:-8px}
+  .cv .rail:after{bottom:-8px}
+  .cv .rail.y{background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.55))}
+  .cv .rail.y:before,.cv .rail.y:after{background:radial-gradient(circle at 35% 30%,#fff 0%,#fff 40%,#F3EFFF 100%);box-shadow:0 3px 8px -2px rgba(150,90,0,.5)}
+
+  /* шкала времени в итоге */
+  .cv .tl{position:relative;height:62px;margin:6px 0 0}
+  .cv .tl .bar{position:absolute;left:10px;right:10px;top:8px;height:4px;border-radius:2px;background:linear-gradient(90deg,#7457FF,#B9ABFF)}
+  .cv .tl .dot{position:absolute;top:0;width:20px;height:20px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#fff 0%,#B3A2FF 30%,#6B4EFF 70%);box-shadow:0 3px 8px -2px rgba(91,63,240,.7)}
+  .cv .tl .tm{position:absolute;top:32px;font-size:24px;font-weight:700;color:rgba(20,20,20,.7)}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="../../assets/illustrations.js"></script>
+<script src="../../assets/templates.js"></script>
+<script>
+(function () {
+  const I = window.CVMIll, md = window.CVMTpl.md;
+  const W = 1080, Hh = 1350;
+
+  // ---------- общие куски ----------
+  const av = () => `<span class="av">${I.ink('user', 24, '#5B3FF0')}</span>`;
+  const star = () => `<span class="orb y st">${I.ink('spark', 22, '#141414')}</span>`;
+  const whoC = (extra) => `<div class="who">${av()}<b>Клиент${extra ? `<span>, ${extra}</span>` : ''}</b></div>`;
+  const whoA = (extra) => `<div class="who"><b>ИИ-агент${extra ? `<span>, ${extra}</span>` : ''}</b>${star()}</div>`;
+  const tm = (t) => (t ? `<span class="t">${t}</span>` : '');
+  const badge = (t) => `<span class="chip lg badge"><span class="orb"></span>${t}</span>`;
+  const client = (text, o) => { o = o || {};
+    return `<div class="turn c"${o.id ? ` id="${o.id}"` : ''}>${o.who === false ? '' : whoC(o.extra)}<div class="msg c" style="max-width:${o.w || 830}px">${o.badge ? badge(o.badge) : ''}
+<div class="bub lg${o.short ? ' short' : ''}"${o.bid ? ` id="${o.bid}"` : ''}>${md(text)}${tm(o.t)}</div></div></div>`; };
+  const agent = (text, o) => { o = o || {};
+    return `<div class="turn a">${whoA(o.extra)}<div class="msg a"><div class="bub gold"${o.bid ? ` id="${o.bid}"` : ''}>${md(text)}${tm(o.t)}</div></div></div>`; };
+  const stepTop = (n) => `<div class="top"><span class="num vio">${n}</span><span class="eb">Диалог, часть ${n} из 3</span>
+<span class="prog">${[1, 2, 3].map((i) => `<i class="${i < n ? 'done' : i === n ? 'on' : ''}"></i>`).join('')}</span></div>`;
+  const H = (t, mw) => `<h2 class="h" style="margin-top:22px;max-width:${mw || 790}px">${md(t)}</h2>`;
+  // знаки шагов: те же три объекта, что в сцене обложки. Проблема, решение, звонок
+  const STEP_ICON = {
+    1: (x, y, s) => I.badge('signal', { x, y, size: s, struck: true, z: 4 }),
+    2: (x, y, s) => I.tile('wifi', { x, y, size: s, tint: 'violet', rot: -8, z: 4 }),
+    3: (x, y, s) => I.orbIcon('phone', { x, y, size: s, z: 4 }),
+  };
+  const iconInline = (n, s) => `<div style="position:relative;width:${s}px;height:${s}px;flex:none">${STEP_ICON[n](0, 0, s)}</div>`;
+
+  // ---------- карточки ----------
+  const C = [];
+
+  // 1. Обложка
+  C.push({ bg: 'yellow', html: () => `
+${I.glow(800, 1010, 420, 'white', .55)}
+${I.tile('wifi', { x: 600, y: 770, size: 330, tint: 'violet', rot: -8 })}
+${I.badge('signal', { x: 582, y: 722, size: 124, struck: true, z: 5 })}
+${I.orbIcon('phone', { x: 846, y: 1004, size: 134 })}
+<div class="in">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:-14px">
+    <span class="chip lg" style="height:56px;font-size:25px;padding:0 24px 0 11px"><span class="orb"></span>Реальные кейсы</span>
+    <span class="brand">CVM B2B Делает</span></div>
+  <h1 style="margin-top:118px;font-size:80px;font-weight:700;letter-spacing:-.034em;line-height:1.06;max-width:930px">Клиент задумался о&nbsp;смене оператора, а&nbsp;ИИ-агент <span class="hk">меньше чем за&nbsp;3&nbsp;минуты</span> подобрал решение</h1>
+  <div class="grow"></div>
+  <div style="width:520px;margin-bottom:96px;position:relative">
+    ${client('Поэтому, все предложения от Билайн не актуальны', { t: '12:27', bid: 'c1a', w: 520 })}
+    <div style="height:156px;position:relative">
+      <div class="rail y" style="left:34px;top:14px;bottom:14px"></div>
+      <div style="position:absolute;left:8px;top:0;bottom:0;display:flex;align-items:center;gap:20px">
+        <span class="orb" style="width:60px;height:60px;position:relative;z-index:5">${I.ink('clock', 30, '#fff')}</span>
+        <div><div style="font-size:36px;font-weight:700;letter-spacing:-.025em;line-height:1">1 минута</div>
+        <div style="font-size:25px;font-weight:500;color:rgba(20,20,20,.72);margin-top:6px">от отказа до согласия</div></div>
+      </div>
+    </div>
+    <div class="msg c"><div class="bub lg short" id="c1b" style="display:flex;align-items:center;gap:18px">Хорошо${tm('12:28')}</div></div>
+  </div>
+</div>
+<div class="abs swipe" style="left:72px;bottom:60px;z-index:6">Листайте
+<svg width="34" height="20" viewBox="0 0 34 20"><path d="M2 10h28M22 2l8 8-8 8" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`,
+  });
+
+  // 2. Задача агента
+  C.push({ bg: 'white', html: () => `
+${I.glow(760, 1080, 330, 'violet', .28)}
+<div class="in">
+  <div class="top"><span class="eb">Задача агента</span></div>
+  ${H('Допродать\nдействующему клиенту', 936)}
+  <div class="lg" style="margin-top:56px;align-self:flex-start;display:flex;gap:6px;padding:7px;border-radius:40px">
+    <span style="height:62px;display:flex;align-items:center;padding:0 28px;font-size:27px;font-weight:500;color:var(--mut)">Сохранение</span>
+    <span style="height:62px;display:flex;align-items:center;gap:12px;padding:0 30px 0 20px;font-size:27px;font-weight:700;border-radius:32px;background:#fff;box-shadow:0 8px 18px -8px rgba(80,50,220,.45),inset 0 1px 0 #fff"><span class="orb" style="width:24px;height:24px"></span>Допродажа</span>
+    <span style="height:62px;display:flex;align-items:center;padding:0 28px;font-size:27px;font-weight:500;color:var(--mut)">Привлечение</span>
+  </div>
+  <div style="margin-top:72px">${agent('Добрый день! Меня зовут Владислав, корпоративный отдел билайн. Услуга [[Облачная АТС]] помогает навести порядок в звонках, повысить контактность и эффективность работы менеджеров. Хотели бы узнать подробней?', { extra: 'первое сообщение', t: '07:53', bid: 'c2a' })}</div>
+  <div class="grow"></div>
+  <div class="lg" id="c2b" style="border-radius:52px;padding:58px 56px 62px;position:relative;margin-right:0">
+    <div class="lbl" style="font-size:26px">Агент предложил</div>
+    <div style="font-size:92px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:16px">Облачная АТС</div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:22px;font-size:32px;font-weight:500;color:var(--sub)">работает через Wi-Fi</div>
+    ${I.tile('cloud', { x: 672, y: -84, size: 236, tint: 'violet', rot: 6, z: 4 })}
+    ${I.badge('wifi', { x: 824, y: 112, size: 104, z: 5 })}
+  </div>
+</div>`,
+    rails: [['#c2a', '#c2b', 260, '', 'lens']] });
+
+  // 3. Диалог 1: проблема
+  C.push({ bg: 'white', html: () => `
+${I.glow(930, 200, 190, 'violet', .32)}${STEP_ICON[1](858, 116, 156)}
+<div class="in">
+  ${stepTop(1)}
+  ${H('Сначала разобрался\nв проблеме')}
+  <div class="grow" style="max-height:56px;min-height:36px"></div>
+  ${client('Добрый день.\nНа сегодняшний день [[рассматриваю вопрос по переходу к другому оператору]], т.к. интернет отсутствует на всех Sim-картах билайн.\nПодключение возможно только от wi-fi', { extra: 'ответ через 4,5 часа', t: '12:27', badge: 'возражение' })}
+  <div style="height:34px"></div>
+  ${agent('[[Понимаю, что ситуация неприятная.]] Ограничения в работе связи иногда связаны с государственными мерами безопасности и **не зависят от конкретного оператора**, из-за этого мобильный интернет может временно не работать.\nДавайте сделаем так: я предложу провести короткий звонок со специалистом, он проверит ситуацию по вашей компании и подскажет, какие решения возможны. Удобно будет созвониться?', { t: '12:27' })}
+  <div class="grow"></div>
+</div>` });
+
+  // 4. Диалог 2: аргумент
+  C.push({ bg: 'white', html: () => `
+${I.glow(930, 200, 190, 'violet', .32)}${STEP_ICON[2](852, 106, 166)}
+<div class="in">
+  ${stepTop(2)}
+  ${H('Проблему со связью\nсделал аргументом')}
+  <div class="grow" style="max-height:52px;min-height:30px"></div>
+  ${client('Поэтому, [[все предложения от Билайн не актуальны]]', { t: '12:27', badge: 'возражение', bid: 'c4a' })}
+  <div style="height:30px"></div>
+  ${agent('Понял, {{Екатерина}}. Если сейчас связь действительно нестабильна, поэтому чтобы не терять контакты с клиентами в такие периоды, компании часто используют [[Облачную АТС, она работает и через интернет, и через Wi-Fi]], обеспечивая прием звонков даже при сбое мобильной сети.\nХотите, я передам ваш кейс специалисту? Он объяснит, как можно протестировать это решение **бесплатно на 14 дней, без обязательств**.', { t: '12:27' })}
+  <div style="height:30px"></div>
+  <div style="display:flex;align-items:flex-end;gap:24px">
+    <div class="turn c" id="c4w">${whoC()}<div class="msg c"><div class="bub lg short" id="c4b">Хорошо${tm('12:28')}</div></div></div>
+    <div class="lg" style="display:flex;align-items:center;gap:22px;padding:22px 38px 26px 22px;border-radius:40px">
+      <span class="orb" style="width:68px;height:68px">${I.ink('clock', 34, '#fff')}</span>
+      <div><div style="font-size:64px;font-weight:700;letter-spacing:-.035em;line-height:1;white-space:nowrap">1 минута</div>
+      <div style="font-size:26px;font-weight:500;color:var(--sub);margin-top:8px">от отказа до согласия</div></div></div>
+  </div>
+  <div class="grow"></div>
+</div>`,
+    rails: [['#c4a', '#c4w .av', 20, '', 'gutter']] });
+
+  // 5. Диалог 3: звонок
+  C.push({ bg: 'white', html: () => `
+${I.glow(930, 200, 190, 'violet', .32)}${STEP_ICON[3](862, 116, 150)}
+<div class="in">
+  ${stepTop(3)}
+  ${H('Звонок специалиста\nв тот же день')}
+  <div class="grow" style="max-height:52px;min-height:30px"></div>
+  ${agent('Понял, {{Екатерина}}. Тогда сделаем просто, передам вашу задачу специалисту, и он свяжется, когда будет удобно, чтобы обсудить тестирование и проверить параметры связи.\nПодскажите, в какой день вам было бы комфортно принять звонок, [[сегодня или завтра?]]', { t: '12:28' })}
+  <div style="height:30px"></div>
+  <div style="display:flex;align-items:flex-end;gap:24px">
+    <div class="turn c">${whoC()}<div class="msg c"><div class="bub lg short">Сегодня${tm('12:29')}</div></div></div>
+    <div class="lg" style="display:flex;align-items:center;gap:18px;padding:18px 30px 20px 18px;border-radius:32px;flex:1;min-width:0">
+      <span class="orb" style="width:50px;height:50px">${I.ink('check', 26, '#fff')}</span><div style="font-size:26px;font-weight:500;line-height:1.3">Агент дал выбор из двух дней, клиент выбрал сегодня</div></div>
+  </div>
+  <div style="height:30px"></div>
+  ${agent('Отлично, тогда [[передам специалисту запрос на обратный звонок сегодня]]. Он уточнит ситуацию по связи и расскажет, как подключить тест Облачной АТС.\nВ какое время вам будет удобно принять звонок?', { t: '12:30' })}
+  <div class="grow"></div>
+</div>` });
+
+  // 6. Итог
+  const ITEMS = ['Слышит, почему клиент хочет уйти, и не спорит', 'Находит продукт, который решает его проблему', 'Доводит до звонка специалиста в тот же день'];
+  C.push({ bg: 'yellow', html: () => `
+${I.glow(300, 820, 380, 'white', .5)}
+<div class="in">
+  <div class="top"><span class="eb">Итог</span></div>
+  ${H('Что агент дает\nвашему продукту', 936)}
+  <div class="lg" style="margin-top:40px;border-radius:44px;padding:32px 36px;display:flex;flex-direction:column;gap:20px">
+    ${ITEMS.map((t, i) => `<div style="display:flex;align-items:center;gap:22px">
+      <span class="num vio" style="width:50px;height:50px;font-size:24px">${i + 1}</span>
+      <span style="flex:1;font-size:30px;font-weight:500;line-height:1.25">${md(t)}</span></div>`).join('')}
+  </div>
+  <div style="display:grid;grid-template-columns:1.32fr 1fr;gap:16px;margin-top:16px;flex:1 1 auto;min-height:0">
+    <div class="lg" style="border-radius:44px;padding:32px 36px 34px;display:flex;flex-direction:column">
+      <div style="font-size:27px;font-weight:500;color:rgba(20,20,20,.75)">Меньше чем за</div>
+      <div style="display:flex;align-items:baseline;gap:16px;margin-top:4px"><span class="num-xl" style="font-size:200px">3</span><span style="font-size:68px;font-weight:700;letter-spacing:-.035em">минуты</span></div>
+      <div class="grow"></div>
+      <div class="tl">
+        <div class="bar"></div>
+        <i class="dot" style="left:0"></i><i class="dot" style="right:0"></i>
+        <span class="tm" style="left:0">12:27</span><span class="tm" style="right:0">12:30</span>
+      </div>
+      <div style="font-size:27px;font-weight:500;line-height:1.3;color:rgba(20,20,20,.75);margin-top:14px">${md('клиент прошел путь от мысли уйти до согласия на звонок')}</div>
+    </div>
+    <div style="display:grid;grid-template-rows:1fr 1fr;gap:16px">
+      <div class="lg" style="border-radius:40px;padding:30px 32px;display:flex;flex-direction:column;position:relative">
+        <div style="font-size:60px;font-weight:700;letter-spacing:-.035em;line-height:1">17 секунд</div><div class="grow"></div>
+        <div style="font-size:25px;font-weight:500;line-height:1.3;color:rgba(20,20,20,.75)">${md('самый долгий ответ агента в этом диалоге')}</div></div>
+      <div class="lg" style="border-radius:40px;padding:30px 32px;display:flex;flex-direction:column;position:relative">
+        <div style="font-size:60px;font-weight:700;letter-spacing:-.035em;line-height:1">+1 продукт</div><div class="grow"></div>
+        <div style="font-size:25px;font-weight:500;line-height:1.3;color:rgba(20,20,20,.75)">${md('Облачная АТС в разговоре об уходе')}</div></div>
+    </div>
+  </div>
+  <div class="lg" style="margin-top:16px;border-radius:52px;padding:14px 14px 14px 40px;display:flex;align-items:center;justify-content:space-between">
+    <span style="font-size:29px;font-weight:500">Хотите так же для своего продукта?</span>
+    <span class="vio btn" style="height:84px">Пишите нам</span></div>
+</div>` });
+
+  // ---------- вывод ----------
+  const q = new URLSearchParams(location.search);
+  const one = +q.get('c');
+  const card = (c, i) => `<div class="cv f-45 bg-${c.bg}" id="card${i + 1}">${c.html()}</div>`;
+  const root = document.getElementById('root');
+  if (one) { document.body.className = 'one'; root.innerHTML = card(C[one - 1], one - 1); }
+  else root.innerHTML = `<div class="grid">${C.map((c, i) => `<div class="cell">${card(c, i)}</div>`).join('')}</div>`;
+
+  // нити между репликами считаются после верстки, в координатах холста
+  function rails() {
+    C.forEach((c, i) => {
+      const cv = document.getElementById('card' + (i + 1)); if (!cv || !c.rails) return;
+      const s = cv.getBoundingClientRect().width / W;
+      const R = cv.getBoundingClientRect();
+      c.rails.forEach(([a, b, x, cls, mode]) => {
+        const ea = cv.querySelector(a), eb = cv.querySelector(b); if (!ea || !eb) return;
+        const ra = ea.getBoundingClientRect(), rb = eb.getBoundingClientRect();
+        let left = (ra.left - R.left) / s + x;
+        if (mode === 'lens') { const k = ea.querySelector('.k'); if (k) { const rk = k.getBoundingClientRect(); left = (rk.left + rk.width / 2 - R.left) / s; } }
+        if (mode === 'gutter') { left = (rb.left + rb.width / 2 - R.left) / s; }
+        const y1 = (ra.bottom - R.top) / s + 14, y2 = (rb.top - R.top) / s - 14;
+        if (y2 <= y1) return;
+        cv.insertAdjacentHTML('beforeend', `<div class="rail ${cls || ''}" style="left:${left - 2}px;top:${y1}px;height:${y2 - y1}px"></div>`);
+      });
+    });
+  }
+  document.fonts.ready.then(() => { rails(); window.__done = true; });
+})();
+</script>
+</body>
+</html>

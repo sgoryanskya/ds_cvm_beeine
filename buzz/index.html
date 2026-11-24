@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Бренд канала CVM B2B Делает</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="assets/buzz.css">
+<style>
+  html{scroll-behavior:smooth;scroll-padding-top:76px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  .hero{padding-block:56px 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:40px;align-items:center}
+  @media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
+  .hero .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+  .demo-album{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 30px 60px -30px rgba(60,30,170,.45)}
+  .mount{position:relative;width:100%}
+  .sub-h{font-size:22px;margin-top:44px}
+  .sub-h+p{margin-top:6px}
+  .note{background:var(--y-soft);border:1px solid #F3DE94;border-radius:14px;padding:12px 16px;font-size:15px;margin-top:16px}
+  .ex{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+  @media (max-width:800px){.ex{grid-template-columns:minmax(0,1fr)}}
+  .n-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;background:radial-gradient(140% 130% at 28% 0%,#B3A2FF 0%,#7457FF 42%,#4F2FE6 100%);flex:none}
+  .seg{display:inline-flex;flex-wrap:wrap;background:var(--surface-2);border-radius:20px;padding:3px;gap:2px}
+  .seg button{border:0;background:transparent;font:inherit;font-size:13px;font-weight:700;color:var(--sub);height:32px;padding:0 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+  .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+  .stage{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:#fff}
+
+  /* номер раздела */
+  .sec-k{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+  .sec-k i{font-style:normal;color:var(--vi);font-variant-numeric:tabular-nums}
+
+  /* оглавление */
+  .toc-box{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:26px clamp(18px,3vw,32px) 22px;margin-bottom:56px}
+  .toc-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .toc-top h2{font-size:24px}
+  .toc-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px;margin-top:18px}
+  @media (max-width:960px){.toc-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:540px){.toc-g{grid-template-columns:minmax(0,1fr)}}
+  .toc-g h3{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--vi);padding-bottom:8px;border-bottom:2px solid var(--vi-soft)}
+  .toc-g ol{list-style:none;margin:0;padding:0}
+  .toc-g a{display:grid;grid-template-columns:30px minmax(0,1fr);column-gap:4px;padding:9px 6px 9px 0;border-bottom:1px dashed var(--line);text-decoration:none;color:var(--ink);border-radius:8px}
+  .toc-g a i{font-style:normal;font-weight:700;color:var(--mut);font-size:14px;font-variant-numeric:tabular-nums;padding-top:1px}
+  .toc-g a b{font-size:16px;font-weight:700;line-height:1.3}
+  .toc-g a span{grid-column:2;font-size:13px;color:var(--sub);line-height:1.35;margin-top:2px}
+  .toc-g a:hover b,.toc-g a[aria-current="true"] b{color:var(--vi)}
+  .toc-g a[aria-current="true"] i{color:var(--vi)}
+  .toc-fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:55;display:flex;align-items:center;gap:8px;height:46px;padding:0 18px 0 14px;border-radius:999px;border:0;background:var(--ink);color:#fff;font:inherit;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 14px 30px -12px rgba(20,10,60,.55);transition:opacity .2s,transform .2s}
+  .toc-fab[hidden]{display:flex;opacity:0;transform:translateY(12px);pointer-events:none}
+  .toc-fab small{font-weight:500;color:rgba(255,255,255,.7);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  @media (max-width:520px){.toc-fab small{display:none}}
+  dialog.toc-dlg{border:0;border-radius:24px;padding:0;width:min(980px,calc(100vw - 24px));max-height:calc(100vh - 40px);box-shadow:0 30px 80px -20px rgba(20,10,70,.5)}
+  dialog.toc-dlg::backdrop{background:rgba(20,16,40,.45)}
+  .toc-dlg .in-d{padding:22px clamp(16px,3vw,28px) 24px}
+
+  /* 01 авторам */
+  .facts4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:900px){.facts4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:520px){.facts4{grid-template-columns:minmax(0,1fr)}}
+  .f4{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+  .f4 small{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mut)}
+  .f4 b{display:block;font-size:18px;line-height:1.3;margin-top:8px;letter-spacing:-.01em}
+  .f4 p{font-size:14.5px;color:var(--sub);margin-top:6px}
+  .path{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:12px}
+  @media (max-width:900px){.path{grid-template-columns:minmax(0,1fr)}}
+  .path a{display:flex;flex-direction:column;gap:6px;background:linear-gradient(160deg,#FFFFFF 0%,#F4F1FF 100%);border:1px solid #DCD4FF;border-radius:18px;padding:16px;text-decoration:none;color:var(--ink);min-width:0}
+  .path a:hover{border-color:#B9A8FF}
+  .path a .n-dot{width:30px;height:30px;font-size:14px}
+  .path a b{font-size:16px;line-height:1.25}
+  .path a span{font-size:13.5px;color:var(--sub);line-height:1.4}
+  .path a em{margin-top:auto;padding-top:4px;font-style:normal;font-size:13px;font-weight:700;color:var(--vi)}
+  .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+  @media (max-width:800px){.three{grid-template-columns:minmax(0,1fr)}}
+  .three div{background:var(--y-soft);border:1px solid #F3DE94;border-radius:18px;padding:16px 18px;font-size:17px;font-weight:700;line-height:1.3}
+  .three small{display:block;font-weight:500;color:var(--sub);font-size:14px;margin-top:6px}
+
+  /* позиционирование */
+  .posit{background:linear-gradient(160deg,#FFFFFF 0%,#F4F1FF 100%);border:1px solid #DCD4FF;border-radius:28px;padding:32px clamp(20px,4vw,40px)}
+  .posit q{display:block;font-size:clamp(19px,2.4vw,26px);font-weight:500;line-height:1.4;letter-spacing:-.01em;quotes:none;max-width:56ch}
+  .posit q b{font-weight:700;background:linear-gradient(transparent 60%,#FFE27A 60%,#FFE27A 92%,transparent 92%)}
+
+  /* ключевые сообщения */
+  .roof{background:radial-gradient(120% 140% at 18% 0%,#FFDB4F 0%,#FFC800 55%,#FFB600 100%);border-radius:24px;padding:22px 26px;margin-top:24px}
+  .roof small{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(20,20,20,.7)}
+  .roof b{display:block;font-size:clamp(20px,2.6vw,28px);line-height:1.25;letter-spacing:-.015em;margin-top:6px;max-width:40ch}
+  .msgs{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+  .mrow{display:grid;grid-template-columns:minmax(0,1.05fr) repeat(3,minmax(0,1fr));background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+  .mrow>div{padding:18px 20px;min-width:0;border-left:1px solid var(--line)}
+  .mrow>div:first-child{border-left:0;background:#FBFAFE;display:flex;gap:14px;align-items:flex-start}
+  .mrow .mi{width:58px;height:58px;flex:none}
+  .mrow h3{font-size:18px;line-height:1.2}
+  .mrow .pills{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
+  .mrow small{display:block;font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+  .mrow p{font-size:15px;line-height:1.45}
+  .mrow .hl{font-weight:700;letter-spacing:-.01em}
+  .mrow .nope{margin-top:12px;font-size:14px;color:var(--sub)}
+  .mrow .nope:before{content:'Не говорим ';font-weight:700;color:var(--warn)}
+  @media (max-width:900px){.mrow{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.mrow>div:first-child{grid-column:1/-1}.mrow>div{border-left:0;border-top:1px solid var(--line)}.mrow>div:nth-child(3){border-left:1px solid var(--line)}}
+  @media (max-width:560px){.mrow{grid-template-columns:minmax(0,1fr)}.mrow>div:nth-child(3){border-left:0}}
+
+  /* принципы */
+  .prin{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:20px}
+  .prin+.prin{margin-top:12px}
+  @media (max-width:900px){.prin{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.prin .pt{grid-column:1/-1}}
+  @media (max-width:560px){.prin{grid-template-columns:minmax(0,1fr)}}
+  .pt h3{font-size:21px;margin-top:14px;letter-spacing:-.015em}
+  .pt p{color:var(--sub);font-size:15px;margin-top:8px}
+  .pt .rule{color:var(--ink);font-weight:500;font-size:16px}
+  .yn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;margin-bottom:8px}
+  .yn:before{width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px}
+  .yn.y{color:var(--ok)} .yn.y:before{content:'✓';background:#E6F6EC}
+  .yn.n{color:var(--warn)} .yn.n:before{content:'✕';background:#FFF1D6}
+  .exm p{font-size:13.5px;color:var(--sub);margin-top:8px;line-height:1.4}
+  .exm.no .stage{border-color:#F3DE94}
+  .exm.yes .stage{border-color:#BFE6CD}
+
+  /* голос */
+  .pairs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+  @media (max-width:900px){.pairs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:560px){.pairs{grid-template-columns:minmax(0,1fr)}}
+  .pair{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;display:flex;flex-direction:column}
+  .pair b{display:block;font-size:19px;letter-spacing:-.01em}
+  .pair s{display:block;color:var(--mut);font-size:15px;text-decoration-thickness:1.5px;margin-top:2px}
+  .pair p{color:var(--sub);font-size:14.5px;margin-top:8px}
+  .pair .ok,.pair .bad{display:block;font-size:14.5px;line-height:1.4;padding:8px 11px;border-radius:12px;margin-top:8px}
+  .pair .ok{background:#F4FBF6;border:1px solid #BFE6CD;margin-top:auto}
+  .pair .bad{background:#FFFBEF;border:1px solid #F3DE94;color:var(--sub)}
+  .pair .ok:before{content:'Так ';font-weight:700;color:var(--ok)}
+  .pair .bad:before{content:'Не так ';font-weight:700;color:var(--warn)}
+  .pair p+.ok{margin-top:14px}
+  .sliders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px;margin-top:16px}
+  @media (max-width:700px){.sliders{grid-template-columns:minmax(0,1fr)}}
+  .sl{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px}
+  .sl-l{display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:var(--sub)}
+  .sl-t{position:relative;height:8px;border-radius:4px;background:linear-gradient(90deg,#ECE9F4,#D5CCFF);margin:14px 4px}
+  .sl-t i{position:absolute;top:50%;width:24px;height:24px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 32% 26%,#fff 0%,#CFC3FF 14%,#7B5CFF 48%,#4A2BE0 92%);box-shadow:0 4px 10px -3px rgba(75,48,223,.6)}
+  .sl p{font-size:14px;color:var(--sub)}
+
+  /* рубрики */
+  .pick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:24px}
+  @media (max-width:900px){.pick{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:520px){.pick{grid-template-columns:minmax(0,1fr)}}
+  .pick div{border:1px dashed #CFC6F5;border-radius:18px;padding:14px 16px;font-size:14.5px;color:var(--sub);background:#FBFAFE}
+  .pick b{display:block;color:var(--ink);font-size:16px;margin-top:4px}
+  .rub{display:flex;flex-direction:column}
+  .rub .top{display:flex;align-items:center;gap:12px}
+  .rub .ic{width:54px;height:54px;flex:none}
+  .strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(76px,1fr);gap:6px;margin-top:14px;overflow-x:auto}
+  .strip.one{grid-auto-columns:minmax(0,46%)}
+  .strip.one.wide{grid-auto-columns:minmax(0,70%)}
+  .strip .mount{border-radius:6px;overflow:hidden}
+
+  /* цвет */
+  .sw{border-radius:16px;height:110px;position:relative;overflow:hidden;border:1px solid var(--line)}
+  .sw-l{font-size:14px;margin-top:10px}
+  .sw-l b{display:block;font-size:15px}
+  .sw-l code{background:transparent;padding:0;color:var(--mut)}
+  .pastels{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:16px}
+  @media (max-width:960px){.pastels{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media (max-width:520px){.pastels{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .pst .sw{height:92px;border:0;box-shadow:inset 0 0 0 1px rgba(20,20,20,.06)}
+  .pst .sw-l span{display:block;color:var(--sub);font-size:13px;line-height:1.35;margin-top:4px}
+  .pdemo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:20px;align-items:start;margin-top:16px}
+  @media (max-width:900px){.pdemo{grid-template-columns:minmax(0,1fr)}}
+  .pdemo .demo-album{box-shadow:var(--shadow)}
+  .rlist{display:flex;flex-direction:column;gap:10px}
+  .rlist div{display:flex;gap:10px;font-size:15px;align-items:flex-start}
+  .rlist i{flex:none;font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--vi-soft);color:var(--vi);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+
+  /* шрифт */
+  .spec{display:flex;align-items:baseline;gap:20px;padding-block:14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .spec:last-child{border-bottom:0}
+  .spec .meta{flex:none;width:210px;font-size:13px;color:var(--mut)}
+  .spec .meta b{display:block;color:var(--ink);font-size:14px}
+  .spec .s{flex:1;min-width:0;font-family:BeelineSans,Arial,sans-serif;overflow-wrap:anywhere}
+
+  /* композиция */
+  .legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--sub)}
+  .legend i{width:14px;height:14px;border-radius:4px;display:block}
+  .wfs{display:flex;flex-wrap:wrap;gap:18px 16px;align-items:flex-end;margin-top:14px}
+  .wf-i{display:flex;flex-direction:column;gap:8px}
+  .wf-i b{font-size:14px}
+  .wf-i span{font-size:12.5px;color:var(--mut);display:block}
+  .wf{position:relative;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;height:150px}
+  .wf>i{position:absolute;display:block;border-radius:4px}
+  .wf .m{border:1px dashed rgba(91,63,240,.45);border-radius:3px}
+  .wf .h{background:#D9D4EA;border-radius:3px}
+  .wf .t{background:#6B4EFF}
+  .wf .l{background:#B9ACFF}
+  .wf .p{background:linear-gradient(150deg,#FFFFFF,#E9E5F7);box-shadow:0 0 0 1px #DCD4FF}
+  .wf .s{border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE27A 0%,#FFC800 35%,#9F8BFF 70%,#6B4EFF 100%);opacity:.9}
+  .insp{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:28px;align-items:start;margin-top:16px}
+  .insp.wide{grid-template-columns:minmax(0,1fr)}
+  .insp.wide .anno{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 20px}
+  @media (max-width:900px){.insp{grid-template-columns:minmax(0,1fr)}.insp.wide .anno{grid-template-columns:minmax(0,1fr)}}
+  .comp-wrap{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  .zone{position:absolute;border:4px dashed rgba(91,63,240,.9);background:rgba(107,78,255,.07);border-radius:18px;z-index:40}
+  .zone i{position:absolute;left:-4px;top:-4px;transform:translate(-40%,-40%);width:52px;height:52px;border-radius:50%;background:#5B3FF0;color:#fff;font:700 28px/52px BeelineSans,Arial,sans-serif;font-style:normal;text-align:center;box-shadow:0 6px 14px -4px rgba(40,20,140,.6)}
+  .zone.m{border:3px solid rgba(91,63,240,.5);background:none;border-radius:0}
+  .zone.m i{left:auto;top:auto;right:-4px;bottom:-4px;transform:translate(40%,40%)}
+  .chk{display:flex;gap:8px;align-items:center;font-size:14px;font-weight:500;margin-top:12px}
+  .anno{display:flex;flex-direction:column;gap:12px}
+  .anno div{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+  .anno i{flex:none;font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--vi-soft);color:var(--vi);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .anno .lead-n{font-size:14px;color:var(--sub);background:var(--surface-2);border-radius:12px;padding:10px 14px}
+
+  /* материалы и свет */
+  .bar-h{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .mats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:14px}
+  @media (max-width:900px){.mats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:480px){.mats{grid-template-columns:minmax(0,1fr)}}
+  .mat{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff}
+  .mat .stage{border:0;border-radius:0}
+  .mat .cap{padding:14px 16px 16px}
+  .mat .cap b{display:block}
+  .mat .cap span{font-size:14px;color:var(--sub)}
+  .lights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:14px}
+  @media (max-width:900px){.lights{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:520px){.lights{grid-template-columns:minmax(0,1fr)}}
+  .lights b{display:block;margin-top:10px;font-size:15px}
+  .lights p{font-size:13.5px;color:var(--sub);margin-top:2px}
+  .lights code{font-size:11.5px;display:inline-block;margin-top:6px;overflow-wrap:anywhere}
+  .lights .no .stage{border-color:#F3DE94}
+
+  /* 3D */
+  .dl{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:flex-end;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-top:28px}
+  .dl .fld{min-width:0}
+  .dl select{min-width:220px}
+  .dl .go{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .dl-st{font-size:13px;color:var(--sub);flex-basis:100%}
+  .glyphs{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px;margin-top:14px}
+  .glyph{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;border:1px solid transparent;border-radius:16px;padding:10px 4px 12px;background:none;font:inherit;color:inherit;cursor:pointer}
+  .glyph:hover{background:var(--surface);border-color:var(--line)}
+  .glyph .t{width:92px;height:92px;position:relative;border-radius:14px;overflow:hidden}
+  .glyph b{font-size:13px}
+  .glyph code{font-size:11px;background:transparent;color:var(--mut);padding:0}
+  .glyph em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--vi);opacity:0;transition:opacity .15s}
+  .glyph:hover em,.glyph:focus-visible em{opacity:1}
+  @media (hover:none){.glyph em{opacity:1}}
+
+  /* шаблоны */
+  .fchips{display:flex;gap:6px;flex-wrap:wrap;margin-top:20px}
+  .fchips button{border:1px solid var(--line);background:var(--surface);font:inherit;font-size:13px;font-weight:700;color:var(--sub);height:32px;padding:0 12px;border-radius:999px;cursor:pointer}
+  .fchips button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .tpls{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px;margin-top:18px}
+  .tpl .mount{border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .tpl h3{font-size:16px;margin-top:10px}
+  .tpl p{font-size:13px;color:var(--sub);margin-top:4px;line-height:1.4}
+  .tpl .tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
+  .dots{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .dots button{width:20px;height:20px;border-radius:50%;border:1px solid rgba(20,20,20,.14);cursor:pointer;padding:0}
+  .dots button[aria-pressed="true"]{outline:2px solid var(--vi);outline-offset:2px}
+
+  /* как писать */
+  .posttext{white-space:pre-wrap;font-size:15.5px;line-height:1.55;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;overflow-wrap:anywhere}
+  .feed{max-width:460px;width:100%;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden;justify-self:center}
+  .feed .fh{display:flex;gap:10px;align-items:center;padding:14px 16px 6px}
+  .feed .ava{width:42px;height:42px;border-radius:50%;overflow:hidden;flex:none}
+  .feed .fh b{display:block;font-size:15px}
+  .feed .fh span{font-size:13px;color:var(--mut)}
+  .feed .ft{padding:4px 16px 14px;white-space:pre-wrap;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+  .feed .ft .lnk{color:var(--vi);text-decoration:underline;text-underline-offset:3px}
+  .feed .fa{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+  .feed .fr{display:flex;gap:6px;padding:10px 16px 14px;flex-wrap:wrap;align-items:center}
+  .feed .fr span{background:var(--surface-2);border-radius:999px;padding:3px 10px;font-size:14px}
+  .feed .fr em{font-style:normal;font-size:13px;color:var(--mut);margin-left:auto}
+  details.was{margin-top:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px}
+  details.was summary{font-weight:700;cursor:pointer}
+  .rt{display:flex;flex-direction:column;gap:12px}
+  .rt .hd{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .rt .re{font-size:30px;line-height:1;width:52px;height:52px;border-radius:16px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;flex:none}
+  .rt .posttext{font-size:14.5px;padding:16px 18px;background:#FCFBFE}
+  .rt .bar2{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .hooks{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:16px}
+  .hook{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+  .hook small{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--vi)}
+  .hook b{display:block;font-size:20px;line-height:1.2;letter-spacing:-.02em;margin-top:8px}
+  .hook p{font-size:14px;color:var(--sub);margin-top:8px}
+  .lint{display:flex;flex-direction:column;gap:6px}
+  .lint div{display:flex;gap:10px;font-size:14.5px;align-items:flex-start;line-height:1.4}
+  .lint .st{flex:none;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+  .lint .ok .st{background:#E6F6EC;color:var(--ok)}
+  .lint .no .st{background:#FFF1D6;color:var(--warn)}
+  .lint .no b{color:var(--ink)}
+  .lint .ok b{font-weight:500;color:var(--sub)}
+  .lint small{display:block;color:var(--sub);font-size:13px}
+  .lint-sum{font-weight:700;margin-bottom:6px}
+
+  /* словарь */
+  .dict-bar{display:flex;gap:10px 16px;flex-wrap:wrap;align-items:center;margin-top:20px}
+  .dict-bar input{max-width:340px}
+  .dict-bar .fchips{margin-top:0}
+  .dict td:first-child{font-weight:700;white-space:nowrap}
+  .dict td:nth-child(2){color:var(--mut);text-decoration:line-through;text-decoration-color:rgba(184,110,0,.55);text-decoration-thickness:1.5px}
+  .dict td:last-child{color:var(--sub);font-size:14px}
+  .dict .cat td{background:var(--surface-2);font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--vi);text-decoration:none;padding-block:8px}
+  .dict mark{background:#FFE27A;border-radius:3px;padding:0 1px}
+  .dict-n{font-size:13px;color:var(--mut)}
+  @media (max-width:700px){.dict td:first-child{white-space:normal}}
+
+  /* эмодзи */
+  .rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:900px){.rules{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:560px){.rules{grid-template-columns:minmax(0,1fr)}}
+  .rules>div{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;font-size:15px}
+  .rules b{display:block;margin-bottom:2px}
+  .rules span{color:var(--sub)}
+  .remo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+  @media (max-width:900px){.remo{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .remo>div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+  .remo .pairi{display:flex;align-items:center;gap:10px}
+  .remo .big{font-size:44px;line-height:1}
+  .remo .eq{color:var(--mut);font-weight:700}
+  .remo code{background:transparent;padding:0;color:var(--vi);font-size:13px;overflow-wrap:anywhere}
+  .emo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px;margin-top:16px}
+  .emo{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+  .emo .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}
+  .emo .e{font-size:34px;line-height:1}
+  .emo .sw2{width:36px;height:36px;border-radius:50%;border:1px solid var(--line)}
+  .emo b{font-size:15px}
+  .emo span{font-size:13.5px;color:var(--sub);line-height:1.4}
+  .emo .pill{align-self:flex-start;margin-top:6px;height:22px;font-size:11px}
+  .banned td:first-child{font-size:24px;white-space:nowrap;letter-spacing:.06em}
+  .lines{white-space:pre-wrap;font-size:16px;line-height:1.6;border-radius:var(--r);padding:16px 20px;border:1px solid var(--line);background:var(--surface)}
+  .lines.good{border-color:#BFE6CD;background:#F4FBF6}
+  .lines.bad{border-color:#F3DE94;background:#FFFBEF}
+
+  /* бриф и процесс */
+  .brief{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:960px){.brief{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:560px){.brief{grid-template-columns:minmax(0,1fr)}}
+  .brief .panel{display:flex;flex-direction:column;gap:10px}
+  .brief .hd{display:flex;align-items:center;gap:10px}
+  .brief .hd span{font-size:26px;line-height:1}
+  .brief ul{margin:0;padding-left:18px;color:var(--sub);font-size:14.5px;display:flex;flex-direction:column;gap:6px}
+  .flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+  @media (max-width:900px){.flow{grid-template-columns:minmax(0,1fr)}}
+  .flow div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;font-size:15px}
+  .flow div b{display:block;margin-bottom:4px}
+  .check{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;margin-top:16px}
+  @media (max-width:700px){.check{grid-template-columns:minmax(0,1fr)}}
+  .check label{display:flex;gap:10px;font-size:15px;align-items:flex-start;cursor:pointer;padding:6px 8px;border-radius:10px}
+  .check label:hover{background:var(--surface)}
+  .check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--vi);flex:none}
+  .check input:checked+span{color:var(--mut);text-decoration:line-through}
+  .res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:900px){.res{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:520px){.res{grid-template-columns:minmax(0,1fr)}}
+  .res a,.res div{display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;text-decoration:none;color:var(--ink);min-width:0}
+  .res a:hover{border-color:#CFCBDD}
+  .res b{font-size:16px}
+  .res span{font-size:14px;color:var(--sub)}
+  .res code{font-size:12px;align-self:flex-start;margin-top:4px;overflow-wrap:anywhere}
+  .res .author{background:linear-gradient(160deg,#FFFFFF 0%,#F4F1FF 100%);border-color:#DCD4FF}
+  .foot a{color:var(--sub)}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="logo" href="../index.html"><i></i>Дизайн-система CVM</a>
+  <nav class="nav" aria-label="Разделы">
+    <a href="index.html" aria-current="page">Бренд канала</a>
+    <a href="constructor.html">Конструктор</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Раздел дизайн-системы · канал в Buzz</div>
+      <h1 class="display" style="margin-top:14px">CVM B2B Делает</h1>
+      <p class="lede" style="margin-top:18px">Как выглядит, как звучит и как пишет канал отдела CVM. Здесь все, что нужно автору поста: от выбора рубрики до готовых карточек</p>
+      <div class="acts"><a class="btn pri" href="#channel">Я пишу пост: с чего начать</a><a class="btn" href="constructor.html">Открыть конструктор</a></div>
+    </div>
+    <div class="demo-album" id="hero-album" aria-label="Эталонный пост в сетке Buzz"></div>
+  </section>
+
+  <nav class="toc-box" id="toc" aria-label="Оглавление">
+    <div class="toc-top"><h2>Оглавление</h2><span class="small muted">19 разделов в четырех частях</span></div>
+    <div class="toc-g" id="toc-g">
+      <div><h3>Основа</h3><ol>
+        <li><a href="#channel"><i>01</i><b>Канал в одном экране</b><span>Для кого пишем и путь автора</span></a></li>
+        <li><a href="#positioning"><i>02</i><b>Позиционирование</b><span>Зачем канал и чем отличается</span></a></li>
+        <li><a href="#messages"><i>03</i><b>Ключевые сообщения</b><span>Одна мысль и пять опор</span></a></li>
+        <li><a href="#principles"><i>04</i><b>Принципы и голос</b><span>Как выглядим и как звучим, с примерами</span></a></li>
+        <li><a href="#rubrics"><i>05</i><b>Рубрики и рецепты</b><span>Какую выбрать и из чего собрать</span></a></li>
+      </ol></div>
+      <div><h3>Визуал</h3><ol>
+        <li><a href="#color"><i>06</i><b>Цвет</b><span>Роли цветов, пастель, контраст</span></a></li>
+        <li><a href="#type"><i>07</i><b>Шрифт</b><span>Уровни текста на холсте 1080</span></a></li>
+        <li><a href="#layout"><i>08</i><b>Композиция</b><span>Одна схема на все форматы</span></a></li>
+        <li><a href="#materials"><i>09</i><b>Материалы и маршрут</b><span>Плашки, желтый агента, маршрут, тень</span></a></li>
+        <li><a href="#ill"><i>10</i><b>3D-иллюстрации</b><span>Библиотека знаков и скачивание</span></a></li>
+        <li><a href="#templates"><i>11</i><b>Шаблоны карточек</b><span>19 шаблонов в пяти группах</span></a></li>
+        <li><a href="#formats"><i>12</i><b>Форматы</b><span>Размеры холста и экспорта</span></a></li>
+      </ol></div>
+      <div><h3>Текст</h3><ol>
+        <li><a href="#write"><i>13</i><b>Как писать пост</b><span>Формула, заготовки, проверка</span></a></li>
+        <li><a href="#dict"><i>14</i><b>Словарь</b><span>Какие слова пишем вместо каких</span></a></li>
+        <li><a href="#emoji"><i>15</i><b>Эмодзи</b><span>Набор, правила и запреты</span></a></li>
+        <li><a href="#kit"><i>16</i><b>Тексты канала</b><span>Описание, закреп, призывы, ответы</span></a></li>
+      </ol></div>
+      <div><h3>Процесс</h3><ol>
+        <li><a href="#brief"><i>17</i><b>Что принести редактору</b><span>Материалы по рубрикам и бриф</span></a></li>
+        <li><a href="#process"><i>18</i><b>Процесс и проверка</b><span>Путь поста и чек-лист</span></a></li>
+        <li><a href="#files"><i>19</i><b>Файлы и контакты</b><span>Конструктор, токены, автор</span></a></li>
+      </ol></div>
+    </div>
+  </nav>
+</div>
+
+<div class="wrap">
+  <!-- 01 -->
+  <section class="sec" id="channel">
+    <div class="sec-k"><i>01</i>Основа</div>
+    <h2>Канал в одном экране</h2>
+    <p class="intro">Для тех, кто пишет пост в канал. Прочитайте этот экран до того, как сесть за текст, остальное в гайде можно открывать по мере надобности</p>
+    <div class="facts4">
+      <div class="f4"><small>Кому вы пишете</small><b>Коллегам из продуктов, сегментов и продаж</b><p>Про CVM знают в общих чертах, коды кампаний им незнакомы, ленту листают на ходу</p></div>
+      <div class="f4"><small>Зачем пост</small><b>Коллега узнает свою задачу в вашем результате</b><p>И пишет в бота CVM. Пост без дороги к нам не закончен</p></div>
+      <div class="f4"><small>Что внутри</small><b>Одна история, одна цифра, один вывод</b><p>Текст до 600 знаков завлекает, подробности живут в карточках</p></div>
+      <div class="f4"><small>Когда выходит</small><b>По дню своей рубрики</b><p>Пн новые фичи · Ср а знаете ли вы? · Пт реальные кейсы · раз в две недели знакомство</p></div>
+    </div>
+    <h3 class="sub-h">Путь автора</h3>
+    <div class="path">
+      <a href="#rubrics"><span class="n-dot">1</span><b>Выберите рубрику</b><span>Кейс, механика, новая фича или человек из команды</span><em>Рубрики →</em></a>
+      <a href="#brief"><span class="n-dot">2</span><b>Соберите материал</b><span>Диалог, цифры с периодом, скриншоты, фото</span><em>Что принести →</em></a>
+      <a href="#write"><span class="n-dot">3</span><b>Напишите текст</b><span>Скопируйте заготовку рубрики и проверьте текст</span><em>Как писать →</em></a>
+      <a href="constructor.html"><span class="n-dot">4</span><b>Соберите карточки</b><span>Рецепт рубрики в конструкторе, выгрузка PNG</span><em>Конструктор →</em></a>
+      <a href="#process"><span class="n-dot">5</span><b>Отдайте редактору</b><span>Один согласующий, публикация по расписанию</span><em>Процесс →</em></a>
+    </div>
+    <h3 class="sub-h">Если читать некогда</h3>
+    <div class="three">
+      <div>Заголовок это вывод, а не тема<small>«Проблему со связью сделал аргументом», а не «Диалог с клиентом»</small></div>
+      <div>У цифры всегда есть период<small>«37 секунд от отказа до согласия», «за октябрь», «на 500 клиентах»</small></div>
+      <div>В конце дорога в бота CVM<small>Последняя строка поста: 👉 куда писать и ссылка</small></div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="sec" id="positioning">
+    <div class="sec-k"><i>02</i>Основа</div>
+    <h2>Позиционирование</h2>
+    <p class="intro">Зачем канал существует и чем он отличается от всего, что коллеги уже читают. Если пост не работает на эту формулу, его не публикуем</p>
+    <div class="posit" style="margin-top:24px">
+      <div class="eyebrow">Формула позиционирования</div>
+      <q style="margin-top:14px">Для коллег из продуктов, сегментов и продаж билайн бизнес, которым нужно, чтобы продукт дошел до своего клиента, канал <b>CVM B2B Делает</b> показывает на реальных кейсах, <b>что команда CVM уже умеет</b>: подобрать аудиторию, запустить рассылку или ИИ-агента и довести клиента до сделки. В отличие от отчетов и общих рассылок, здесь <b>коротко, с живыми диалогами и честными цифрами</b>, а в конце каждого поста понятно, <b>как прийти с задачей</b></q>
+    </div>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="panel"><h3>Витрина</h3><p>Показываем, что CVM уже сделал. Читатель узнает свою задачу в чужом результате и понимает, что так можно и у него</p></div>
+      <div class="panel"><h3>Учебник</h3><p>Объясняем механику простыми словами: почему рассылка не дошла, что значит атрибут, как агент ведет диалог</p></div>
+      <div class="panel"><h3>Вход</h3><p>Каждый пост заканчивается дорогой к нам: бот CVM или задача в Jira. Пост без нее не закончен</p></div>
+    </div>
+    <div class="ex" style="margin-top:16px">
+      <div class="panel"><h3>Название это глагол</h3><p>В названии канала «Делает», и это главное правило текста. Мы не рассказываем, какие мы, а показываем, что сделали. Заголовки строим на глаголе: «предложил», «добавили», «удержал»</p></div>
+      <div class="panel"><h3>Чем канал не является</h3><p>Не отчет для руководства, не лента пресс-релизов, не новости компании и не чат поддержки. Вопрос про конкретную кампанию задают в боте, а не в комментариях</p></div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="sec" id="messages">
+    <div class="sec-k"><i>03</i>Основа</div>
+    <h2>Ключевые сообщения</h2>
+    <p class="intro">Над всеми постами одна мысль, под ней пять опор. Каждый пост несет одну опору: назовите ее до того, как писать</p>
+    <div class="roof"><small>Главная мысль канала</small><b>CVM помогает продуктам билайн бизнес находить своих клиентов и доводить их до сделки</b></div>
+    <div class="msgs" id="msgs"></div>
+    <div class="note">Проверка перед текстом: назовите опору поста одним словом. Если не получается, у поста пока нет мысли, и это повод еще раз поговорить с автором кейса</div>
+  </section>
+
+  <!-- 04 -->
+  <section class="sec" id="principles">
+    <div class="sec-k"><i>04</i>Основа</div>
+    <h2>Принципы и голос</h2>
+    <p class="intro">Шесть правил о том, как выглядит карточка, и шесть о том, как звучит текст. У каждого правила есть пример и контрпример</p>
+
+    <h3 class="sub-h">Как выглядим</h3>
+    <p class="small muted">Каждое решение в карточке проверяем этими правилами. Если элемент не помогает понять суть, его нет</p>
+    <div id="prins" style="margin-top:16px"></div>
+
+    <h3 class="sub-h">Как звучим</h3>
+    <p class="small muted">Пишем от лица команды, просто и коротко. Звучим как сильный коллега на планерке: по делу, дружелюбно, без канцелярита и без хайпа</p>
+    <div class="pairs">
+      <div class="pair"><b>Практики</b><s>пресс-служба</s><p>Говорим о том, что сделали, с цифрами и скриншотами диалогов</p><span class="ok">Наш ИИ-агент предложил клиенту Облачную АТС</span><span class="bad">AI-агент стал драйвером роста B2B-коммуникаций</span></div>
+      <div class="pair"><b>Делимся методом</b><s>хвастаемся</s><p>Показываем прием, который читатель может повторить у себя</p><span class="ok">Агент дал выбор из двух дней, клиент выбрал сегодня</span><span class="bad">Агент показал отличные результаты!!!</span></div>
+      <div class="pair"><b>Простые</b><s>упрощенные</s><p>Объясняем термины, коды кампаний переводим на человеческий</p><span class="ok">Кампания по продаже тарифа БизнесПро</span><span class="bad">Кампания КСС_А007</span></div>
+      <div class="pair"><b>Уверенные</b><s>громкие</s><p>Факт сильнее восклицательного знака и слова «уникальный»</p><span class="ok">Меньше чем за 3 минуты клиент прошел путь от мысли уйти до звонка</span><span class="bad">Революционный результат, который меняет все</span></div>
+      <div class="pair"><b>Дружелюбные</b><s>панибратские</s><p>О себе «мы», к читателю на «вы» со строчной, без мемов про клиентов и коллег</p><span class="ok">Пишите нам в бота, подберем аудиторию под ваш продукт</span><span class="bad">Залетайте в бота, замутим рассылочку</span></div>
+      <div class="pair"><b>Честные</b><s>идеальные</s><p>Показываем и то, что не сработало, и что поменяли</p><span class="ok">Первый сценарий не сработал: поменяли вопрос в начале диалога</span><span class="bad">Все прошло идеально, как всегда</span></div>
+    </div>
+
+    <h3 class="sub-h">Где мы на шкале</h3>
+    <div class="sliders">
+      <div class="sl"><div class="sl-l"><span>Официально</span><span>Разговорно</span></div><div class="sl-t"><i style="left:65%"></i></div><p>Как на планерке: живые слова, но без сленга и уменьшительных</p></div>
+      <div class="sl"><div class="sl-l"><span>Серьезно</span><span>С улыбкой</span></div><div class="sl-t"><i style="left:35%"></i></div><p>Улыбка в заголовке можно, шутка над клиентом нельзя</p></div>
+      <div class="sl"><div class="sl-l"><span>Экспертно</span><span>Просто</span></div><div class="sl-t"><i style="left:75%"></i></div><p>Термин объясняем при первом упоминании, коды кампаний не пишем</p></div>
+      <div class="sl"><div class="sl-l"><span>Сдержанно</span><span>Восторженно</span></div><div class="sl-t"><i style="left:25%"></i></div><p>Радуемся цифрами, а не восклицаниями</p></div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="sec" id="rubrics">
+    <div class="sec-k"><i>05</i>Основа</div>
+    <h2>Рубрики и рецепты</h2>
+    <p class="intro">У каждой рубрики своя обложка, свой рецепт серии и свой знак в тексте поста. Цвета и материалы общие, поэтому лента остается единой, а посты не похожи друг на друга</p>
+    <div class="pick">
+      <div>Есть диалог или кампания с результатом<b>💬 Реальные кейсы</b></div>
+      <div>Вам часто задают один и тот же вопрос<b>💡 А знаете ли вы?</b></div>
+      <div>Появился атрибут, отчет или возможность<b>🚀 Новые фичи</b></div>
+      <div>Хотите представить человека из команды<b>👋 Знакомство с командой</b></div>
+    </div>
+    <div class="grid g2" style="margin-top:16px" id="rubs"></div>
+  </section>
+
+  <!-- 06 -->
+  <section class="sec" id="color">
+    <div class="sec-k"><i>06</i>Визуал</div>
+    <h2>Цвет</h2>
+    <p class="intro">Язык канала собран как 30 на 70. Треть от билайна, чтобы канал узнавали с первого кадра. Остальное свое, чтобы посты команды CVM не путали с рекламой. Каждый цвет закреплен за ролью, поэтому серия читается без подписей</p>
+    <div class="ex" style="margin-top:24px">
+      <div class="panel"><h3>30% билайн</h3><p>Желтый #FFC800 на обложке и итоге, черный текст, белый воздух и шрифт Beeline Sans. Это сразу говорит: пишет билайн</p></div>
+      <div class="panel"><h3>70% свой язык</h3><p>Фиолетовый маршрут ведет от проблемы к результату. Плоские плашки, желтые реплики агента, номера-станции и одна объемная плитка как главный объект. Без свечений, шума и бликов</p></div>
+    </div>
+    <div class="grid g4" style="margin-top:24px" id="swatches"></div>
+    <div class="note">Желтый фон только у первой и последней карточки: в сетке 3×2 и 2×3 они встают по диагонали. Черных заливок нет, черный только у текста</div>
+
+    <h3 class="sub-h">Пастель для внутренних карточек</h3>
+    <p class="small muted">Шесть мягких фонов для коротких постов, до трех карточек. В альбоме от четырех карточек внутренние карточки белые: цветной фон на каждой карточке перегружает сетку, и глаз не находит, за что зацепиться</p>
+    <div class="pastels" id="pastels"></div>
+    <div class="pdemo">
+      <div>
+        <div class="seg" role="group" aria-label="Пастель в посте" id="pseg"></div>
+        <div class="demo-album" id="palbum" style="margin-top:12px" aria-label="Короткий пост из трех карточек с пастельной внутренней карточкой"></div>
+      </div>
+      <div class="rlist">
+        <div><i>1</i><span><b>Только внутренние карточки.</b> Обложка и финал остаются желтыми</span></div>
+        <div><i>2</i><span><b>Длинный альбом на белом.</b> От четырех карточек все внутренние белые, пастель только в коротких постах</span></div>
+        <div><i>3</i><span><b>Цвет по теме поста</b>, а не по настроению: смотрите роль под каждым цветом</span></div>
+        <div><i>4</i><span><b>Текст только чернилами</b>, подписи чернилами 70%</span></div>
+        <div><i>5</i><span><b>Лимонный не под реплики агента:</b> желтый сливается с фоном</span></div>
+        <div><i>6</i><span><b>Не смешиваем с фиолетовым фоном</b> в одном посте</span></div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Контраст текста</h3>
+    <p class="small muted">Карточку читают с телефона, где она сжимается втрое. Мелкий текст держим от 4,5:1, крупные заголовки от 3:1</p>
+    <div class="table-wrap" style="margin-top:14px"><table>
+      <thead><tr><th>Цвет текста</th><th>На белом</th><th>На желтом</th><th>На пастели</th><th>На фиолетовом</th></tr></thead>
+      <tbody>
+        <tr><td><b>Чернила</b> <code>#141414</code></td><td>18,4 ✓</td><td>11,9 ✓</td><td>13,1-16,8 ✓</td><td class="muted">не используем</td></tr>
+        <tr><td><b>Текст 2</b> <code>#55555E</code></td><td>7,4 ✓</td><td>4,8 ✓</td><td>5,2-6,7 ✓</td><td class="muted">не используем</td></tr>
+        <tr><td><b>Служебный</b> <code>#7A7A84</code></td><td>4,3 ✓ от 24 px</td><td>2,7 ✗ вместо него чернила 70%: 5,6</td><td>3,0-3,7 ✗ вместо него чернила 70%: 5,8-6,5</td><td class="muted">не используем</td></tr>
+        <tr><td><b>Белый</b> <code>#FFFFFF</code></td><td class="muted">не используем</td><td class="muted">не используем</td><td class="muted">не используем</td><td>5,1 ✓, мелкий текст белым 90%: 4,4</td></tr>
+      </tbody></table></div>
+  </section>
+
+  <!-- 07 -->
+  <section class="sec" id="type">
+    <div class="sec-k"><i>07</i>Визуал</div>
+    <h2>Шрифт и уровни текста</h2>
+    <p class="intro">Beeline Sans в четырех начертаниях. Размеры даны для холста 1080 px. На телефоне карточка сжимается примерно втрое, поэтому текст реплик не меньше 30 px</p>
+    <div class="panel" style="margin-top:24px;padding-block:6px" id="specs"></div>
+  </section>
+
+  <!-- 08 -->
+  <section class="sec" id="layout">
+    <div class="sec-k"><i>08</i>Визуал</div>
+    <h2>Композиция</h2>
+    <p class="intro">Одна схема на все форматы: текст слева сверху, доказательство под ним, сцена по диагонали справа снизу. Меняются пропорции, а не логика, поэтому серия выглядит одной системой</p>
+    <div class="legend"><span><i style="background:#D9D4EA"></i>Шапка</span><span><i style="background:#6B4EFF"></i>Заголовок</span><span><i style="background:#B9ACFF"></i>Подзаголовок</span><span><i style="background:#EEEAF9;box-shadow:0 0 0 1px #DCD4FF"></i>Доказательство</span><span><i style="background:radial-gradient(circle at 35% 30%,#FFE27A,#FFC800 35%,#6B4EFF)"></i>Сцена</span><span><i style="border:1px dashed rgba(91,63,240,.6)"></i>Поля</span></div>
+    <div class="wfs" id="wfs"></div>
+
+    <h3 class="sub-h">Зоны на живых шаблонах</h3>
+    <p class="small muted">Выберите шаблон: зоны найдутся на карточке сами</p>
+    <div class="seg" role="group" aria-label="Шаблон" id="comp-seg" style="margin-top:12px"></div>
+    <div class="insp" id="insp">
+      <div><div class="comp-wrap" id="comp"></div><label class="chk"><input type="checkbox" id="comp-t" checked> Показать зоны</label></div>
+      <div class="anno" id="comp-anno"></div>
+    </div>
+    <div class="grid g3" style="margin-top:24px">
+      <div class="panel"><h3>Три ярких пятна</h3><p>На карточке не больше трех заметных элементов: заголовок, одна линза или цифра и сцена. Все остальное спокойное</p></div>
+      <div class="panel"><h3>Ритм альбома</h3><p>Желтый, белые, желтый. Первая и последняя карточки акцентные, внутренние спокойные. Пастель только в коротких постах до трех карточек. Фиолетовый фон только у обложек «А знаете ли вы?» и роликов</p></div>
+      <div class="panel"><h3>Текст слева</h3><p>Выравнивание по левому краю, без центрирования. Исключение одно: аватар канала, где все держится в центральном круге</p></div>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section class="sec" id="materials">
+    <div class="sec-k"><i>09</i>Визуал</div>
+    <h2>Материалы и маршрут</h2>
+    <p class="intro">Из этих материалов собирается любая карточка. Все они плоские, каждый закреплен за ролью и ведет себя предсказуемо на любом фоне: переключите фон и сравните</p>
+    <div class="bar-h"><b>Двенадцать материалов</b><div class="seg" role="group" aria-label="Фон" id="mat-seg"></div></div>
+    <div class="mats" id="mats"></div>
+
+    <h3 class="sub-h">Маршрут и глубина</h3>
+    <p class="small muted">Маршрут показывает, куда смотреть. Линия входит из-за края кадра, проходит через главный объект и уходит дальше. Глубину дает одна мягкая тень, а не свет</p>
+    <div class="lights" id="lights"></div>
+    <div class="rlist" style="margin-top:18px">
+      <div><i>1</i><span><b>Один маршрут на карточку.</b> Толщина 14 px на холсте 1080, углы 90° со скруглением 80 px</span></div>
+      <div><i>2</i><span><b>Линия идет от проблемы к результату</b> и не пересекает текст: только поля и зона сцены</span></div>
+      <div><i>3</i><span><b>На белом, желтом и пастели линия фиолетовая</b>, на фиолетовом белая</span></div>
+      <div><i>4</i><span><b>Свечений, шума и бликов нет.</b> Тень одна, мягкая и направлена вниз</span></div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="sec" id="ill">
+    <div class="sec-k"><i>10</i>Визуал</div>
+    <h2>3D-иллюстрации</h2>
+    <p class="intro">Объемный знак на плитке. Это единственный 3D-объект карточки, все вокруг плоское, поэтому он сразу притягивает взгляд. Знаки нарисованы кодом на сетке 24×24, поэтому стиль един и новый знак добавляется одной строкой в <code>illustrations.js</code></p>
+    <div class="ex" style="margin-top:24px">
+      <div class="panel"><h3>Сцена обложки</h3><p>Три объекта по диагонали рассказывают кейс без слов: бейдж проблемы, его можно перечеркнуть, плитка решения и кружок результата. Маршрут связывает их в одну историю</p><div id="scene" style="margin-top:16px;border-radius:14px;overflow:hidden;position:relative"></div></div>
+      <div class="panel"><h3>Правила</h3>
+        <p>Одна сцена на пост, на обложке или в финале. Внутренние карточки получают максимум одну плитку</p>
+        <p>Плитка: фиолетовая для главного объекта, жемчужная для второстепенного, прозрачная на фиолетовом фоне. На пастели плитка сама берет оттенок фона</p>
+        <p>Кружок: желтый для действия и результата, фиолетовый для отметок команды, пустое кольцо как станция маршрута</p>
+        <p>Объекты стоят на маршруте: в углах или на прямых участках, а не рядом с линией</p>
+        <p>Нет нужного знака? Добавьте его в библиотеку, а не рисуйте в другом стиле. Эмодзи на карточках не используем: их роль играют эти знаки</p></div>
+    </div>
+    <div class="dl" id="dl">
+      <div class="fld"><label class="f" for="dl-style">Стиль</label><select id="dl-style"></select></div>
+      <div class="fld"><span class="f">Размер</span><div class="seg" role="group" aria-label="Размер" id="dl-size"></div></div>
+      <div class="fld"><span class="f">Фон</span><div class="seg" role="group" aria-label="Фон" id="dl-bg"></div></div>
+      <div class="go"><button class="btn pri" type="button" id="dl-all">Скачать все знаки, ZIP</button></div>
+      <div class="dl-st" id="dl-st" aria-live="polite">Нажмите на знак, чтобы скачать его PNG в выбранном стиле</div>
+    </div>
+    <div class="glyphs" id="glyphs"></div>
+  </section>
+
+  <!-- 11 -->
+  <section class="sec" id="templates">
+    <div class="sec-k"><i>11</i>Визуал</div>
+    <h2>Шаблоны карточек</h2>
+    <p class="intro">Девятнадцать шаблонов в пяти группах. Все собираются в конструкторе: выберите шаблон, впишите текст, скачайте PNG. Кружки под карточкой переключают фон, включая пастель</p>
+    <div class="fchips" id="tpl-f" role="group" aria-label="Группа шаблонов"></div>
+    <div class="tpls" id="tpls"></div>
+  </section>
+
+  <!-- 12 -->
+  <section class="sec" id="formats">
+    <div class="sec-k"><i>12</i>Визуал</div>
+    <h2>Форматы</h2>
+    <p class="intro">Экспорт всегда в двойном размере, чтобы карточки оставались четкими на экранах с высокой плотностью</p>
+    <div class="table-wrap" style="margin-top:24px"><table>
+      <thead><tr><th>Формат</th><th>Холст</th><th>Экспорт</th><th>Где</th><th>Шаблоны</th></tr></thead>
+      <tbody id="fmts"></tbody></table></div>
+    <div class="note">Альбом из 6 карточек: на десктопе Buzz показывает сетку 3×2, на телефоне 2×3. Первая и последняя карточки желтые, внутренние белые: цветной фон на каждой карточке перегружает сетку. Размер шапки канала в Buzz нужно уточнить, пока заложен 1500×500</div>
+  </section>
+
+  <!-- 13 -->
+  <section class="sec" id="write">
+    <div class="sec-k"><i>13</i>Текст</div>
+    <h2>Как писать пост</h2>
+    <p class="intro">Текст поста завлекает, подробности живут в карточках. До 600 знаков, 3-5 коротких абзацев, между абзацами пустая строка. Абзац не длиннее трех строк на телефоне</p>
+    <div class="ex" style="margin-top:24px;align-items:start">
+      <div>
+        <div class="eyebrow">Формула текста поста</div>
+        <div class="anno" style="margin-top:14px">
+          <div><i>1</i><span><b>Эмодзи рубрики и хештег</b> первой строкой: «💬 #реальные_кейсы»</span></div>
+          <div><i>2</i><span><b>Заголовок-крючок</b>: результат, конфликт или неожиданный факт, а не тема. До 70 знаков</span></div>
+          <div><i>3</i><span><b>Два-три предложения</b>: что произошло и почему это стоит посмотреть</span></div>
+          <div><i>4</i><span><b>Отсылка к карточкам</b>: что именно в них найдет читатель</span></div>
+          <div><i>5</i><span><b>Итог</b> одной строкой, если он есть</span></div>
+          <div><i>6</i><span><b>Вопрос читателю</b>, на который легко ответить одной фразой</span></div>
+          <div><i>7</i><span><b>👉 Призыв и ссылка</b> на бота последней строкой</span></div>
+        </div>
+        <div class="note">Жирный и курсив в Buzz проверьте на тестовом посте. Формула работает и без них: заголовок-крючок держится на отдельной строке и пустых строках вокруг</div>
+      </div>
+      <div class="feed" aria-label="Пост в ленте Buzz, схема">
+        <div class="fh"><div class="ava" id="feed-ava"></div><div><b>CVM B2B Делает</b><span>канал · пятница, 12:00</span></div></div>
+        <div class="ft" id="feed-text"></div>
+        <div class="fa" id="feed-album"></div>
+        <div class="fr"><span>💛 12</span><span>👍 8</span><em>4 комментария</em></div>
+      </div>
+    </div>
+
+    <details class="was">
+      <summary>Как эталон вышел в первый раз и что поменяли</summary>
+      <div class="ex" style="margin-top:14px">
+        <div class="posttext" id="ptext-old"></div>
+        <div class="anno">
+          <div><i>1</i><span>Хештег «#реальный_кейс» не совпадал с рубрикой. Теперь «💬 #реальные_кейсы», как у всех постов рубрики</span></div>
+          <div><i>2</i><span>Запятая перед «предложил» заменена двоеточием: так видно, что дальше идет сам прием</span></div>
+          <div><i>3</i><span>«Подробности читайте в карточках» стало конкретным: что именно читатель там найдет</span></div>
+          <div><i>4</i><span>Добавлены вопрос читателю и призыв со ссылкой на бота</span></div>
+          <div><i>5</i><span>Точки в конце абзацев убраны</span></div>
+        </div>
+      </div>
+    </details>
+
+    <h3 class="sub-h">Заготовки по рубрикам</h3>
+    <p class="small muted">Скопируйте заготовку, замените все в квадратных скобках. Пример показывает, как это выглядит готовым. Тексты примеров для трех рубрик условные</p>
+    <div class="grid g2" style="margin-top:14px" id="rtexts"></div>
+
+    <h3 class="sub-h">Формулы заголовка-крючка</h3>
+    <p class="small muted">Один и тот же заголовок работает в тексте поста и на обложке. В заголовке нет слов «кейс», «обзор», «информация о»</p>
+    <div class="hooks">
+      <div class="hook"><small>Конфликт и разворот</small><b>Думал уйти. Согласился на звонок</b><p>Было плохо, стало хорошо, в двух коротких фразах</p></div>
+      <div class="hook"><small>Цифра и действие</small><b>37 секунд от отказа до согласия</b><p>Цифра в начале, период или контекст рядом</p></div>
+      <div class="hook"><small>Вопрос, который задают нам</small><b>Почему клиенту не пришла рассылка?</b><p>Для «А знаете ли вы?». Ответ в карточках</p></div>
+      <div class="hook"><small>Было и стало</small><b>Раньше неделя, теперь один день</b><p>Для фич и изменений процесса</p></div>
+      <div class="hook"><small>Глагол команды</small><b>Добавили атрибут «Пользуется Облачной АТС»</b><p>Для «Новых фич»: что сделали, в прошедшем времени</p></div>
+    </div>
+
+    <h3 class="sub-h">Заголовки карточек</h3>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="panel"><p style="margin:0"><b style="color:var(--ink)">Вывод, а не тема.</b> Глагол и результат: «Сначала разобрался в проблеме», «Звонок специалиста в тот же день»</p></div>
+      <div class="panel"><p style="margin:0"><b style="color:var(--ink)">До 40 знаков, 2-3 строки.</b> Перенос по смыслу, короткие слова не висят в конце строки, конструктор склеивает их сам</p></div>
+    </div>
+
+    <h3 class="sub-h">Знаки и цифры</h3>
+    <div class="table-wrap" style="margin-top:14px"><table>
+      <thead><tr><th>Что</th><th>Как пишем</th><th>Пример</th></tr></thead>
+      <tbody>
+        <tr><td><b>Точка в конце</b></td><td>Не ставим в конце абзаца, подписи, пункта и заголовка. Между предложениями внутри абзаца ставим</td><td>Агент не спорил. Он предложил решение</td></tr>
+        <tr><td><b>Буква «ё»</b></td><td>Не пишем. Исключение: «всё», где без нее путается смысл</td><td>все клиенты · всё готово</td></tr>
+        <tr><td><b>Тире</b></td><td>Длинное не используем: ставим двоеточие, запятую или точку. Диапазон через дефис без пробелов</td><td>Агент не спорил: предложил решение · 3-5 строк</td></tr>
+        <tr><td><b>Кавычки</b></td><td>Елочки, внутри лапки</td><td>«Пользуется Облачной АТС»</td></tr>
+        <tr><td><b>Цифры</b></td><td>Цифрами. Тысячи через пробел, дроби через запятую</td><td>3 минуты · 12 500 клиентов · 4,5 часа</td></tr>
+        <tr><td><b>Проценты и деньги</b></td><td>Процент слитно, рубль через пробел</td><td>37% · 1,2 млн ₽</td></tr>
+        <tr><td><b>Даты и время</b></td><td>Число и месяц словом, год только если не текущий. Время через двоеточие</td><td>10 ноября · 12:27</td></tr>
+        <tr><td><b>Период</b></td><td>У каждой цифры: за какой срок и на ком</td><td>за октябрь · в пилоте на 500 клиентах</td></tr>
+        <tr><td><b>Восклицательный знак</b></td><td>Не больше одного на пост, лучше ни одного</td><td>Клиент выбрал звонок сегодня</td></tr>
+        <tr><td><b>Капслок и жирный</b></td><td>Капслок не используем. Жирный, если Buzz его показывает, только у заголовка-крючка</td><td></td></tr>
+        <tr><td><b>Ссылка</b></td><td>Одна, в последней строке, после слов о том, куда она ведет</td><td>👉 Пишите в бота CVM: ссылка</td></tr>
+        <tr><td><b>Реплики клиента</b></td><td>Знаки, регистр и опечатки не правим. Пропуски отмечаем многоточием</td><td>«Поэтому, все предложения от Билайн не актуальны»</td></tr>
+      </tbody></table></div>
+    <div class="note">Канцелярит и хайп проверка находит сама. Чем их заменить, смотрите в <a href="#dict" data-dict-cat="Канцелярит и хайп">словаре</a></div>
+
+    <h3 class="sub-h">Проверка текста</h3>
+    <p class="small muted">Вставьте текст поста и выберите рубрику. Здесь для примера текст эталона в первой версии: видно, чего в нем не хватало. Та же проверка встроена в конструктор</p>
+    <div class="ex" style="margin-top:14px;align-items:start">
+      <div>
+        <label class="f" for="lint-rub">Рубрика</label><select id="lint-rub"></select>
+        <label class="f" for="lint-in" style="margin-top:12px">Текст поста</label><textarea id="lint-in" rows="14"></textarea>
+      </div>
+      <div class="panel"><div class="lint" id="lint-out" aria-live="polite"></div></div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="sec" id="dict">
+    <div class="sec-k"><i>14</i>Текст</div>
+    <h2>Словарь</h2>
+    <p class="intro">Одно слово для одной вещи во всех постах. Слева то, что пишем, справа то, что заменяем. Найдите слово поиском или откройте тему</p>
+    <div class="dict-bar">
+      <input type="text" id="dict-q" placeholder="Найти слово, например «лид»" aria-label="Поиск по словарю">
+      <div class="fchips" id="dict-f" role="group" aria-label="Тема"></div>
+      <span class="dict-n" id="dict-n"></span>
+    </div>
+    <div class="table-wrap" style="margin-top:14px"><table class="dict">
+      <thead><tr><th>Пишем</th><th>Вместо</th><th>Почему</th><th>Пример</th></tr></thead>
+      <tbody id="dict-b"></tbody></table></div>
+  </section>
+
+  <!-- 15 -->
+  <section class="sec" id="emoji">
+    <div class="sec-k"><i>15</i>Текст</div>
+    <h2>Эмодзи</h2>
+    <p class="intro">Эмодзи в тексте работают как навигация, а не как украшение. Они повторяют словарь 3D-знаков с карточек, поэтому текст и картинки говорят на одном языке. Цвета тоже наши: желтый тон жестов по умолчанию совпадает с желтым билайна, а сердца только 💛 и 💜</p>
+    <div class="rules">
+      <div><span class="n-dot">1</span><div><b>До трех на пост</b><span>Знак рубрики и до двух смысловых</span></div></div>
+      <div><span class="n-dot">2</span><div><b>Знак рубрики первым</b><span>Только в первой строке, перед хештегом. Больше в тексте не повторяется</span></div></div>
+      <div><span class="n-dot">3</span><div><b>В начале строки</b><span>Смысловой эмодзи открывает строку и не заменяет слово</span></div></div>
+      <div><span class="n-dot">4</span><div><b>Не подряд и не везде</b><span>Не в заголовке-крючке, не в цитатах клиента, не по два рядом</span></div></div>
+      <div><span class="n-dot">5</span><div><b>На карточках нет</b><span>Там их роль играют 3D-знаки из библиотеки</span></div></div>
+      <div><span class="n-dot">6</span><div><b>Одно исключение</b><span>Закрепленный пост и анонс расписания: знаки рубрик работают как оглавление</span></div></div>
+    </div>
+
+    <h3 class="sub-h">Знак рубрики</h3>
+    <p class="small muted">Эмодзи повторяет 3D-знак рубрики на карточках. Коллега видит 💬 в ленте и сразу знает, что это пятничный кейс</p>
+    <div class="remo" id="remo"></div>
+
+    <h3 class="sub-h">Утвержденный набор</h3>
+    <p class="small muted">Двенадцать смысловых эмодзи. Основные шесть закрывают почти все посты. Если нужного нет, предложите его в набор, а не ставьте любой</p>
+    <div class="emo-grid" id="emo-grid"></div>
+
+    <h3 class="sub-h">Не используем</h3>
+    <div class="table-wrap" style="margin-top:14px"><table class="banned">
+      <thead><tr><th>Эмодзи</th><th>Почему</th></tr></thead>
+      <tbody id="banned"></tbody></table></div>
+    <p class="small muted" style="margin-top:10px">И еще: флаги, религиозные и политические символы, оттенки кожи у жестов</p>
+
+    <h3 class="sub-h">Так и не так</h3>
+    <div class="ex" style="margin-top:14px">
+      <div><div class="yn y">Так</div><div class="lines good">💬 #реальные_кейсы
+⏱️ От отказа до согласия 37 секунд
+👉 Пишите в бота CVM: ссылка</div></div>
+      <div><div class="yn n">Не так</div><div class="lines bad">🔥🔥 Агент 🤖 творит чудеса!!! 💰
+Пишите 👉 в бота</div></div>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="sec" id="kit">
+    <div class="sec-k"><i>16</i>Текст</div>
+    <h2>Тексты канала</h2>
+    <p class="intro">Готовые тексты для описания, закрепа, призывов и ответов в комментариях. Копируйте и меняйте под задачу</p>
+    <div class="ex" style="margin-top:24px;align-items:start">
+      <div class="panel rt">
+        <h3>Название</h3>
+        <p style="margin:0;color:var(--sub);font-size:15px">Пишем <b style="color:var(--ink)">CVM B2B Делает</b> так и только так: латиница CVM B2B, «Делает» с большой буквы, без кавычек, дефиса и точки. Так же, как на аватаре и карточках</p>
+        <h3 style="margin-top:12px">Описание канала</h3>
+        <div class="posttext" id="k-desc">Команда CVM билайн бизнес показывает, как мы находим клиентов для продуктов и доводим их до сделки. Реальные кейсы, механика простыми словами, новые фичи и люди. С задачей пишите в бота CVM</div>
+        <div class="bar2"><span class="small muted" id="k-desc-n"></span><button class="btn sm" type="button" data-copy="k-desc">Скопировать</button></div>
+      </div>
+      <div class="panel rt">
+        <h3>Закрепленный пост</h3>
+        <div class="posttext" id="k-pin">💜 Это канал команды CVM билайн бизнес
+
+Показываем, что CVM может сделать для вашего продукта: подобрать аудиторию, запустить рассылку или ИИ-агента и довести клиента до сделки
+
+Что выходит в канале:
+🚀 понедельник: новые фичи и атрибуты
+💡 среда: а знаете ли вы? Механика простыми словами
+💬 пятница: реальные кейсы с диалогами и цифрами
+👋 раз в две недели: знакомство с командой
+
+👉 С задачей пишите в бота CVM: [ссылка на бота]</div>
+        <div class="bar2"><span class="small muted">Исключение из правила трех эмодзи: здесь они оглавление</span><button class="btn sm" type="button" data-copy="k-pin">Скопировать</button></div>
+      </div>
+    </div>
+
+    <div class="ex" style="margin-top:16px;align-items:start">
+      <div class="panel">
+        <h3>Вопросы читателю</h3>
+        <p>Про опыт читателя, а не про нас. Ответить можно одним словом или одной фразой</p>
+        <div class="anno" style="margin-top:12px">
+          <div><i>💬</i><span>Какое возражение клиентов чаще всего мешает вашему продукту?</span></div>
+          <div><i>💬</i><span>Как бы вы ответили клиенту на месте агента?</span></div>
+          <div><i>💡</i><span>С каким вопросом про рассылки вы приходите к нам чаще всего?</span></div>
+          <div><i>🚀</i><span>Какой атрибут клиента вам не хватает для кампании?</span></div>
+          <div><i>🚀</i><span>Для какого продукта попробуете первыми?</span></div>
+          <div><i>👋</i><span>С какой задачей придете первыми?</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Призывы</h3>
+        <p>Последняя строка поста. Начинается с 👉, заканчивается ссылкой</p>
+        <div class="anno" style="margin-top:12px">
+          <div><i>1</i><span>👉 Хотите так же для своего продукта? Пишите в бота CVM: ссылка</span></div>
+          <div><i>2</i><span>👉 Расскажите о задаче в боте CVM, подберем аудиторию и сценарий: ссылка</span></div>
+          <div><i>3</i><span>👉 Остались вопросы? Пишите в бота CVM: ссылка</span></div>
+          <div><i>4</i><span>👉 Пишите Имени в Buzz или в бота CVM: ссылка</span></div>
+          <div><i>5</i><span>👉 Нужна кампания? Заведите задачу в Jira: ссылка</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Ответы в комментариях</h3>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="panel">
+        <h3>Правила</h3>
+        <div class="anno" style="margin-top:12px">
+          <div><i>1</i><span>Отвечаем в течение рабочего дня, на «вы» и по имени</span></div>
+          <div><i>2</i><span>На вопрос отвечаем текстом, а не только реакцией. Реакции редактора: 💛 и 👍</span></div>
+          <div><i>3</i><span>Вопрос про конкретную кампанию или клиента уводим в бота: данные клиентов в комментариях не обсуждаем</span></div>
+          <div><i>4</i><span>Критику не оспариваем: признаем, говорим, что поменяем, и потом показываем это в посте</span></div>
+          <div><i>5</i><span>В ответе не больше одного эмодзи, чаще всего 💛</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Заготовки ответов</h3>
+        <div class="anno" style="margin-top:12px">
+          <div><i>?</i><span><b>«А для нас так можно?»</b><br>Можно. Напишите в бота CVM, что за продукт и кому хотите предложить, вернемся с вариантами аудитории 💛</span></div>
+          <div><i>!</i><span><b>Критика</b><br>Справедливо, спасибо. В этом кейсе [что было]. Поменяем [что] и расскажем, что получилось</span></div>
+          <div><i>+</i><span><b>Похвала</b><br>Спасибо! Передадим автору кейса 💛</span></div>
+          <div><i>id</i><span><b>Вопрос про конкретного клиента</b><br>Чтобы не обсуждать данные клиента в канале, напишите, пожалуйста, в бота CVM: там разберем подробно</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="sec" id="brief">
+    <div class="sec-k"><i>17</i>Процесс</div>
+    <h2>Что принести редактору</h2>
+    <p class="intro">Пост соберется быстрее, если материал придет сразу и целиком. Лучше за неделю до дня рубрики: так останется время на согласование</p>
+    <div class="brief">
+      <div class="panel"><div class="hd"><span>💬</span><h3>Реальные кейсы</h3></div><ul>
+        <li>Диалог целиком: выгрузка или скриншоты без обрезки</li>
+        <li>Продукт и задача кампании: удержание, допродажа, привлечение</li>
+        <li>Цифры с периодом и базой: за какой срок, на скольких клиентах</li>
+        <li>Что было до и что поменяли</li>
+        <li>Кто автор кейса и кто проверит цифры</li></ul></div>
+      <div class="panel"><div class="hd"><span>💡</span><h3>А знаете ли вы?</h3></div><ul>
+        <li>Вопрос, который вам задают коллеги</li>
+        <li>Короткий ответ одним предложением</li>
+        <li>Как это работает по шагам</li>
+        <li>Пример из жизни</li>
+        <li>Ссылка на правило или документ, если есть</li></ul></div>
+      <div class="panel"><div class="hd"><span>🚀</span><h3>Новые фичи</h3></div><ul>
+        <li>Что появилось и с какой даты</li>
+        <li>Кому полезно и для каких продуктов</li>
+        <li>Сценарий «если, тогда»</li>
+        <li>Как запустить: шаги и куда писать</li>
+        <li>Скриншот интерфейса, если есть</li></ul></div>
+      <div class="panel"><div class="hd"><span>👋</span><h3>Знакомство</h3></div><ul>
+        <li>Портрет на светлом фоне, лицо крупно</li>
+        <li>Роль своими словами, без названия из штатного расписания</li>
+        <li>Три задачи, с которыми к человеку приходить</li>
+        <li>Одна мысль о работе</li>
+        <li>Как связаться</li></ul></div>
+    </div>
+    <div class="ex" style="margin-top:16px;align-items:start">
+      <div class="panel rt">
+        <h3>Бриф поста</h3>
+        <div class="posttext" id="k-brief">Рубрика:
+Тема одной фразой:
+Опора: точная аудитория, умный диалог, честный результат, бережно к клиенту или просто начать
+Главная цифра, период и база:
+Что читатель должен сделать после поста:
+Материалы: диалог, скриншоты, фото
+Кто проверит цифры:
+Желаемая дата:</div>
+        <div class="bar2"><span class="small muted">Заполните и отправьте редактору вместе с материалами</span><button class="btn sm" type="button" data-copy="k-brief">Скопировать</button></div>
+      </div>
+      <div class="panel">
+        <h3>Данные клиентов</h3>
+        <p>Если на скриншотах видны имена, телефоны, ИНН или названия компаний, предупредите редактора: их скроем при сборке размытием</p>
+        <p>Цифры, которые еще не согласованы, помечайте прямо в брифе. В пост они не попадут, пока их не проверит автор кейса</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="sec" id="process">
+    <div class="sec-k"><i>18</i>Процесс</div>
+    <h2>Процесс и проверка</h2>
+    <div class="flow" style="margin-top:24px">
+      <div><b>1. Тема</b>Автор приходит к редактору. Если не приходит, редакция сама приходит к нему</div>
+      <div><b>2. Материал</b>Факты, цифры с периодом, скриншоты и выгрузки диалогов по брифу</div>
+      <div><b>3. Сборка</b>Текст по заготовке рубрики, карточки в конструкторе по рецепту</div>
+      <div><b>4. Согласование</b>Один согласующий. Правки вносим в JSON поста, а не в картинки</div>
+      <div><b>5. Публикация</b>По расписанию рубрики. PNG загружаем в Buzz строго по порядку и в течение дня отвечаем на комментарии</div>
+    </div>
+    <div class="ex" style="margin-top:16px">
+      <div class="panel"><h3>Что считаем</h3><p>Подписчики, комментарии, заявки через бота и Jira. Реакции и просмотры как вспомогательные</p></div>
+      <div class="panel"><h3>Как понять, что пост сработал</h3><p>Коллега написал в бота или комментарий с вопросом «а для нас так можно?». Это главный результат, ради него канал и существует</p></div>
+    </div>
+    <h3 class="sub-h">Перед публикацией</h3>
+    <p class="small muted">Отметьте пункты, когда проверите. Отметки живут только на этой странице</p>
+    <div class="check" id="check">
+      <label><input type="checkbox"><span>Имена, телефоны, адреса, ИНН, названия компаний и ID диалогов скрыты</span></label>
+      <label><input type="checkbox"><span>Агент нигде не называет себя человеком на прямой вопрос</span></label>
+      <label><input type="checkbox"><span>Нет чувствительных тем: здоровье, угрозы, политика</span></label>
+      <label><input type="checkbox"><span>Цифры с периодом и свежие, проверены у автора</span></label>
+      <label><input type="checkbox"><span>Нет несогласованных сроков и обещаний</span></label>
+      <label><input type="checkbox"><span>Реплики дословно, пропуски отмечены многоточием</span></label>
+      <label><input type="checkbox"><span>Первая и последняя карточки желтые, внутренние белые, если карточек четыре и больше</span></label>
+      <label><input type="checkbox"><span>Текст поста до 600 знаков, есть вопрос читателю и ссылка</span></label>
+      <label><input type="checkbox"><span>Первая строка: эмодзи рубрики и хештег, всего до трех эмодзи</span></label>
+      <label><input type="checkbox"><span>Проверка текста зеленая: без «ё», длинных тире, точек в конце и канцелярита</span></label>
+    </div>
+    <button class="btn sm" type="button" id="check-reset" style="margin-top:12px">Снять отметки</button>
+  </section>
+
+  <!-- 19 -->
+  <section class="sec" id="files">
+    <div class="sec-k"><i>19</i>Процесс</div>
+    <h2>Файлы и контакты</h2>
+    <p class="intro">Все, что можно открыть, скачать или переиспользовать</p>
+    <div class="res">
+      <a href="constructor.html"><b>Конструктор постов</b><span>Карточки по рецептам, проверка текста, выгрузка PNG и ZIP</span></a>
+      <a href="#ill"><b>3D-иллюстрации</b><span>31 знак в семи стилях, PNG 512 или 1024 px</span></a>
+      <a href="../tokens/tokens.json" download><b>Токены</b><span>Цвета, пастель, шрифт, отступы, форматы и правила текста</span><code>tokens/tokens.json</code></a>
+      <a href="examples/post-03-oats/post.json" download><b>Эталонный пост</b><span>JSON поста 3: откройте его в конструкторе через кнопку JSON</span><code>examples/post-03-oats</code></a>
+      <a href="assets/voice.js" download><b>Голос и проверка текста</b><span>Эмодзи, заготовки по рубрикам, стоп-слова, правила проверки</span><code>assets/voice.js</code></a>
+      <div class="author"><b>Автор дизайн-системы</b><span>Софья Горянская</span><a href="mailto:sgoryanskaya@beeline.ru" style="padding:0;border:0;background:none;color:var(--vi);font-weight:700">sgoryanskaya@beeline.ru</a></div>
+    </div>
+  </section>
+</div>
+</main>
+
+<button class="toc-fab" type="button" id="toc-fab" hidden aria-haspopup="dialog">☰ Оглавление<small id="toc-cur"></small></button>
+<dialog class="toc-dlg" id="toc-dlg" aria-label="Оглавление"><div class="in-d">
+  <div class="toc-top"><h2>Оглавление</h2><button class="btn sm" type="button" id="toc-close">Закрыть</button></div>
+  <div class="toc-g" id="toc-g2"></div>
+</div></dialog>
+
+<footer class="foot"><div class="wrap">Дизайн-система CVM B2B · раздел «Канал в Buzz» · Автор: Софья Горянская, <a href="mailto:sgoryanskaya@beeline.ru">sgoryanskaya@beeline.ru</a><br>Шрифт Beeline Sans принадлежит билайну, для внутреннего использования</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="assets/illustrations.js"></script>
+<script src="assets/templates.js"></script>
+<script src="assets/voice.js"></script>
+<script src="assets/guide.js"></script>
+</body>
+</html>

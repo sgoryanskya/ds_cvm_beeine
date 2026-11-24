@@ -1,0 +1,148 @@
+/* Канал CVM в Buzz · стили карточек
+   Холст карточки .cv рисуется в натуральную величину (1080 px по ширине) и масштабируется снаружи.
+   Язык 30/70: 30% билайн (желтый, черный, Beeline Sans, белый) и 70% свой (маршрут, фиолетовые станции, спокойные плашки).
+   Цвет как роль: желтый = агент и продукт, белая плашка = клиент и факт, фиолетовый = маршрут и разметка команды CVM. */
+
+@font-face{font-family:BeelineSans;src:url('../../assets/fonts/BeelineSans-Regular.ttf') format('truetype');font-weight:400;font-display:block}
+@font-face{font-family:BeelineSans;src:url('../../assets/fonts/BeelineSans-Medium.ttf') format('truetype');font-weight:500;font-display:block}
+@font-face{font-family:BeelineSans;src:url('../../assets/fonts/BeelineSans-Bold.ttf') format('truetype');font-weight:700;font-display:block}
+@font-face{font-family:BeelineSans;src:url('../../assets/fonts/BeelineSans-Black.otf') format('opentype');font-weight:900;font-display:block}
+
+.cv{
+  --ink:#141414; --sub:#55555E; --mut:#7A7A84;
+  --y:#FFC800; --vi:#6B4EFF; --vi2:#5B3FF0; --vi-soft:#EFEBFF;
+  --pad-x:72px; --pad-top:76px; --pad-bot:72px; --gap:16px;
+  position:relative; overflow:hidden; box-sizing:border-box;
+  font-family:BeelineSans,Arial,sans-serif; color:var(--ink); text-align:left;
+  -webkit-font-smoothing:antialiased; text-rendering:geometricPrecision;
+  font-feature-settings:"kern"; line-height:1.2;
+}
+.cv *,.cv *:before,.cv *:after{box-sizing:border-box;margin:0;padding:0}
+.cv img{display:block;max-width:none}
+
+/* форматы */
+.cv.f-45{width:1080px;height:1350px}
+.cv.f-11{width:1080px;height:1080px}
+.cv.f-916{width:1080px;height:1920px}
+.cv.f-169{width:1920px;height:1080px}
+.cv.f-31{width:1500px;height:500px}
+
+/* фоны: плоские, без шума и свечений */
+.cv.bg-yellow{background:#FFC800}
+.cv.bg-white{background:#FFFFFF}
+.cv.bg-violet{background:#6B4EFF;color:#fff}
+/* пастель: только внутренние карточки коротких постов (до трех карточек), одна на пост, текст чернилами. --tint окрашивает тени и плитки */
+.cv.bg-pink{--tint:214,84,140;background:#FFE4EE}
+.cv.bg-peach{--tint:214,110,50;background:#FFE6D5}
+.cv.bg-lemon{--tint:190,140,0;background:#FFF5CC}
+.cv.bg-mint{--tint:30,150,95;background:#DDF5E8}
+.cv.bg-blue{--tint:50,120,220;background:#DEEEFF}
+.cv.bg-lavender{--tint:100,70,235;background:#ECE6FF}
+.cv.pastel{--mut:#5E5E68}
+
+.cv .abs{position:absolute!important}
+.cv .in{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;padding:var(--pad-top) var(--pad-x) var(--pad-bot)}
+.cv .in>*{flex-shrink:0}
+.cv .grow{flex:1 1 auto;min-height:0}
+.cv .layer{position:absolute;z-index:0;pointer-events:none}
+
+/* ---------- типографика: 1 заголовок, 2 акцент, 3 текст, 4 служебное ---------- */
+.cv .top{height:52px;display:flex;align-items:center;gap:16px}
+.cv .eb{font-size:26px;font-weight:500;color:var(--mut)}
+.cv .h{font-size:84px;font-weight:700;letter-spacing:-.034em;line-height:1;text-wrap:balance}
+.cv .h1{font-size:126px;font-weight:900;letter-spacing:-.042em;line-height:.94}
+.cv .lead{font-size:34px;font-weight:500;line-height:1.3;color:rgba(20,20,20,.78)}
+.cv .txt{font-size:31px;font-weight:400;line-height:1.45;color:rgba(20,20,20,.75)}
+.cv .lbl{font-size:24px;font-weight:500;color:var(--mut)}
+.cv .num-xl{font-weight:700;letter-spacing:-.06em;line-height:.8}
+.cv .brand{font-size:25px;font-weight:500;color:rgba(20,20,20,.7)}
+/* контраст: серый #7A7A84 только на белом (4,3:1). На желтом подписи чернилами 70% (от 5,2:1), на фиолетовом белым 90% (4,4:1) */
+.cv.bg-yellow .eb,.cv.bg-yellow .lbl,.cv.pastel .eb,.cv.pastel .lbl{color:rgba(20,20,20,.7)}
+.cv.bg-violet .eb,.cv.bg-violet .lbl,.cv.bg-violet .brand{color:rgba(255,255,255,.9)}
+.cv.bg-violet .lead,.cv.bg-violet .txt{color:rgba(255,255,255,.86)}
+.cv b{font-weight:700}
+
+/* ---------- материалы: плашка, желтая реплика, фиолетовая метка ----------
+   Один свет сверху слева, одна мягкая тень вниз. Без бликов, кромок и стекла */
+.cv .lg,.cv .gold,.cv .vio{position:relative;isolation:isolate}
+/* плашка: клиент, факт, контейнер */
+.cv .lg{background:#FFFFFF;box-shadow:0 1px 2px rgba(20,20,40,.05),0 22px 44px -28px rgba(40,30,110,.32)}
+.cv.bg-white .lg{background:#F5F4F9;box-shadow:none}
+.cv.bg-yellow .lg{background:#FFFFFF;box-shadow:0 1px 2px rgba(120,80,0,.06),0 22px 40px -26px rgba(150,95,0,.5)}
+.cv.bg-violet .lg{color:#fff;background:rgba(255,255,255,.14);box-shadow:none}
+.cv.pastel .lg{background:#FFFFFF;box-shadow:0 1px 2px rgba(var(--tint),.06),0 22px 40px -26px rgba(var(--tint),.45)}
+
+/* желтая реплика: голос агента и продукт */
+.cv .gold{background:#FFD23F;color:var(--ink);box-shadow:none}
+.cv.bg-yellow .gold{background:#141414;color:#FFC800}
+
+/* фиолетовая метка: шаги, кнопка, станции маршрута */
+.cv .vio{color:#fff;background:#6B4EFF;box-shadow:none}
+.cv.bg-violet .vio{background:#fff;color:#5B3FF0}
+
+/* метки-кружки: плоские */
+.cv .orb{flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#6B4EFF}
+.cv .orb.y{background:#FFC800}
+.cv.bg-yellow .orb.y{background:#FFFFFF}
+.cv .orb.big{box-shadow:0 18px 32px -16px rgba(60,40,170,.45)}
+.cv.bg-yellow .orb.big{box-shadow:0 18px 32px -16px rgba(150,95,0,.5)}
+/* пустая метка это станция маршрута: кольцо. В чипе и бейдже точка */
+.cv .orb:empty{background:#FFFFFF;box-shadow:inset 0 0 0 9px #6B4EFF}
+.cv.bg-violet .orb:empty{background:#6B4EFF;box-shadow:inset 0 0 0 9px #FFFFFF}
+.cv .chip>.orb:empty,.cv .badge>.orb:empty{width:16px!important;height:16px!important;margin:0 2px 0 10px;background:#6B4EFF;box-shadow:none}
+.cv.bg-violet .chip>.orb:empty{background:#FFFFFF}
+.cv .num{flex:none;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:700;line-height:1}
+
+/* чип рубрики и бейджи */
+.cv .chip{display:inline-flex;align-items:center;gap:12px;height:54px;padding:0 24px 0 10px;border-radius:27px;font-size:24px;font-weight:700;white-space:nowrap;color:var(--ink)}
+.cv .chip .orb{width:34px;height:34px}
+.cv.bg-violet .chip{color:#fff}
+.cv .tag{display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:24px;font-size:24px;font-weight:700;white-space:nowrap}
+
+/* реплики */
+.cv .chat{display:flex;flex-direction:column;gap:32px}
+.cv .row{display:flex;align-items:center;gap:24px}
+.cv .msg{position:relative;max-width:872px}
+.cv .msg.a{align-self:flex-end}
+.cv .row>.msg{flex:none}
+.cv .bub{display:flow-root;font-size:31px;line-height:1.5;font-weight:400;padding:24px 32px;border-radius:36px;color:rgba(20,20,20,.72)}
+.cv .msg.c .bub{border-top-left-radius:12px}
+.cv .msg.a .bub{border-top-right-radius:12px}
+.cv .bub.short{font-size:40px;font-weight:700;padding:16px 32px 18px;color:var(--ink)}
+.cv .bub .t{float:right;font-size:19px;font-weight:500;opacity:.42;margin:16px -6px 0 18px;line-height:1}
+.cv .bub.short .t{margin:22px -4px 0 26px}
+.cv .msg .badge{position:absolute;top:-30px;right:26px;z-index:5}
+.cv .sep{font-size:24px;font-weight:500;color:var(--mut);margin-bottom:-8px}
+
+/* ключевая фраза: линза, плоская подложка; персональные данные: размыты.
+   Лавандовая на белом и в плашке, белая на желтом и пастели, белая полупрозрачная в реплике агента */
+.cv .k{color:var(--ink);font-weight:700;padding:1px 10px 3px;margin:0 -3px;border-radius:12px;-webkit-box-decoration-break:clone;box-decoration-break:clone;background:#E8E3FF}
+.cv.bg-yellow .k,.cv.pastel .k{background:#FFFFFF}
+.cv.bg-violet .k{color:#fff;background:rgba(255,255,255,.22)}
+.cv .gold .k,.cv .k.on-gold{background:rgba(255,255,255,.72)}
+.cv .lg .k,.cv .k.on-glass{background:#E8E3FF}
+.cv.bg-violet .lg .k{color:#fff;background:rgba(255,255,255,.22)}
+.cv .pd{display:inline-block;color:transparent!important;text-shadow:0 0 12px rgba(20,20,20,.8);padding:0 8px;margin:0 -2px;border-radius:12px;line-height:1.2;background:rgba(255,255,255,.5)}
+
+/* иллюстрации */
+.cv .ill-tile{display:flex;align-items:center;justify-content:center}
+.cv .ill-tile.t-violet{background:linear-gradient(150deg,rgba(244,240,255,.72) 0%,rgba(178,160,255,.66) 46%,rgba(104,76,240,.7) 100%)!important;
+  box-shadow:0 44px 80px -34px rgba(70,30,180,.65),inset 20px 24px 40px -12px rgba(255,255,255,.85),inset -24px -30px 56px -12px rgba(90,60,230,.35)!important}
+.cv .ill-tile.t-pearl{background:linear-gradient(150deg,#FFFFFF 0%,#F3F0FF 50%,#E2DBFF 100%)!important;
+  box-shadow:0 40px 70px -32px rgba(70,30,180,.45),inset 18px 22px 36px -12px rgba(255,255,255,.9),inset -20px -26px 50px -14px rgba(120,96,240,.22)!important}
+.cv .ill-tile.t-clear{background:linear-gradient(150deg,rgba(255,255,255,.5),rgba(255,255,255,.12))!important;
+  box-shadow:0 40px 70px -30px rgba(40,10,140,.55),inset 18px 22px 36px -12px rgba(255,255,255,.6),inset -20px -26px 50px -14px rgba(60,30,200,.3)!important}
+/* на пастели плитка берет оттенок фона */
+.cv.pastel .ill-tile.t-violet,.cv.pastel .ill-tile.t-pearl{background:linear-gradient(150deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.62) 45%,rgba(var(--tint),.4) 100%)!important;
+  box-shadow:0 44px 80px -34px rgba(var(--tint),.62),inset 20px 24px 40px -12px rgba(255,255,255,.9),inset -24px -30px 56px -12px rgba(var(--tint),.32)!important}
+.cv .ill-badge{border-radius:50%;display:flex;align-items:center;justify-content:center}
+.cv .glow{border-radius:50%}
+
+/* кнопка */
+.cv .btn{height:88px;padding:0 44px;border-radius:44px;display:flex;align-items:center;font-size:29px;font-weight:700;white-space:nowrap}
+.cv .swipe{font-size:26px;font-weight:700;display:flex;align-items:center;gap:12px}
+.cv.bg-violet .swipe svg path{stroke:#fff}
+
+/* фото в стеклянной раме */
+.cv .photo{overflow:hidden;background:#E9E6F4}
+.cv .photo img{width:100%;height:100%;object-fit:cover}

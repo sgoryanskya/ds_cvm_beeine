@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Дизайн-система CVM B2B</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .hub-hero{padding-block:64px 40px}
+  .secs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
+  @media (max-width:900px){.secs{grid-template-columns:minmax(0,1fr)}}
+  .sc{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0}
+  .sc.main{background:linear-gradient(160deg,#FFFFFF 0%,#F4F1FF 100%);border-color:#DCD4FF}
+  .sc h2{font-size:26px;font-weight:700}
+  .sc p{color:var(--sub);font-size:15px}
+  .sc ul{margin:0;padding-left:18px;color:var(--sub);font-size:15px}
+  .sc .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+  .sc .ic{width:56px;height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;flex:none}
+  .sc .ic.glass{background:linear-gradient(150deg,#F4F0FF 0%,#B2A0FF 46%,#684CF0 100%);box-shadow:inset 0 1px 1px rgba(255,255,255,.9),inset 0 -6px 14px rgba(60,30,200,.25),0 10px 22px -8px rgba(91,63,240,.55)}
+  .sc .ic svg{display:block}
+  .found{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:900px){.found{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media (max-width:480px){.found{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .found .c{height:84px;border-radius:16px;border:1px solid var(--line)}
+  .found .l{font-size:14px;margin-top:8px}
+  .found .l code{background:transparent;padding:0;color:var(--mut);font-size:12px}
+  .road{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:800px){.road{grid-template-columns:minmax(0,1fr)}}
+  .road div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;font-size:15px;color:var(--sub)}
+  .road b{display:block;color:var(--ink);margin-bottom:4px}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="logo" href="index.html"><i></i>Дизайн-система CVM</a>
+  <nav class="nav" aria-label="Разделы">
+    <a href="buzz/index.html">Канал в Buzz</a>
+    <a href="buzz/constructor.html">Конструктор постов</a>
+    <a href="email/index.html">Письма</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <section class="hub-hero">
+    <div class="eyebrow">билайн бизнес · отдел CVM B2B</div>
+    <h1 class="display" style="margin-top:14px;max-width:14ch">Дизайн-система CVM B2B</h1>
+    <p class="lede" style="margin-top:18px">Единые правила и инструменты для всего, что делает отдел: email-рассылки, презентации и канал в Buzz. Один бренд билайна, свои материалы для каждого канала</p>
+
+    <div class="secs">
+      <article class="sc main">
+        <div class="ic glass" data-gold="aichat" aria-hidden="true"></div>
+        <span class="pill ok" style="align-self:flex-start">Готово</span>
+        <h2>Канал CVM в Buzz</h2>
+        <p>Бренд канала CVM B2B Делает для авторов постов: позиционирование, ключевые сообщения, принципы с примерами и контрпримерами, пастельная палитра, материалы и маршрут, 3D-знаки со скачиванием PNG, 19 шаблонов карточек, словарь, эмодзи и конструктор постов с проверкой текста</p>
+        <div class="links"><a class="btn pri" href="buzz/index.html">Открыть гайд</a><a class="btn" href="buzz/constructor.html">Конструктор</a></div>
+      </article>
+      <article class="sc">
+        <div class="ic" style="background:var(--y)" data-ink="mail" aria-hidden="true"></div>
+        <span class="pill ok" style="align-self:flex-start">Готово</span>
+        <h2>Письма</h2>
+        <p>Компоненты email 2.0 с живыми превью: шапка с новым логотипом, 35 вариантов блоков, кнопки, подвал, темное письмо и шесть примеров писем. Каталог собирает 169 компонентов в 16 типах из реальных писем, Figma и приемов рынка, «Макеты» показывают 20 писем целиком, а вкладка «Рынок» разбирает письма конкурентов и лидеров B2B</p>
+        <ul><li>Рамка 720, контент 640, карточки через 12</li><li>Желтый у кнопки, линий и рамок, без желтых заливок: темная тема почты делает их бурыми</li><li>Имидж 640×350, H1 Beeline Sans 26/30</li></ul>
+        <div class="links"><a class="btn pri" href="email/index.html">Открыть раздел</a><a class="btn" href="email/catalog.html">Компоненты</a><a class="btn" href="email/layouts.html">Макеты писем</a><a class="btn" href="email/market.html">Рынок</a><a class="btn" href="https://sgoryanskya.github.io/email_goryanskaya/" target="_blank" rel="noopener">Библиотека макетов</a></div>
+      </article>
+      <article class="sc">
+        <div class="ic" style="background:#F3F3F3;border:1px solid var(--line)" data-ink="chart" aria-hidden="true"></div>
+        <span class="pill vi" style="align-self:flex-start">Есть, перенести сюда</span>
+        <h2>Презентации</h2>
+        <p>Шаблон планерки CVM: 102 макета на светлом b2b-мастере билайна, сетка 12 колонок, «главное живет в круге»</p>
+        <ul><li>Не больше трех ярких элементов на слайде</li><li>Строчная буква в начале заголовков</li><li>Черных заливок нет, самый темный #3F4242</li></ul>
+        <div class="links"><span class="btn" aria-disabled="true" style="cursor:default">Шаблон_планерка.pptx</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Общие основы</h2>
+    <p class="intro">Это общее для всех разделов. Каждый раздел добавляет свои материалы поверх, не меняя основу</p>
+    <div class="found">
+      <div><div class="c" style="background:#FFC800"></div><div class="l"><b>Желтый билайн</b><br><code>#FFC800</code></div></div>
+      <div><div class="c" style="background:#141414"></div><div class="l"><b>Текст</b><br><code>#141414</code></div></div>
+      <div><div class="c" style="background:#3F4242"></div><div class="l"><b>Темно-серый</b><br><code>#3F4242</code></div></div>
+      <div><div class="c" style="background:#787979"></div><div class="l"><b>Серый</b><br><code>#787979</code></div></div>
+      <div><div class="c" style="background:#F3F3F3"></div><div class="l"><b>Фон плашек</b><br><code>#F3F3F3</code></div></div>
+      <div><div class="c" style="background:radial-gradient(140% 130% at 28% 0%,#B3A2FF 0%,#7457FF 42%,#4F2FE6 100%)"></div><div class="l"><b>Фиолетовый CVM</b><br><code>#6B4EFF, только Buzz</code></div></div>
+    </div>
+    <div class="grid g3" style="margin-top:24px">
+      <div class="panel"><h3>Шрифт</h3><p>Beeline Sans: Regular, Medium, Bold, Black. В email фолбэк Arial</p></div>
+      <div class="panel"><h3>Название бренда</h3><p>«билайн» и «билайн бизнес» строчными. В цитатах клиентов текст не правим</p></div>
+      <div class="panel"><h3>Данные</h3><p>Никаких персональных данных клиентов в макетах, цифры только с периодом</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Дальше</h2>
+    <div class="road">
+      <div><b>Конструктор писем</b>Сборка письма из блоков раздела «Письма» с выгрузкой HTML для верстки</div>
+      <div><b>Перенести презентации</b>Каталог 102 макетов с кодами и правилами, ссылка на шаблон</div>
+      <div><b>Общие токены</b>Один файл <code>tokens/tokens.json</code> для всех разделов и для Figma</div>
+    </div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap">Дизайн-система CVM B2B · Автор: Софья Горянская, <a href="mailto:sgoryanskaya@beeline.ru">sgoryanskaya@beeline.ru</a><br>Шрифт Beeline Sans принадлежит билайну, для внутреннего использования</div></footer>
+<script src="buzz/assets/illustrations.js"></script>
+<script>
+  // знаки разделов из той же библиотеки, что и 3D-иллюстрации канала
+  (function () {
+    var I = window.CVMIll; if (!I) return;
+    document.querySelectorAll('[data-gold]').forEach(function (el) { el.innerHTML = I.gold(el.dataset.gold, 36); });
+    document.querySelectorAll('[data-ink]').forEach(function (el) { el.innerHTML = I.ink(el.dataset.ink, 28, '#141414'); });
+  })();
+</script>
+</body>
+</html>

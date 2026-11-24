@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Письма CVM B2B</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="assets/email.css">
+<style>
+  html{scroll-behavior:smooth;scroll-padding-top:76px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  .hero{padding-block:56px 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:40px;align-items:center}
+  @media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
+  .hero .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+  .mini{position:relative;height:600px;overflow:hidden;border-radius:22px;background:#EFEFEF;box-shadow:0 30px 60px -30px rgba(60,30,170,.45)}
+  .mini>.ml{position:absolute;left:0;top:0;width:720px;max-width:none;transform-origin:0 0}
+  .mini:after{content:"";position:absolute;inset:auto 0 0;height:90px;background:linear-gradient(rgba(239,239,239,0),#EFEFEF);pointer-events:none}
+  .mini a.open{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:2}
+  .note{background:var(--y-soft);border:1px solid #F3DE94;border-radius:14px;padding:12px 16px;font-size:15px;margin-top:16px;max-width:80ch}
+  .note.vi{background:var(--vi-soft);border-color:#DCD4FF}
+  .sub-h{font-size:22px;margin-top:44px}
+  .sub-h+p{margin-top:6px;color:var(--sub);max-width:66ch}
+
+  .sec-k{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+  .sec-k i{font-style:normal;color:var(--vi);font-variant-numeric:tabular-nums}
+
+  /* оглавление */
+  .toc-box{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:26px clamp(18px,3vw,32px) 22px;margin-bottom:56px}
+  .toc-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .toc-top h2{font-size:24px}
+  .toc-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px;margin-top:18px}
+  @media (max-width:960px){.toc-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:540px){.toc-g{grid-template-columns:minmax(0,1fr)}}
+  .toc-g h3{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--vi);padding-bottom:8px;border-bottom:2px solid var(--vi-soft)}
+  .toc-g ol{list-style:none;margin:0;padding:0}
+  .toc-g a{display:grid;grid-template-columns:30px minmax(0,1fr);column-gap:4px;padding:9px 6px 9px 0;border-bottom:1px dashed var(--line);text-decoration:none;color:var(--ink);border-radius:8px}
+  .toc-g a i{font-style:normal;font-weight:700;color:var(--mut);font-size:14px;font-variant-numeric:tabular-nums;padding-top:1px}
+  .toc-g a b{font-size:16px;font-weight:700;line-height:1.3}
+  .toc-g a span{grid-column:2;font-size:13px;color:var(--sub);line-height:1.35;margin-top:2px}
+  .toc-g a:hover b,.toc-g a[aria-current="true"] b{color:var(--vi)}
+  .toc-g a[aria-current="true"] i{color:var(--vi)}
+  .toc-fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:55;display:flex;align-items:center;gap:8px;height:46px;padding:0 18px 0 14px;border-radius:999px;border:0;background:var(--ink);color:#fff;font:inherit;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 14px 30px -12px rgba(20,10,60,.55);transition:opacity .2s,transform .2s}
+  .toc-fab[hidden]{display:flex;opacity:0;transform:translateY(12px);pointer-events:none}
+  .toc-fab small{font-weight:500;color:rgba(255,255,255,.7);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  @media (max-width:520px){.toc-fab small{display:none}}
+  dialog.toc-dlg{border:0;border-radius:24px;padding:0;width:min(980px,calc(100vw - 24px));max-height:calc(100vh - 40px);box-shadow:0 30px 80px -20px rgba(20,10,70,.5)}
+  dialog.toc-dlg::backdrop{background:rgba(20,16,40,.45)}
+  .toc-dlg .in-d{padding:22px clamp(16px,3vw,28px) 24px}
+
+  /* 01 */
+  .facts4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:900px){.facts4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:520px){.facts4{grid-template-columns:minmax(0,1fr)}}
+  .f4{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-width:0}
+  .f4 small{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mut)}
+  .f4 b{display:block;font-size:18px;line-height:1.3;margin-top:8px;letter-spacing:-.01em}
+  .f4 p{font-size:14.5px;color:var(--sub);margin-top:6px}
+  .anat{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  @media (max-width:900px){.anat{grid-template-columns:minmax(0,1fr)}}
+  .anat a{display:grid;grid-template-columns:36px minmax(0,1fr);gap:4px 12px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;text-decoration:none;color:var(--ink);height:100%}
+  .anat a:hover{border-color:#CFCBDD}
+  .anat i{grid-row:span 2;width:36px;height:36px;border-radius:50%;background:var(--y);font-style:normal;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .anat b{font-size:16px}
+  .anat span{font-size:14px;color:var(--sub);line-height:1.4}
+
+  /* сетка и цвет */
+  .gridfig{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;margin-top:28px;align-items:start}
+  @media (max-width:900px){.gridfig{grid-template-columns:minmax(0,1fr)}}
+  .gridfig svg{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--line)}
+  .sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-top:16px}
+  .sw div{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;min-width:0}
+  .sw i{display:block;height:64px;border-bottom:1px solid var(--line)}
+  .sw b{display:block;font-size:14px;padding:10px 12px 0}
+  .sw code{display:inline-block;margin:4px 12px 0;font-size:12px}
+  .sw span{display:block;font-size:12.5px;color:var(--sub);padding:4px 12px 12px;line-height:1.35}
+  .tsample{font-family:Arial,Helvetica,sans-serif;color:#141414}
+  td .tsample{display:block;max-width:420px}
+
+  /* витрина компонента */
+  .cmp{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;margin-top:28px;align-items:start}
+  @media (max-width:1100px){.cmp{grid-template-columns:minmax(0,1fr)}}
+  .dm-bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .dm-opts{display:flex;gap:8px;flex-wrap:wrap}
+  .seg{display:inline-flex;flex-wrap:wrap;background:var(--surface-2);border-radius:20px;padding:3px;gap:2px}
+  .seg button{border:0;background:transparent;font:inherit;font-size:13px;font-weight:700;color:var(--sub);height:32px;padding:0 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+  .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+  .dm-stage{border:1px solid var(--line);border-radius:22px;padding:clamp(10px,2vw,24px);background:#fff radial-gradient(#E5E2EE 1px,transparent 1.2px) 0 0/16px 16px}
+  .dm-stage>.ml{border-radius:12px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.06),0 18px 40px -24px rgba(40,20,120,.35);transition:max-width .25s}
+  .dm-note{font-size:15px;color:var(--sub);margin-top:12px;max-width:72ch}
+  .dm-note b{color:var(--ink)}
+  .spec{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;min-width:0}
+  .spec h3{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+  .spec h3+*{margin-top:10px}
+  .spec *+h3{margin-top:22px}
+  .spec dl{margin:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 12px;font-size:14px}
+  .spec dt{color:var(--sub);padding:7px 0;border-bottom:1px dashed var(--line)}
+  .spec dd{margin:0;padding:7px 0;border-bottom:1px dashed var(--line);font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+  .spec ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--sub)}
+  .spec li+li{margin-top:6px}
+  .spec .pill{margin-top:12px}
+
+  /* логотип, имиджи, кнопки */
+  .logos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:800px){.logos{grid-template-columns:minmax(0,1fr)}}
+  .logos figure{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
+  .logos .lgbox{height:140px;display:flex;align-items:center;justify-content:center;padding:16px}
+  .logos .lgbox img{width:222px;max-width:100%;height:auto}
+  .logos figcaption{padding:12px 16px;font-size:14px;color:var(--sub);border-top:1px solid var(--line)}
+  .logos figcaption b{color:var(--ink);display:block}
+  .logos .no .lgbox{background:repeating-linear-gradient(-45deg,#FAFAFC 0 10px,#F3F2F8 10px 20px);flex-direction:column;gap:10px}
+  .oldlogo{display:flex;align-items:center;gap:8px;font:700 26px/1 BeelineSans,Arial,sans-serif;color:#141414;opacity:.45}
+  .oldlogo i{width:30px;height:30px;border-radius:50%;background:repeating-linear-gradient(160deg,#141414 0 5px,#FFC800 5px 10px)}
+  .oldlogo em{font-style:normal;font-size:16px;background:#FFC800;border-radius:6px;padding:4px 8px}
+  .heroes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:800px){.heroes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:480px){.heroes{grid-template-columns:minmax(0,1fr)}}
+  .heroes figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .heroes img{display:block;width:100%;height:auto;aspect-ratio:640/350;object-fit:cover}
+  .heroes figcaption{font-size:13px;color:var(--sub);padding:8px 12px}
+  .heroes code{font-size:11.5px}
+  .btnspec{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:900px){.btnspec{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:520px){.btnspec{grid-template-columns:minmax(0,1fr)}}
+  .btnspec>div{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface);min-width:0}
+  .btnspec .ml{max-width:none;border-radius:0;padding:28px 12px;display:flex;justify-content:center}
+  .btnspec p{font-size:13.5px;color:var(--sub);padding:10px 14px 14px;border-top:1px solid var(--line)}
+  .btnspec p b{color:var(--ink);display:block;font-size:14.5px}
+
+  /* сравнение и правила */
+  .ex{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:24px}
+  @media (max-width:800px){.ex{grid-template-columns:minmax(0,1fr)}}
+  .ex .lab{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+  .ex .ml{border-radius:12px;overflow:hidden}
+  .dd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+  @media (max-width:700px){.dd{grid-template-columns:minmax(0,1fr)}}
+  .dd>div{border-radius:18px;padding:16px 18px;border:1px solid var(--line);background:var(--surface);min-width:0}
+  .dd .y{border-color:#BFE6CD;background:#F3FBF6}
+  .dd .n{border-color:#F3DE94;background:#FFFBEE}
+  .dd small{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+  .dd .y small{color:var(--ok)}
+  .dd .n small{color:var(--warn)}
+  .dd p{margin-top:8px;font-size:15.5px}
+  .dd p+p{margin-top:6px}
+  .dd em{font-style:normal;color:var(--sub);font-size:14px}
+  .rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:900px){.rules{grid-template-columns:minmax(0,1fr)}}
+  .rules ul{margin:10px 0 0;padding-left:18px;color:var(--sub);font-size:15px}
+  .rules li+li{margin-top:6px}
+  .check{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;margin-top:16px}
+  @media (max-width:700px){.check{grid-template-columns:minmax(0,1fr)}}
+  .check label{display:flex;gap:10px;font-size:15px;align-items:flex-start;cursor:pointer;padding:6px 8px;border-radius:10px}
+  .check label:hover{background:var(--surface)}
+  .check input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--vi);flex:none}
+  .check input:checked+span{color:var(--mut);text-decoration:line-through}
+  .res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+  @media (max-width:900px){.res{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:520px){.res{grid-template-columns:minmax(0,1fr)}}
+  .res a,.res div{display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;text-decoration:none;color:var(--ink);min-width:0}
+  .res a:hover{border-color:#CFCBDD}
+  .res b{font-size:16px}
+  .res span{font-size:14px;color:var(--sub)}
+  .res code{font-size:12px;align-self:flex-start;margin-top:4px;overflow-wrap:anywhere}
+  .res .author{background:linear-gradient(160deg,#FFFFFF 0%,#F4F1FF 100%);border-color:#DCD4FF}
+  .table-wrap{margin-top:20px}
+  .foot a{color:var(--sub)}
+  /* вкладки раздела: Гайд, Компоненты, Макеты */
+  .etabs{display:flex;gap:4px;margin-top:18px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+  .etabs::-webkit-scrollbar{display:none}
+  .etabs a{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;color:var(--sub);font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1px}
+  .etabs a i{font-style:normal;font-weight:500;font-size:12px;line-height:18px;color:var(--mut);background:var(--surface-2);border-radius:999px;padding:1px 8px;font-variant-numeric:tabular-nums}
+  .etabs a:hover{color:var(--ink)}
+  .etabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--y)}
+  .etabs a[aria-current="page"] i{background:var(--y-soft);color:#8A6200}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="logo" href="../index.html"><i></i>Дизайн-система CVM</a>
+  <nav class="nav" aria-label="Разделы">
+    <a href="../buzz/index.html">Канал в Buzz</a>
+    <a href="index.html" aria-current="page">Письма</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap">
+  <nav class="etabs" aria-label="Раздел «Письма»">
+    <a href="index.html" aria-current="page">Гайд</a>
+    <a href="catalog.html">Компоненты <i>169</i></a>
+    <a href="layouts.html">Макеты <i>20</i></a>
+    <a href="market.html">Рынок</a>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Раздел дизайн-системы · email-рассылки</div>
+      <h1 class="display" style="margin-top:14px">Письма</h1>
+      <p class="lede" style="margin-top:18px">Компоненты email-рассылок билайн бизнес: шапка с новым логотипом, контентные блоки, кнопки и подвал в светлой и темной версии. Размеры 1:1 к макетам email 2.0 в Figma, примеры писем собраны только из этих компонентов</p>
+      <div class="acts"><a class="btn pri" href="catalog.html">Все компоненты</a><a class="btn" href="#toc">Разделы гайда</a><a class="btn" href="layouts.html">Макеты писем</a><a class="btn ghost" href="https://sgoryanskya.github.io/email_goryanskaya/?v=6" target="_blank" rel="noopener">Библиотека макетов ↗</a></div>
+    </div>
+    <div class="mini" id="hero-mini" aria-label="Эталонное письмо «Единый мониторинг», уменьшено"><a class="btn sm open" href="#examples">Открыть целиком</a></div>
+  </section>
+
+  <nav class="toc-box" id="toc" aria-label="Оглавление">
+    <div class="toc-top"><h2>Оглавление</h2><span class="small muted">22 раздела: основа, компоненты, сборка и процесс</span></div>
+    <div class="toc-g" id="toc-g">
+      <div><h3>Основа</h3><ol>
+        <li><a href="#letter"><i>01</i><b>Письмо в одном экране</b><span>Из чего состоит и главные числа</span></a></li>
+        <li><a href="#grid"><i>02</i><b>Сетка и отступы</b><span>720, 640, шаг 12 и ритм блоков</span></a></li>
+        <li><a href="#color"><i>03</i><b>Цвет</b><span>Палитра светлого и темного письма</span></a></li>
+        <li><a href="#type"><i>04</i><b>Шрифт</b><span>Уровни текста и где Beeline Sans</span></a></li>
+        <li><a href="#logo"><i>05</i><b>Логотип и шапка</b><span>Новый логотип, партнер, без имиджа</span></a></li>
+      </ol></div>
+      <div><h3>Компоненты</h3><ol>
+        <li><a href="#hero"><i>06</i><b>Имидж</b><span>640×350 и правила картинок</span></a></li>
+        <li><a href="#title"><i>07</i><b>Первый экран</b><span>Заголовок, лид, плашка, кнопка</span></a></li>
+        <li><a href="#info"><i>08</i><b>Текстовые блоки</b><span>Абзацы и списки</span></a></li>
+        <li><a href="#steps"><i>09</i><b>Шаги</b><span>Кружки, описания, плашки 01–04</span></a></li>
+        <li><a href="#adv"><i>10</i><b>Преимущества</b><span>Галочки, линии, колонки</span></a></li>
+        <li><a href="#frame"><i>11</i><b>Рамки и сноски</b><span>Пунктир, сплошная, сноски</span></a></li>
+        <li><a href="#module"><i>12</i><b>Модуль с иллюстрацией</b><span>Плашка справа, слева, в ряду</span></a></li>
+      </ol></div>
+      <div><h3>Компоненты</h3><ol>
+        <li><a href="#tiles"><i>13</i><b>Плитки и иконки</b><span>2×2 + 1 и сетка иконок</span></a></li>
+        <li><a href="#offer"><i>14</i><b>Оффер и цена</b><span>Цена, скидка, промокод, тарифы</span></a></li>
+        <li><a href="#cta"><i>15</i><b>Кнопки и CTA</b><span>Основная, вторичная, на темном</span></a></li>
+        <li><a href="#new"><i>16</i><b>Новые блоки</b><span>Мероприятие, цитата, оценка</span></a></li>
+        <li><a href="#footer"><i>17</i><b>Подвал</b><span>Стандартный, партнерский, сервисный</span></a></li>
+      </ol></div>
+      <div><h3>Сборка и процесс</h3><ol>
+        <li><a href="#dark"><i>18</i><b>Темное письмо</b><span>Как меняются цвета и картинки</span></a></li>
+        <li><a href="#examples"><i>19</i><b>Примеры писем</b><span>Шесть писем из компонентов</span></a></li>
+        <li><a href="#copy"><i>20</i><b>Текст письма</b><span>Тема, заголовок, кнопка, списки</span></a></li>
+        <li><a href="#build"><i>21</i><b>Верстка и проверка</b><span>Метки, Outlook, чек-лист</span></a></li>
+        <li><a href="#files"><i>22</i><b>Файлы и ссылки</b><span>Figma, библиотека, ассеты, автор</span></a></li>
+      </ol></div>
+    </div>
+  </nav>
+</div>
+
+<div class="wrap">
+  <!-- 01 -->
+  <section class="sec" id="letter">
+    <div class="sec-k"><i>01</i>Основа</div>
+    <h2>Письмо в одном экране</h2>
+    <p class="intro">Любое письмо собирается из шести частей сверху вниз. Каждая часть живет на своей карточке, карточки стоят на сером фоне через 12 px</p>
+    <div class="facts4">
+      <div class="f4"><small>Ширина</small><b>720 рамка, 640 контент</b><p>Поля по 40 слева и справа. На мобильном колонка 320 и поля 20</p></div>
+      <div class="f4"><small>Скругление</small><b>Карточки 15, кнопки и плашки 12</b><p>Без теней и обводок. Градиенты только внутри картинок</p></div>
+      <div class="f4"><small>Шрифт</small><b>Beeline Sans только в H1</b><p>Все остальное Arial: так текст одинаково выглядит в Outlook, Gmail и почте Mail.ru</p></div>
+      <div class="f4"><small>Кнопка</small><b>240×50, #FFC800</b><p>Один основной CTA на экран, подпись Arial 18/20 черным</p></div>
+    </div>
+    <ol class="anat">
+      <li><a href="#logo"><i>1</i><b>Шапка</b><span>Логотип 222×34 в верхней части первой карточки, поле 72</span></a></li>
+      <li><a href="#hero"><i>2</i><b>Имидж</b><span>Картинка 640×350 сразу под логотипом, без рамки</span></a></li>
+      <li><a href="#title"><i>3</i><b>Первый экран</b><span>H1, лид и при необходимости жирный лид или плашка</span></a></li>
+      <li><a href="#info"><i>4</i><b>Контентные блоки</b><span>Один смысловой блок на карточку: текст, шаги, модули, плитки</span></a></li>
+      <li><a href="#cta"><i>5</i><b>CTA</b><span>Кнопка в последнем блоке или отдельной карточкой</span></a></li>
+      <li><a href="#footer"><i>6</i><b>Подвал</b><span>Соцсети, слоган, дисклеймер и юридический текст с отпиской</span></a></li>
+    </ol>
+  </section>
+
+  <!-- 02 -->
+  <section class="sec" id="grid">
+    <div class="sec-k"><i>02</i>Основа</div>
+    <h2>Сетка и отступы</h2>
+    <p class="intro">Вертикальный ритм фиксирован: одинаковые поля внутри блоков и одинаковые расстояния между ними. Так письмо собирается из любых блоков и не разваливается</p>
+    <div class="gridfig">
+      <svg viewBox="0 0 720 560" role="img" aria-label="Схема сетки письма: рамка 720, поля 40, карточки 640 через 12, поля блока 32, шаг внутри блока 20">
+        <rect width="720" height="560" fill="#EFEFEF"/>
+        <rect x="40" y="20" width="640" height="210" rx="15" fill="#fff"/>
+        <rect x="40" y="242" width="640" height="200" rx="15" fill="#fff"/>
+        <rect x="72" y="274" width="576" height="136" fill="rgba(91,63,240,.06)" stroke="#5B3FF0" stroke-dasharray="5 5"/>
+        <rect x="72" y="274" width="576" height="28" rx="4" fill="#E9E9E9"/>
+        <rect x="72" y="322" width="576" height="44" rx="4" fill="#F2F2F2"/>
+        <rect x="72" y="386" width="240" height="24" rx="6" fill="#FFC800"/>
+        <g fill="#5B3FF0" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700">
+          <path d="M0 125h40M0 120v10M40 120v10" stroke="#5B3FF0" stroke-width="1.5"/><text x="6" y="115">40</text>
+          <path d="M680 125h40M680 120v10M720 120v10" stroke="#5B3FF0" stroke-width="1.5"/><text x="688" y="115">40</text>
+          <text x="360" y="118" text-anchor="middle" font-size="22" fill="#BDBDBD">карточка 640, r15</text>
+          <text x="360" y="146" text-anchor="middle" font-size="14" font-weight="400" fill="#9A9A9A">шапка 72 · имидж 640×350 · первый экран</text>
+          <path d="M600 230v12M595 230h10M595 242h10" stroke="#5B3FF0" stroke-width="1.5"/><text x="612" y="241">12</text>
+          <path d="M40 300h32M40 295v10M72 295v10" stroke="#5B3FF0" stroke-width="1.5"/><text x="44" y="292">32</text>
+          <path d="M360 242v32M355 242h10M355 274h10" stroke="#5B3FF0" stroke-width="1.5"/><text x="370" y="264">32</text>
+          <path d="M660 302v20M655 302h10M655 322h10" stroke="#5B3FF0" stroke-width="1.5"/><text x="618" y="317">20</text>
+          <path d="M660 366v20M655 366h10M655 386h10" stroke="#5B3FF0" stroke-width="1.5"/><text x="618" y="381">20</text>
+          <text x="88" y="293" font-size="13" fill="#141414">H2</text>
+          <text x="88" y="349" font-size="13" font-weight="400" fill="#787878">текст или список</text>
+          <text x="192" y="403" font-size="12" text-anchor="middle" fill="#141414">кнопка 240×50</text>
+          <circle cx="324" cy="490" r="16" fill="#282828"/><circle cx="360" cy="490" r="16" fill="#282828"/><circle cx="396" cy="490" r="16" fill="#282828"/>
+          <text x="360" y="530" text-anchor="middle" font-size="13" font-weight="400" fill="#787878">подвал на фоне письма, соцсети 32 через 10</text>
+        </g>
+      </svg>
+      <div class="table-wrap" style="margin-top:0"><table>
+        <thead><tr><th>Отступ</th><th>Где</th><th>Мобильный</th></tr></thead>
+        <tbody>
+          <tr><td><b>40</b></td><td>поля рамки 720 слева и справа</td><td>20</td></tr>
+          <tr><td><b>32</b></td><td>поля контентного блока, между разделами внутри карточки</td><td>24 / 20</td></tr>
+          <tr><td><b>24</b></td><td>верхнее поле первого экрана под имиджем</td><td>24</td></tr>
+          <tr><td><b>20</b></td><td>шаг между элементами блока, отступ от карточки до краев письма сверху</td><td>20</td></tr>
+          <tr><td><b>16</b></td><td>между абзацами в стеке, между кнопками, шаг в оффере</td><td>16</td></tr>
+          <tr><td><b>12</b></td><td>между карточками, между плитками</td><td>12</td></tr>
+          <tr><td><b>10</b></td><td>между пунктами списка, между иконками соцсетей</td><td>10</td></tr>
+          <tr><td><b>8</b></td><td>между плашками шагов и УТП</td><td>8</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <p class="note">На мобильном все колонки складываются в одну: модуль с иллюстрацией, плитки, колонки фактов и тарифы. Проверяйте оба размера переключателем <b>720 / 360</b> над каждой витриной</p>
+  </section>
+
+  <!-- 03 -->
+  <section class="sec" id="color">
+    <div class="sec-k"><i>03</i>Основа</div>
+    <h2>Цвет</h2>
+    <p class="intro">Письмо почти монохромное. Желтый работает как сигнал: кнопка, линии, рамки, маркеры, последний шаг. Пастельный желтый только для кружков и маленьких значков: большие желтые заливки портит темная тема почты</p>
+    <h3 class="sub-h">Светлое письмо</h3>
+    <div class="sw">
+      <div><i style="background:#EFEFEF"></i><b>Фон письма</b><code>#EFEFEF</code><span>Рамка 720 вокруг карточек</span></div>
+      <div><i style="background:#FFFFFF"></i><b>Карточка</b><code>#FFFFFF</code><span>Все контентные блоки</span></div>
+      <div><i style="background:#F5F5F5"></i><b>Плашка</b><code>#F5F5F5</code><span>Шаги, УТП, иллюстрации, детали</span></div>
+      <div><i style="background:#FFC800"></i><b>Желтый</b><code>#FFC800</code><span>Кнопка, линии 48×2, рамки, маркеры</span></div>
+      <div><i style="background:#FFF4CE"></i><b>Пастельный желтый</b><code>#FFF4CE</code><span>Кружки шагов, плашка над H1</span></div>
+      <div><i style="background:#EBEBEB"></i><b>Вторичная кнопка</b><code>#EBEBEB</code><span>Вторая кнопка, кнопки оценки</span></div>
+      <div><i style="background:#141414"></i><b>Текст</b><code>#141414</code><span>Абзацы, списки, подписи</span></div>
+      <div><i style="background:#282828"></i><b>Заголовки</b><code>#282828</code><span>H1, H2, соцсети и слоган</span></div>
+      <div><i style="background:#787878"></i><b>Вторичный текст</b><code>#787878</code><span>Пояснения, сноски, подвал</span></div>
+      <div><i style="background:#DDDDDD"></i><b>Дисклеймер</b><code>#DDDDDD</code><span>Первая полоса подвала</span></div>
+      <div><i style="background:#C3C3C3"></i><b>Юридический текст</b><code>#C3C3C3</code><span>Вторая полоса подвала</span></div>
+      <div><i style="background:#5E9FCA"></i><b>Ссылка в подвале</b><code>#5E9FCA</code><span>b2b.beeline.ru и отписка</span></div>
+    </div>
+    <h3 class="sub-h">Темное письмо</h3>
+    <div class="sw">
+      <div><i style="background:#282828"></i><b>Фон письма</b><code>#282828</code><span>Рамка вокруг карточек</span></div>
+      <div><i style="background:#000000"></i><b>Карточка</b><code>#000000</code><span>Контентные блоки</span></div>
+      <div><i style="background:#1A1A1A"></i><b>Плашка</b><code>#1A1A1A</code><span>Шаги, УТП, иллюстрации</span></div>
+      <div><i style="background:#FFFFFF"></i><b>Текст и заголовки</b><code>#FFFFFF</code><span>Все уровни текста</span></div>
+      <div><i style="background:#A6A6A6"></i><b>Вторичный текст</b><code>#A6A6A6</code><span>Пояснения и сноски</span></div>
+      <div><i style="background:#2D2D2D"></i><b>Дисклеймер</b><code>#2D2D2D</code><span>Первая полоса подвала</span></div>
+      <div><i style="background:#222222"></i><b>Юридический текст</b><code>#222222</code><span>Вторая полоса подвала</span></div>
+      <div><i style="background:#FFC800"></i><b>Желтый</b><code>#FFC800</code><span>Не меняется, на темном можно и текстом</span></div>
+    </div>
+    <div class="dd">
+      <div class="y"><small>Так</small><p>Желтый на кнопке, в линиях, рамках, маркерах и в последнем шаге</p><p>Акцентный текст желтым только на черной карточке</p></div>
+      <div class="n"><small>Не так</small><p>Желтый текст на белом: контраст 1,6 из 4,5 нужных</p><p>Градиент или картинка фоном письма, цветные карточки</p><p><b>Плашка, залитая желтым: в темной теме почты она станет бурой</b></p></div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="sec" id="type">
+    <div class="sec-k"><i>04</i>Основа</div>
+    <h2>Шрифт</h2>
+    <p class="intro">Beeline Sans стоит только в главном заголовке. Почтовые клиенты часто не загружают веб-шрифты, поэтому H1 должен хорошо выглядеть и в Arial. Весь остальной текст сразу набираем Arial</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Уровень</th><th>Шрифт и размер</th><th>Цвет</th><th>Пример</th></tr></thead>
+      <tbody>
+        <tr><td><b>H1</b></td><td>Beeline Sans Regular 26/30</td><td><code>#282828</code></td><td><span class="tsample" style="font-family:BeelineSans,Arial,sans-serif;font-size:26px;line-height:30px;color:#282828">Управляйте задачами</span></td></tr>
+        <tr><td><b>H2</b></td><td>Arial Bold 20/26</td><td><code>#282828</code></td><td><span class="tsample" style="font-weight:700;font-size:20px;line-height:26px;color:#282828">Модуль «Координатор»</span></td></tr>
+        <tr><td><b>Жирный лид</b></td><td>Arial Bold 20/26</td><td><code>#141414</code></td><td><span class="tsample" style="font-weight:700;font-size:20px;line-height:26px">Контролируйте выполнение задач</span></td></tr>
+        <tr><td><b>Заголовок блока</b></td><td>Arial Regular 24/28</td><td><code>#282828</code></td><td><span class="tsample" style="font-size:24px;line-height:28px;color:#282828">Когда это удобно?</span></td></tr>
+        <tr><td><b>Цена</b></td><td>Arial Bold 28/32</td><td><code>#282828</code></td><td><span class="tsample" style="font-weight:700;font-size:28px;line-height:32px;color:#282828">1 290 ₽</span></td></tr>
+        <tr><td><b>Подзаголовок</b></td><td>Arial Bold 16/21</td><td><code>#282828</code></td><td><span class="tsample" style="font-weight:700;font-size:16px;line-height:21px;color:#282828">Автоматизация управления</span></td></tr>
+        <tr><td><b>Текст</b></td><td>Arial Regular 16/21</td><td><code>#141414</code></td><td><span class="tsample" style="font-size:16px;line-height:21px">Помогает улучшить качество выездного обслуживания</span></td></tr>
+        <tr><td><b>Кнопка</b></td><td>Arial Regular 18/20</td><td><code>#000000</code></td><td><span class="tsample" style="font-size:18px;line-height:20px;color:#000">Оставить заявку</span></td></tr>
+        <tr><td><b>Сноска</b></td><td>Arial Regular 13/16</td><td><code>#787878</code></td><td><span class="tsample" style="font-size:13px;line-height:16px;color:#787878">Скидка действует первые три месяца</span></td></tr>
+        <tr><td><b>Подвал</b></td><td>Arial Regular 11/13</td><td><code>#787878</code></td><td><span class="tsample" style="font-size:11px;line-height:13px;color:#787878">Рассылка носит информационный характер</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note vi">Открытый вопрос: в письмах в работе подпись кнопки Arial Regular 18/20 черным, а в описании компонента email 2.0/button указан Bold #141414. Пока в гайде Regular, как в отправленных письмах</p>
+  </section>
+
+  <!-- 05 -->
+  <section class="sec" id="logo">
+    <div class="sec-k"><i>05</i>Основа</div>
+    <h2>Логотип и шапка</h2>
+    <p class="intro">Шапка задает контекст отправителя. В письмах используем только обновленный логотип: «билайн» и «бизнес» в контурной капсуле</p>
+    <div class="logos">
+      <figure><div class="lgbox" style="background:#fff"><img src="assets/img/logo-light.svg" width="222" height="34" alt="Логотип билайн бизнес для светлого фона"></div><figcaption><b>На светлом</b>logo-light.svg, 222×34, в верстку ×2</figcaption></figure>
+      <figure><div class="lgbox" style="background:#000"><img src="assets/img/logo-dark.svg" width="222" height="34" alt="Логотип билайн бизнес для темного фона"></div><figcaption><b>На темном</b>logo-dark.svg с обводкой букв для Dark Mode</figcaption></figure>
+      <figure class="no"><div class="lgbox"><span class="oldlogo" aria-hidden="true"><i></i>билайн <em>бизнес</em></span><span class="pill warn">больше не используем</span></div><figcaption><b>Старый логотип</b>«бизнес» на желтой плашке. Встречается в старых письмах библиотеки, в новые не переносим</figcaption></figure>
+    </div>
+    <div class="cmp">
+      <div class="demo" data-c="header"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Поле шапки</dt><dd>640×72</dd><dt>Логотип</dt><dd>222×34</dd><dt>Сверху и снизу</dt><dd>19</dd><dt>Линия партнера</dt><dd>1×24</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>логотип не перерисовываем, не перекрашиваем и не масштабируем произвольно</li><li>в темном письме версия с обводкой</li><li>если фон шапки меняется, прикладываем его в задачу на верстку отдельно</li><li>логотип партнера той же высоты, справа через линию</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="sec" id="hero">
+    <div class="sec-k"><i>06</i>Компоненты</div>
+    <h2>Имидж</h2>
+    <p class="intro">Иллюстрация поддерживает смысл письма и показывает продукт. Используем бытовые 3D-иллюстрации: телефон, роутер, облако, подарок. Ставится сразу под логотипом в первой карточке на всю ширину 640. Вариантов имиджа два: с иллюстрацией и без нее, тогда текст начинается сразу под логотипом</p>
+    <div class="heroes">
+      <figure><img src="assets/img/hero-monitoring.jpg" width="640" height="350" alt="" loading="lazy"><figcaption>Единый мониторинг <code>hero-monitoring.jpg</code></figcaption></figure>
+      <figure><img src="assets/img/hero-gifts.jpg" width="640" height="350" alt="" loading="lazy"><figcaption>Подарки, партнеры <code>hero-gifts.jpg</code></figcaption></figure>
+      <figure><img src="assets/img/hero-unlimited.jpg" width="640" height="350" alt="" loading="lazy"><figcaption>Безлимитный интернет <code>hero-unlimited.jpg</code></figcaption></figure>
+      <figure><img src="assets/img/hero-femto.jpg" width="640" height="350" alt="" loading="lazy"><figcaption>Фемтосота <code>hero-femto.jpg</code></figcaption></figure>
+      <figure><img src="assets/img/hero-abonement.jpg" width="640" height="350" alt="" loading="lazy"><figcaption>Абонентское обслуживание <code>hero-abonement.jpg</code></figcaption></figure>
+      <figure><img src="assets/img/hero-medicine.jpg" width="640" height="350" alt="" loading="lazy"><figcaption>Медицина <code>hero-medicine.jpg</code></figcaption></figure>
+    </div>
+    <div class="rules">
+      <div class="panel"><h3>Размер</h3><ul><li>640×350 в макете, 1280×700 в верстку</li><li>иконки ×4</li><li>одинаково на десктопе и мобильном, без отдельной версии</li></ul></div>
+      <div class="panel"><h3>Картинка</h3><ul><li>иллюстрации в PNG с прозрачным фоном</li><li>без рамок и подписей внутри</li><li>безопасные отступы со всех сторон, объект не режется краем</li></ul></div>
+      <div class="panel"><h3>Нельзя</h3><ul><li><b>заголовок, текст и цены на иллюстрации:</b> Outlook и часть почт по умолчанию не загружают картинки, и текст пропадет вместе с ней</li><li>градиент как фон письма, только внутри картинки</li><li>картинка без alt: при отключенных картинках письмо теряет смысл</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="sec" id="title">
+    <div class="sec-k"><i>07</i>Компоненты</div>
+    <h2>Первый экран</h2>
+    <p class="intro">Первый экран это одна карточка целиком: логотип, иллюстрация и заголовок. Вариантов два: с иллюстрацией и без нее, у каждого есть версия с датой. Здесь читатель решает, читать ли дальше, поэтому одна мысль и все по центру</p>
+    <div class="cmp">
+      <div class="demo" data-c="title"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Поля</dt><dd>24 / 32 / 32 / 32</dd><dt>Шаг</dt><dd>20</dd><dt>H1</dt><dd>Beeline Sans 26/30</dd><dt>Ширина H1</dt><dd>до 565</dd><dt>Лид</dt><dd>Arial 16/21</dd><dt>Без иллюстрации</dt><dd>сверху 32</dd><dt>Рамка с датой</dt><dd>2 px #FFC800, r12</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>H1 до двух строк</li><li>лид до трех строк</li><li>дата Bold в начале первого абзаца или в рамке без заливки под H1</li><li>текст на иллюстрацию не ставим</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section class="sec" id="info">
+    <div class="sec-k"><i>08</i>Компоненты</div>
+    <h2>Текстовые блоки</h2>
+    <p class="intro">Раскрывают смысл, преимущества и логику продукта. Один смысловой блок, одна карточка</p>
+    <div class="cmp">
+      <div class="demo" data-c="info"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Поля</dt><dd>32</dd><dt>Мобильный</dt><dd>24 / 20</dd><dt>Шаг</dt><dd>20</dd><dt>Между разделами</dt><dd>32</dd><dt>H2</dt><dd>Arial Bold 20/26</dd><dt>Маркер / текст</dt><dd>8 / 24</dd><dt>Между пунктами</dt><dd>10</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>текст слева, по центру только короткие подзаголовки</li><li>пункты с маленькой буквы, без точки в конце</li><li>до шести пунктов в списке</li><li>картинки не встраиваем в текст</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section class="sec" id="steps">
+    <div class="sec-k"><i>09</i>Компоненты</div>
+    <h2>Шаги</h2>
+    <p class="intro">Когда клиенту нужно что-то сделать по порядку: подключить, настроить, зарегистрироваться</p>
+    <div class="cmp">
+      <div class="demo" data-c="steps"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Кружок</dt><dd>32, #FFF4CE</dd><dt>Номер</dt><dd>Arial 13</dd><dt>До текста</dt><dd>16</dd><dt>Между шагами</dt><dd>15</dd><dt>С описанием</dt><dd>20</dd><dt>Плашка</dt><dd>r12, 16/20</dd><dt>Капсула</dt><dd>48×32</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>от трех до пяти шагов</li><li>шаг начинается с глагола</li><li>желтым только последний шаг, это результат</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="sec" id="adv">
+    <div class="sec-k"><i>10</i>Компоненты</div>
+    <h2>Преимущества</h2>
+    <p class="intro">Короткие тезисы о пользе. Форма зависит от числа тезисов и длины текста: галочки для трех развернутых, линии для коротких</p>
+    <div class="cmp">
+      <div class="demo" data-c="adv"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Галочка</dt><dd>20, #FFC800</dd><dt>Плашки</dt><dd>шаг 8</dd><dt>Линия</dt><dd>48×2</dd><dt>Колонки</dt><dd>3 через 20</dd><dt>Заголовок блока</dt><dd>Arial 24/28</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>не больше пяти тезисов</li><li>тезис до двух строк</li><li>желтый текст только на черной карточке</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section class="sec" id="frame">
+    <div class="sec-k"><i>11</i>Компоненты</div>
+    <h2>Рамки и сноски</h2>
+    <p class="intro">Рамка выделяет одну вещь, которую нельзя пропустить: путь по шагам, дату работ, промокод</p>
+    <div class="cmp">
+      <div class="demo" data-c="frame"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Рамка</dt><dd>2 px #FFC800</dd><dt>Скругление</dt><dd>15</dd><dt>Поля пунктира</dt><dd>15 / 16</dd><dt>Поля сплошной</dt><dd>20 / 24</dd><dt>Сноска</dt><dd>13/16 #787878</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>одна рамка в письме</li><li>между шагами пути стрелка →</li><li>сноска в той же карточке, где ее номер</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section class="sec" id="module">
+    <div class="sec-k"><i>12</i>Компоненты</div>
+    <h2>Модуль с иллюстрацией</h2>
+    <p class="intro">Компонент block·module из email 2.0: текст и иллюстрация на плашке в одном ряду. Модули в письме чередуем: справа, потом слева</p>
+    <div class="cmp">
+      <div class="demo" data-c="mod"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Ряд</dt><dd>280 + 20 + 280</dd><dt>Плашка</dt><dd>#F5F5F5 r12</dd><dt>Высота плашки</dt><dd>от 208</dd><dt>Поля</dt><dd>20 / 30 / 24</dd><dt>Картинка</dt><dd>560×416, ×2</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>иллюстрация поясняет текст рядом</li><li>на мобильном все в колонку, плашка на всю ширину</li><li>кнопка по центру под рядом</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section class="sec" id="tiles">
+    <div class="sec-k"><i>13</i>Компоненты</div>
+    <h2>Плитки и иконки</h2>
+    <p class="intro">Плитки для разделов и возможностей, по которым клиент пойдет дальше. Сетка иконок для коротких выгод</p>
+    <div class="cmp">
+      <div class="demo" data-c="tiles"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Плитка</dt><dd>314, r15</dd><dt>Шаг</dt><dd>12</dd><dt>Поля плитки</dt><dd>24 / 20</dd><dt>3D-иконка</dt><dd>72, PNG ×4</dd><dt>Линейная иконка</dt><dd>40</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>плитки парами, нечетная последняя на всю ширину</li><li>иконки одного стиля в письме</li><li>3D-иконки берем из библиотеки иллюстраций дизайн-системы</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section class="sec" id="offer">
+    <div class="sec-k"><i>14</i>Компоненты</div>
+    <h2>Оффер и цена</h2>
+    <p class="intro">Компоненты price и block·offer. Цена всегда с периодом и условием, без мелкого текста в другом конце письма</p>
+    <div class="cmp">
+      <div class="demo" data-c="offer"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Поля / шаг</dt><dd>32 / 16</dd><dt>Цена</dt><dd>Arial Bold 28/32</dd><dt>Старая цена</dt><dd>20/26, зачеркнута</dd><dt>Промокод</dt><dd>Bold 24/28</dd><dt>Тарифы</dt><dd>2 плашки через 12</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>один оффер на письмо</li><li>условие скидки сразу под ценой</li><li>НДС и период рядом с цифрой</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section class="sec" id="cta">
+    <div class="sec-k"><i>15</i>Компоненты</div>
+    <h2>Кнопки и CTA</h2>
+    <p class="intro">CTA функциональный элемент, не декоративный. Предсказуемое место, одна основная кнопка на экран и цвета только из утвержденной палитры</p>
+    <div class="btnspec" id="btnspec"></div>
+    <div class="cmp">
+      <div class="demo" data-c="cta"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Кнопка</dt><dd>240×50, r12</dd><dt>Основная</dt><dd>#FFC800</dd><dt>Вторичная</dt><dd>#EBEBEB</dd><dt>Подпись</dt><dd>Arial 18/20</dd><dt>Между кнопками</dt><dd>16</dd><dt>От текста</dt><dd>20</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>текст кнопки 1–3 слова и начинается с глагола</li><li>без градиентов, теней и прозрачности</li><li>CTA отделен от картинки отступом и не прилипает к ней</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 16 -->
+  <section class="sec" id="new">
+    <div class="sec-k"><i>16</i>Компоненты</div>
+    <h2>Новые блоки</h2>
+    <p class="intro">Блоки, которых пока нет в Figma, но которые просятся в письма: прогресс по шагам для цепочек онбординга и цитата клиента. Собраны из тех же размеров и цветов, верстаются таблицами</p>
+    <div class="cmp">
+      <div class="demo" data-c="fresh"></div>
+      <aside class="spec">
+        <span class="pill warn" style="margin-top:0">на согласование</span>
+        <h3 style="margin-top:16px">Размеры</h3>
+        <dl><dt>Сегмент прогресса</dt><dd>высота 6, r3, через 6</dd><dt>Подпись этапа</dt><dd>Arial 14/18</dd><dt>Кружок этапа</dt><dd>32, линия 2</dd><dt>Аватар</dt><dd>48</dd><dt>Кавычки</dt><dd>28, #FFC800</dd></dl>
+        <h3>Как принять в систему</h3>
+        <ul><li>проверить в одном письме</li><li>отрисовать компонент в Figma рядом с email 2.0</li><li>после согласования убрать отметку</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 17 -->
+  <section class="sec" id="footer">
+    <div class="sec-k"><i>17</i>Компоненты</div>
+    <h2>Подвал</h2>
+    <p class="intro">Обязательный сервисный и юридический блок. Строгая структура, минимальный акцент, стабильный цвет фона и корректное отображение в Dark Mode</p>
+    <div class="cmp">
+      <div class="demo" data-c="footer"></div>
+      <aside class="spec">
+        <h3>Размеры</h3>
+        <dl><dt>Соцсети</dt><dd>32, шаг 10</dd><dt>Слоган</dt><dd>92×32</dd><dt>Поля текста</dt><dd>20 / 40</dd><dt>Текст</dt><dd>11/13</dd><dt>Дисклеймер</dt><dd>#DDDDDD</dd><dt>Юридический</dt><dd>#C3C3C3</dd></dl>
+        <h3>Правила</h3>
+        <ul><li>подвал в каждом письме</li><li>ссылка на отписку видна всегда</li><li>в рекламном письме «18+. Реклама» в начале юридического текста</li><li>в темном письме белые соцсети отдельными картинками</li></ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 18 -->
+  <section class="sec" id="dark">
+    <div class="sec-k"><i>18</i>Сборка</div>
+    <h2>Темное письмо</h2>
+    <p class="intro">Часть клиентов читает почту в темной теме. Темное письмо собирается из тех же блоков, меняются только цвета поверхностей, логотип и картинки подвала</p>
+    <div class="ex" id="dark-ex"></div>
+    <h3 class="sub-h">Темная тема почты</h3>
+    <p class="intro">Если у светлого письма нет темной версии, Gmail в телефоне и Outlook перекрашивают его сами: инвертируют цвета, а картинки оставляют как есть. Белая карточка становится черной, черный текст белым, а <b>желтая заливка бурой, цвета детской неожиданности</b>. Рамка без заливки переживает инверсию, плашка нет. Блоки с заливкой в каталоге помечены «Темная тема»</p>
+    <div class="ex" id="inv-ex"></div>
+    <div class="dd">
+      <div class="y"><small>Проверяем</small><p>Логотип с обводкой на черном, белые соцсети и слоган</p><p>PNG с прозрачным фоном: нет ли светлого ореола по краю</p><p>Желтый не меняется ни в одной теме</p><p>Имиджи и плашки на белом фоне: для темного письма нужна вторая версия картинки, в примерах ее пока нет</p></div>
+      <div class="n"><small>Частые ошибки</small><p>Черный текст в картинке пропадает на темном фоне</p><p>Белая подложка в PNG дает белый прямоугольник</p><p>Текст подвала темнее #787878 на полосе #222222 уже не читается</p></div>
+    </div>
+  </section>
+
+  <!-- 19 -->
+  <section class="sec" id="examples">
+    <div class="sec-k"><i>19</i>Сборка</div>
+    <h2>Примеры писем</h2>
+    <p class="intro">Шесть типовых писем, собранных только из компонентов этой страницы. Переключайте тему и ширину, чтобы увидеть письмо так, как его увидит клиент</p>
+    <div class="demo" data-c="letters" style="margin-top:24px"></div>
+    <p class="note">Тексты и цифры в примерах условные: они показывают сетку и ритм, а не реальные предложения. Первое письмо повторяет макет «Единый мониторинг» из Figma</p>
+  </section>
+
+  <!-- 20 -->
+  <section class="sec" id="copy">
+    <div class="sec-k"><i>20</i>Сборка</div>
+    <h2>Текст письма</h2>
+    <p class="intro">Письмо читают по диагонали: заголовок, жирные начала, кнопка. Каждая из этих точек должна работать без остального текста</p>
+    <div class="rules">
+      <div class="panel"><h3>Тема и прехедер</h3><ul><li>тема короткая и конкретная, видна целиком в мобильной почте</li><li>прехедер продолжает тему, а не повторяет ее</li><li>без капса и восклицательных знаков подряд</li></ul></div>
+      <div class="panel"><h3>Заголовок и лид</h3><ul><li>H1 называет пользу, а не продукт</li><li>лид объясняет, как это работает</li><li>цифры с периодом и базой</li></ul></div>
+      <div class="panel"><h3>Списки и кнопки</h3><ul><li>пункты с маленькой буквы, без точки в конце</li><li>кнопка начинается с глагола</li><li>«билайн» всегда строчными</li></ul></div>
+    </div>
+    <div class="dd">
+      <div class="y"><small>Так</small><p>Управляйте задачами, а не только маршрутами</p><p>Кнопка «Оставить заявку»</p><em>польза и понятное действие</em></div>
+      <div class="n"><small>Не так</small><p>Новая услуга Единый мониторинг!</p><p>Кнопка «Нажмите здесь»</p><em>название вместо пользы, кнопка без действия</em></div>
+    </div>
+    <p class="note vi">Про букву «ё»: в правилах писем в Figma «ё» сохраняется, а в текстах дизайн-системы мы ее не пишем. В примерах на этой странице «ё» нет, правило для писем нужно подтвердить</p>
+  </section>
+
+  <!-- 21 -->
+  <section class="sec" id="build">
+    <div class="sec-k"><i>21</i>Процесс</div>
+    <h2>Верстка и проверка</h2>
+    <p class="intro">В верстке письмо собирается таблицами с инлайн-стилями. Classic Outlook на движке Word Microsoft поддерживает минимум до 2029 года, а Яндекс Почта оставляет только инлайн-стили, поэтому таблицы остаются основой. Что изменилось в почтовых клиентах в 2026, на вкладке <a href="market.html#clients">«Рынок»</a></p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Метка</th><th>Куда ставим</th></tr></thead>
+      <tbody>
+        <tr><td><code>{clickrate:URL}</code></td><td>основная ссылка: кнопка, имидж, ссылка в тексте, ведущая к цели письма</td></tr>
+        <tr><td><code>{minorclick:URL}</code></td><td>второстепенные ссылки: соцсети, сайт в подвале, вторичная кнопка</td></tr>
+        <tr><td><code>{unsubscribe}</code></td><td>ссылка «отказаться» в юридическом тексте подвала</td></tr>
+        <tr><td><code>{messageopened}</code></td><td>отметка об открытии письма в конце верстки</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Кнопку для Outlook дублируем через VML <code>v:roundrect</code> 240×50 с <code>arcsize="24%"</code>: так скругление 12 сохраняется и в Outlook для Windows</p>
+    <h3 class="sub-h">Чек-лист перед отправкой</h3>
+    <div class="check" id="check">
+      <label><input type="checkbox"><span>Макет 720, контент 640, проверены ширины 720 и 360</span></label>
+      <label><input type="checkbox"><span>Логотип новый, в темной версии с обводкой</span></label>
+      <label><input type="checkbox"><span>Картинки ×2, иконки ×4, у каждой картинки alt</span></label>
+      <label><input type="checkbox"><span>Иконки PNG, не SVG: веб-Outlook и новый Outlook с сентября 2025 не показывают SVG</span></label>
+      <label><input type="checkbox"><span>lang на письме, role="presentation" у таблиц раскладки, текст от 14 px</span></label>
+      <label><input type="checkbox"><span>HTML письма до 90 КБ, иначе Gmail обрежет конец вместе с отпиской</span></label>
+      <label><input type="checkbox"><span>В H1 Beeline Sans, остальной текст Arial</span></label>
+      <label><input type="checkbox"><span>Один основной CTA на экран, кнопка 240×50</span></label>
+      <label><input type="checkbox"><span>Метки ссылок расставлены, отписка работает</span></label>
+      <label><input type="checkbox"><span>Цены с периодом и НДС, сноски на месте</span></label>
+      <label><input type="checkbox"><span>Письмо проверено в темной теме</span></label>
+      <label><input type="checkbox"><span>Тема до 40 знаков, главное прехедера в первых 30–40 знаках: по ним AI в почте пересказывает письмо</span></label>
+      <label><input type="checkbox"><span>Если фон шапки другой, он приложен к задаче</span></label>
+    </div>
+    <h3 class="sub-h">Частые ошибки</h3>
+    <div class="dd">
+      <div class="n"><small>Сетка</small><p>Кнопка вплотную к картинке</p><p>Два разных радиуса в одном письме</p><p>Две желтые кнопки рядом</p></div>
+      <div class="n"><small>Контент</small><p>Текст и цена внутри картинки</p><p>Старый логотип с желтой плашкой</p><p>Желтый текст на белом фоне</p></div>
+    </div>
+  </section>
+
+  <!-- 22 -->
+  <section class="sec" id="files">
+    <div class="sec-k"><i>22</i>Процесс</div>
+    <h2>Файлы и ссылки</h2>
+    <div class="res">
+      <a href="https://sgoryanskya.github.io/email_goryanskaya/?v=6" target="_blank" rel="noopener"><b>Библиотека макетов ↗</b><span>Все отправленные письма, поиск по теме и продукту</span><code>sgoryanskya.github.io/email_goryanskaya</code></a>
+      <a href="https://www.figma.com/design/JPKplRlMBQ6fDhgNZ6IS4i/?node-id=2-25" target="_blank" rel="noopener"><b>Система сборки email ↗</b><span>Figma, страница «05_компоненты»: правила и компоненты</span><code>Figma JPKplRlMBQ6fDhgNZ6IS4i</code></a>
+      <a href="https://www.figma.com/design/eGVZlKKy3YJPi0s8XqEQKZ/?node-id=11773-17" target="_blank" rel="noopener"><b>Макеты писем ↗</b><span>Figma «PRO - Email - Goryanskaya», компоненты email 2.0</span><code>Figma eGVZlKKy3YJPi0s8XqEQKZ</code></a>
+      <a href="https://www.figma.com/design/A5zRZdzDZmI9d13j2GOpce/" target="_blank" rel="noopener"><b>Конструктор макетов ↗</b><span>Figma: система сборки писем, ссылка с главной дизайн-системы</span><code>Figma A5zRZdzDZmI9d13j2GOpce</code></a>
+      <a href="catalog.html"><b>Компоненты</b><span>169 блоков в 16 типах: email 2.0, конструктор, реальные письма, приемы рынка и новые варианты для теста</span><code>email/catalog.html</code></a>
+      <a href="market.html"><b>Рынок</b><span>Разбор писем конкурентов и лидеров B2B, 14 приемов, почтовые клиенты 2026, маркировка рекламы</span><code>email/market.html</code></a>
+      <a href="layouts.html"><b>Макеты писем</b><span>20 писем целиком из компонентов каталога: пять повторяют реальные письма из Figma, шесть собраны по приемам рынка</span><code>email/layouts.html</code></a>
+      <a href="assets/email.css" download><b>Стили компонентов</b><span>Все размеры и цвета блоков в CSS-переменных</span><code>email/assets/email.css</code></a>
+      <a href="assets/blocks.js" download><b>Компоненты и примеры</b><span>Разметка блоков, варианты и шесть писем</span><code>email/assets/blocks.js</code></a>
+      <a href="../tokens/tokens.json" download><b>Токены</b><span>Цвета, шрифт и отступы писем в разделе email</span><code>tokens/tokens.json</code></a>
+      <a href="assets/img/logo-light.svg" download><b>Логотип</b><span>logo-light.svg и logo-dark.svg, 222×34</span><code>email/assets/img</code></a>
+      <a href="../buzz/index.html#ill"><b>3D-иллюстрации</b><span>Знаки для плиток и иконок в общей библиотеке</span><code>buzz/assets/illustrations.js</code></a>
+      <div class="author"><b>Автор дизайн-системы</b><span>Софья Горянская</span><a href="mailto:sgoryanskaya@beeline.ru" style="padding:0;border:0;background:none;color:var(--vi);font-weight:700">sgoryanskaya@beeline.ru</a></div>
+    </div>
+  </section>
+</div>
+</main>
+
+<button class="toc-fab" type="button" id="toc-fab" hidden aria-haspopup="dialog">☰ Оглавление<small id="toc-cur"></small></button>
+<dialog class="toc-dlg" id="toc-dlg" aria-label="Оглавление"><div class="in-d">
+  <div class="toc-top"><h2>Оглавление</h2><button class="btn sm" type="button" id="toc-close">Закрыть</button></div>
+  <div class="toc-g" id="toc-g2"></div>
+</div></dialog>
+
+<footer class="foot"><div class="wrap">Дизайн-система CVM B2B · раздел «Письма» · Автор: Софья Горянская, <a href="mailto:sgoryanskaya@beeline.ru">sgoryanskaya@beeline.ru</a><br>Шрифт Beeline Sans принадлежит билайну, для внутреннего использования</div></footer>
+
+<script src="../buzz/assets/illustrations.js"></script>
+<script src="assets/blocks.js"></script>
+<script src="assets/blocks-ext.js"></script>
+<script src="assets/blocks-more.js"></script>
+<script src="assets/blocks-market.js"></script>
+<script src="assets/registry.js"></script>
+<script src="assets/guide.js"></script>
+</body>
+</html>

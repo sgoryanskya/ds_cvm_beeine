@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Макеты писем</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="assets/email.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="logo" href="../index.html"><i></i>Дизайн-система CVM</a>
+  <nav class="nav" aria-label="Разделы">
+    <a href="../buzz/index.html">Канал в Buzz</a>
+    <a href="index.html" aria-current="page">Письма</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap">
+  <nav class="etabs" aria-label="Раздел «Письма»">
+    <a href="index.html">Гайд</a>
+    <a href="catalog.html">Компоненты <i>169</i></a>
+    <a href="layouts.html" aria-current="page">Макеты <i>20</i></a>
+    <a href="market.html">Рынок</a>
+  </nav>
+
+  <section class="intro">
+    <div class="eyebrow">Раздел «Письма» · макеты</div>
+    <h1 class="display" style="margin-top:14px">Макеты писем</h1>
+    <p class="lede" style="margin-top:18px">Письма целиком, собранные только из компонентов каталога. Первые пять повторяют реальные письма из Figma: новые условия Облачной АТС, смартфоны со скидкой, перерыв в работе eXpress Lite, ФЗ-140 и 5G-устройства. Шесть собраны по приемам рынка: итоги месяца, порог потребления, продление, вход с нового устройства, письмо менеджера и ежемесячная подборка. Остальные показывают те же блоки в продаже, онбординге, кейсе и сервисном письме. У каждого макета описано решение и состав по блокам</p>
+    <div class="tally" id="tally"></div>
+    <div class="acts"><a class="btn pri" href="#lay">К макетам</a><a class="btn" href="catalog.html">Все компоненты</a><a class="btn" href="index.html">Гайд по письмам</a></div>
+  </section>
+
+  <div class="ctl" id="ctl" role="region" aria-label="Фильтр макетов">
+    <div class="seg" data-k="c" role="group" aria-label="Тип письма" id="seg-c"></div>
+    <span class="grow"></span>
+    <div class="seg" data-k="t" role="group" aria-label="Тема письма"><button type="button" data-v="own">Как в макете</button><button type="button" data-v="l">Светлое</button><button type="button" data-v="d">Темное</button><button type="button" data-v="i">Инверсия почты</button></div>
+  </div>
+
+  <div class="tiles lay" id="lay" style="margin-top:24px"></div>
+  <p class="empty" id="empty" hidden>Макетов этого типа пока нет</p>
+
+  <section class="legend" aria-labelledby="lg-h">
+    <h2 id="lg-h">Как пользоваться макетами</h2>
+    <p>Нажмите на макет, чтобы открыть письмо целиком: по умолчанию десктоп 720 и мобильная версия 360 рядом. «Инверсия почты» показывает, как светлое письмо покрасит Gmail или Outlook в темной теме. Под письмом список блоков по порядку, каждый ведет в каталог компонентов. Стрелки на клавиатуре листают макеты</p>
+    <p>Макет показывает решение, а не готовый текст: заголовки, цены, имена и телефоны условные. Новый макет собирается так же, из кодов каталога в файле <code>email/assets/layouts.js</code></p>
+  </section>
+</div>
+</main>
+
+<footer class="foot"><div class="wrap">Дизайн-система CVM B2B · раздел «Письма» · макеты · Автор: Софья Горянская, <a href="mailto:sgoryanskaya@beeline.ru">sgoryanskaya@beeline.ru</a><br>Шрифт Beeline Sans принадлежит билайну, для внутреннего использования</div></footer>
+
+<script src="../buzz/assets/illustrations.js"></script>
+<script src="assets/blocks.js"></script>
+<script src="assets/blocks-ext.js"></script>
+<script src="assets/blocks-more.js"></script>
+<script src="assets/blocks-market.js"></script>
+<script src="assets/registry.js"></script>
+<script src="assets/layouts.js"></script>
+<script src="assets/viewer.js"></script>
+<script src="assets/layouts-page.js"></script>
+</body>
+</html>

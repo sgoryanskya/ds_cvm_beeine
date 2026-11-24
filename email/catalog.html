@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Компоненты писем</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="assets/email.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="logo" href="../index.html"><i></i>Дизайн-система CVM</a>
+  <nav class="nav" aria-label="Разделы">
+    <a href="../buzz/index.html">Канал в Buzz</a>
+    <a href="index.html" aria-current="page">Письма</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap">
+  <nav class="etabs" aria-label="Раздел «Письма»">
+    <a href="index.html">Гайд</a>
+    <a href="catalog.html" aria-current="page">Компоненты <i>169</i></a>
+    <a href="layouts.html">Макеты <i>20</i></a>
+    <a href="market.html">Рынок</a>
+  </nav>
+
+  <section class="intro">
+    <div class="eyebrow">Раздел «Письма» · компоненты</div>
+    <h1 class="display" style="margin-top:14px">Все компоненты писем</h1>
+    <p class="lede" style="margin-top:18px">Блоки, которые уже стоят в письмах: из email 2.0, из реальных макетов в Figma и из конструктора. Группа «По рынку» собрана по приемам, которые повторяются в письмах конкурентов и лидеров B2B, разбор на вкладке <a href="market.html">«Рынок»</a>. Новые блоки на согласование. Все собираются таблицами для Outlook. Таблиц с данными, таймлайнов, полос-графиков и черных блоков в светлых письмах в каталоге нет: в верстке они разваливаются. Нажмите на плитку, чтобы открыть блок в полный размер, переключить тему и проверить мобильную версию</p>
+    <div class="dmw" role="note"><div class="sw" aria-hidden="true"><i style="background:#FFC800"></i><span>→</span><i style="background:#733C00"></i></div><div><h2>Желтые заливки и темная тема почты</h2><p>Gmail в телефоне и Outlook в темной теме инвертируют светлое письмо. Плашка, залитая #FFC800, становится бурой, а #FFF4CE почти черной с коричневым. Блоки с такой заливкой помечены «Темная тема», в окне просмотра рядом показана инверсия. Для акцента надежнее рамка 2 px без заливки</p></div></div>
+    <div class="tally" id="tally"></div>
+    <div class="acts"><a class="btn pri" href="#cat">К компонентам</a><a class="btn" href="layouts.html">Макеты писем</a><a class="btn" href="index.html">Гайд по письмам</a><a class="btn ghost" href="https://sgoryanskya.github.io/email_goryanskaya/?v=6" target="_blank" rel="noopener">Библиотека макетов ↗</a></div>
+  </section>
+
+  <div class="ctl" id="ctl" role="region" aria-label="Вид превью и поиск">
+    <div class="seg" data-k="t" role="group" aria-label="Тема письма"><button type="button" data-v="l">Светлое</button><button type="button" data-v="d">Темное</button><button type="button" data-v="i">Инверсия почты</button></div>
+    <div class="seg" data-k="w" role="group" aria-label="Ширина письма"><button type="button" data-v="720">720</button><button type="button" data-v="360">360</button></div>
+    <span class="grow"></span>
+    <input type="search" id="q" placeholder="Поиск: прогресс, рамка, товар, first.ill" aria-label="Поиск по названию, коду или описанию">
+  </div>
+
+  <nav class="cats" id="cats" aria-label="Типы компонентов"></nav>
+  <div id="cat"></div>
+  <p class="empty" id="empty" hidden>По этому запросу компонентов нет. Попробуйте другое слово или код</p>
+
+  <section class="legend" aria-labelledby="lg-h">
+    <h2 id="lg-h">Как пользоваться каталогом</h2>
+    <p>Плитка показывает начало блока. В окне просмотра блок открывается в полный размер: можно сравнить светлую и темную тему, ширину 720 и 360 и листать соседние блоки стрелками на клавиатуре. Там же написано, когда брать блок, откуда он и в каких макетах уже стоит</p>
+    <dl id="legend"></dl>
+    <p>Пометка «Темная тема» стоит у блоков, где желтым залита плашка, карточка или крупная фигура. Кнопки и маленькие значки тоже меняют цвет, но остаются читаемыми. Переключатель «Инверсия почты» показывает весь каталог так, как его покрасит почта в темной теме</p>
+    <p>Код блока совпадает с именем в коде раздела: <code>CVMMail.get('steps.progress3')</code> вернет его разметку. Новые блоки собраны из токенов email 2.0, перед первой рассылкой их стоит согласовать. Архивные показаны снимками из Figma и в новых письмах не используются</p>
+  </section>
+</div>
+</main>
+
+<footer class="foot"><div class="wrap">Дизайн-система CVM B2B · раздел «Письма» · компоненты · Автор: Софья Горянская, <a href="mailto:sgoryanskaya@beeline.ru">sgoryanskaya@beeline.ru</a><br>Шрифт Beeline Sans принадлежит билайну, для внутреннего использования</div></footer>
+
+<script src="../buzz/assets/illustrations.js"></script>
+<script src="assets/blocks.js"></script>
+<script src="assets/blocks-ext.js"></script>
+<script src="assets/blocks-more.js"></script>
+<script src="assets/blocks-market.js"></script>
+<script src="assets/registry.js"></script>
+<script src="assets/layouts.js"></script>
+<script src="assets/viewer.js"></script>
+<script src="assets/catalog.js"></script>
+</body>
+</html>
